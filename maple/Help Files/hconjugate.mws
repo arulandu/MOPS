@@ -1,0 +1,34 @@
+{VERSION 4 0 "SUN SPARC SOLARIS" "4.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "Help Bold" -1 39 "Times" 1 12 0 0 0 0 0 1 0 0 0 
+0 0 0 0 1 }{CSTYLE "" -1 256 "" 1 18 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 257 "" 1 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+258 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 18 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }{CSTYLE "" 39 261 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 262 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+263 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" 39 264 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" 39 265 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 267 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+268 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 269 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "
+" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT -1 0 "" }{TEXT 258 0 "" }{TEXT 
+256 0 "" }{TEXT 257 11 "conjugate -" }{TEXT 259 1 " " }{TEXT 268 24 "C
+onjugate of a partition" }{TEXT 269 2 "  " }{TEXT 260 1 "\n" }}{PARA 
+0 "" 0 "" {TEXT 261 17 "Calling Sequence:" }}{PARA 0 "" 0 "" {TEXT -1 
+2 "  " }{TEXT 262 13 " conjugate(k)" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }
+}{PARA 0 "" 0 "" {TEXT 39 0 "" }{TEXT 264 11 "Parameters:" }}{PARA 0 "
+" 0 "" {TEXT -1 2 "  " }{TEXT 263 33 " k - the partition (in list form
+)" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 265 10 "Syn
+opsis: " }}{PARA 0 "" 0 "" {TEXT -1 134 "Given the partition k written
+ in Young tableau (Ferrers diagram) form, the conjugate partition is o
+btained by transposing the diagram." }}{PARA 0 "" 0 "" {TEXT -1 0 "" }
+}{PARA 0 "" 0 "" {TEXT 266 9 "Examples:" }{TEXT -1 0 "" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 60 "conjugate([3,2,2]);\n              \+
+                [3, 3, 1]\n" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+70 "conjugate([7,5,3,3,2]);\n                        [5, 5, 4, 2, 2, 1
+, 1]\n" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 267 8 "See Also" }{TEXT -1 24 
+": arm, leg, uhook, lhook" }}}}{MARK "0 10 1" 0 }{VIEWOPTS 1 1 0 1 1 
+1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

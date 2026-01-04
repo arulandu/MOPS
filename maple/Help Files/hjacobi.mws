@@ -1,0 +1,94 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Comment" 2 18 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "Help Bold" -1 39 "Times" 1 12 0 0 0 0 0 1 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 1 18 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 263 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 0 1 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 265 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+267 "" 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 268 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 269 "" 1 14 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 270 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 271 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+272 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 273 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" 39 274 "" 1 14 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 275 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 276 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{PSTYLE "Normal
+" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 
+1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 12 1 {CSTYLE "" 
+-1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 0 1 0 1 0 2 
+2 0 1 }{PSTYLE "Normal" -1 256 1 {CSTYLE "" -1 -1 "Times" 1 14 0 0 0 
+1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT 258 0 "" }{TEXT 256 0 "" }{TEXT 
+257 7 "jacobi " }{TEXT 269 20 "- Jacobi polynomials" }{TEXT 259 1 "\n
+" }}{PARA 0 "" 0 "" {TEXT 270 22 "Calling Sequence:\n    " }{TEXT 261 
+29 "jacobi(a,k,g1,g2,[x], 'N')   " }{TEXT 262 17 "    \n\nParameters:
+" }{TEXT 260 357 "\n     a  - the Jack/Jacobi parameter (real positive
+ number)\n     k  - the partition (in list format)\n    g1 - the first
+ Jacobi parameter (real number greater than -1)\n    g2 - the second J
+acobi parameter (real number greater than -1)\n     [x] - the list of \+
+variables (in numerical or symbolic form) or the number of variables (
+in numerical or symbolic form)" }}{PARA 0 "" 0 "" {TEXT 271 76 "     '
+N' - the requested Jack polynomial normalization or the monomial basis
+" }}{PARA 0 "" 0 "" {TEXT -1 1 " " }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}
+{PARA 0 "" 0 "" {TEXT 263 9 "Synopsis:" }}{PARA 0 "" 0 "" {TEXT -1 
+129 "The generalized Jacobi polynomials are eigenfunctions of a Laplac
+e-Beltrami-like operator which depends on the parameter  a (see " }
+{TEXT 272 13 "Release Notes" }{TEXT -1 2 ")." }}{PARA 0 "" 0 "" {TEXT 
+-1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 103 "They represent the orthogonal \+
+polynomials corresponding to a generalized Jacobi weight, proportional
+ to" }}{PARA 0 "" 0 "" {XPPEDIT 18 0 "product(abs(x[i]-x[j])^(2/a))*pr
+oduct(x[i]^\{g1\}*(1-x[i])^\{g2\},i = 1 .. n)" "6#*&-%(productG6#)-%$a
+bsG6#,&&%\"xG6#%\"iG\"\"\"&F-6#%\"jG!\"\"*&\"\"#F0%\"aGF4F0-F%6$*&)&F-
+6#F/<#%#g1GF0),&F0F0&F-6#F/F4<#%#g2GF0/F/;F0%\"nGF0" }{TEXT -1 0 "" }}
+{PARA 0 "" 0 "" {TEXT -1 16 "on the interval " }{XPPEDIT 18 0 "[0, 1]^
+n;" "6#)7$\"\"!\"\"\"%\"nG" }{TEXT -1 1 "." }}{PARA 0 "" 0 "" {TEXT 
+-1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 160 "The Jacobi polynomials are exp
+ressed in the basis of Jack polynomials of parameter a, and the coeffi
+cients are computed via an operator-derived recurrence (see " }{TEXT 
+273 13 "Release Notes" }{TEXT -1 3 "). " }}{PARA 0 "" 0 "" {TEXT -1 0 
+"" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }
+{TEXT 266 10 "Reference:" }{TEXT -1 1 " " }{TEXT 274 14 "Release Notes
+," }{TEXT -1 1 " " }}{PARA 0 "" 0 "" {TEXT -1 21 "                    \+
+ " }{TEXT 275 10 "James, A.," }{TEXT -1 1 " " }{TEXT 267 61 "Special F
+unctions of Matrix and Single Argument in Statistics" }{TEXT -1 67 ", \+
+Theory and Applications of Special Functions, editor R.A. Askey, " }
+{TEXT 268 14 "Academic Press" }{TEXT -1 16 ", New York, 1975" }}{PARA 
+0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 265 9 "Examples:" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 25 "jacobi(a,[1,1],g1,g2, n);" }
+}{PARA 12 "" 1 "" {XPPMATH 20 "6#,(&%\"CG6$\"\"\"F'F'*0\"\"#F'%\"aGF'&
+F%6#F'F',**&%#g1GF'F*F'F'%\"nGF'F)!\"\"F*F'F',&F0F'F'F1F',,F.F'*&%#g2G
+F'F*F'F'*&F)F'F0F'F'\"\"%F1*&F)F'F*F'F'F1,&F*F'F'F'F1F1*4F)F'F*F',*F.F
+'F0F'F'F1F*F'F'F-F'F0F'F2F'F3F1,,F.F'F4F'*&F)F'F0F'F'\"\"$F1*&F)F'F*F'
+F'F1F9F1F'" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 27 "jacobi(a,[2,1
+],1,1,4, 'J');" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,,*&#\"\"\"\"\"'F&**
+,&F&F&*&\"\"#F&%\"aGF&F&F&,&F+F&F,F&F&F,!\"\"&%\"JG6$F+F&F&F&F.*,\"\"*
+F&F,F&&F06#F+F&,&F,F&F&F&F&F)F.F&*.\"\"$F&,&\"\"%F&F,F&F&&F06$F&F&F&F6
+F&F,F.F-F.F&*&#F3\"\"&F&*0F9F&&F06#F&F&,(\"#9F&*&\"#?F&F,F&F&*&\"#6F&)
+F,F+F&F&F&F,F&F)F.F-F.F6!\"#F&F.*6\"#aF&F?F.F9F&,&F8F&*&F+F&F,F&F&F&F,
+F&FCF&F)F.F-F.,&*&\"\"(F&F,F&F&\"\")F&F.F6FJF&" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 29 "jacobi(3, [6], 1, 0, 2, 'm');" }}{PARA 12 "" 
+1 "" {XPPMATH 20 "6#,B&%\"mG6#\"\"'\"\"\"*&#\"\"$\"\")F(&F%6$\"\"&F(F(
+F(*&#\"#:\"#_F(&F%6$\"\"%\"\"#F(F(*&#\"\"(\"#EF(&F%6$F+F+F(F(*&#\"$h&
+\"$k\"F(&F%6#F/F(!\"\"*&#\"%0G\"%K@F(&F%6$F6F(F(FD*&#F@\"$L&F(&F%6$F+F
+7F(FD*&#\"&0*eFHF(&F%6#F6F(F(*&#\"&\"y6\"%m5F(&F%6$F+F(F(F(*&#\"%\\]FM
+F(&F%6$F7F7F(F(*&#\"'/\"[\"FMF(&F%6#F+F(FD*&#\"'7VW\"%JPF(&F%6$F7F(F(F
+D*&#\"'!Rb&\"$(GF(&F%6#F7F(F(*&#\"'&px#FhoF(&F%6$F(F(F(F(*&#\")]UlT\"%
+B$)F(&F%6#F(F(FD#Fbp\"&da\"F(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 29 "jacobi(a, [3], 0, 0, [x, y]);" }}{PARA 12 "" 1 "" {XPPMATH 20 "6
+#,<*(\"\"$\"\"\")%\"yGF%F&%\"aGF&!\"\"*$F'F&F**(\"\"#F&F'F&)F)F-F&F***
+F%F&)F(F-F&%\"xGF&F)F&F**(F%F&F0F&F1F&F***F%F&F(F&)F1F-F&F)F&F**(F%F&F
+(F&F4F&F**(F%F&)F1F%F&F)F&F**$F7F&F**(F-F&F7F&F.F&F***F%F&,&F)F&F&F&F&
+,,*&F0F&F)F&F&*$F0F&F&*(F-F&F(F&F1F&F&*&F4F&F)F&F&*$F4F&F&F&,&F&F&*&F-
+F&F)F&F&F*F&**\"\"*F&,&F(F&F1F&F&,&F-F&F)F&F&,&F-F&*&\"\"&F&F)F&F&F*F*
+*,FEF&F;F&FGF&FBF*FHF*F&" }}}{EXCHG {PARA 256 "" 0 "" {TEXT 264 10 "Se
+e Also: " }{TEXT 276 47 "gbinomial, jack, gsfact, rho, laguerre, hermi
+te" }}}}{MARK "0 9 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }
+{PAGENUMBERS 0 1 2 33 1 1 }

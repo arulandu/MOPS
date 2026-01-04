@@ -1,0 +1,1227 @@
+{VERSION 5 0 "IBM INTEL NT" "5.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 
+2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Warning" -1 7 1 
+{CSTYLE "" -1 -1 "Courier" 1 10 0 0 255 1 2 2 2 2 2 1 1 1 3 1 }1 1 0 
+0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 11 1 {CSTYLE "" -1 
+-1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 0 0 0 1 0 1 0 2 2 
+0 1 }{PSTYLE "Maple Output" -1 12 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 
+0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 0 1 0 1 0 2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 64 "march('create',\"c:
+\\\\Program Files\\\\Maple 8\\\\MOPS\\\\MOPS.lib\",50);" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 1994 "`MOPS/Par` := proc (n) \n  if nar
+gs = 1 then \n    `MOPS/Par/sub`(n,n,n) \n  elif nargs = 2 \n    then \+
+`MOPS/Par/sub`(n,n,args[2]) \n  else `MOPS/Par/sub`(args) \n  end if e
+nd proc;\n\n`MOPS/Par/sub` := proc (n, row, col) local i; \n  if n = 0
+ then RETURN([[]]) end if; \n  if col = 0 then RETURN([]) end if; \n  \+
+[seq(op(map(proc (x, y) [y, op(x)] end proc,`MOPS/Par/sub`(n+i,-i,col-
+1),-i)),i = -min(row,n) .. -iquo(col+n-1,col))] \nend proc;\n\n`MOPS/s
+ubPar` := proc (mu) local n, m, i, l, nu, j; l := nops(mu); if nargs =
+ 1 then if mu = [] then RETURN([[]]) end if; for i to l-1 while mu[i] \+
+= mu[i+1] do NULL end do; if 1 < mu[i] then j := mu[i]-1 else j := NUL
+L end if; [seq([`$`(mu[1],i), op(nu)],nu = `MOPS/subPar`([op(i+1 .. l,
+mu)])), op(`MOPS/subPar`(subsop(i = j,mu)))] else m := convert(mu,`+`)
+; n := args[2]; if m < n or n < 0 then RETURN([]) elif n = m then RETU
+RN([mu]) end if; for i to l-1 while mu[i] = mu[i+1] do NULL end do; if
+ 1 < mu[i] then j := mu[i]-1 else j := NULL end if; [seq([`$`(mu[1],i)
+, op(nu)],nu = `MOPS/subPar`([op(i+1 .. l,mu)],n-i*mu[1])), op(`MOPS/s
+ubPar`(subsop(i = j,mu),n))] end if end proc;\n\n`MOPS/dominate` := pr
+oc (mu) local n, nu, res, sat, i, j, m, nu0; n := convert(mu,`+`); if \+
+1 < nargs then n := min(n,args[2]) end if; res := [mu]; sat := 0;  whi
+le sat < nops(res) do nu := res[sat+1]; m := nops(nu); nu0 := [op(nu),
+ 0]; for i to m do if nu0[i] = nu0[i+1] then next elif nu0[i+1]+1 < nu
+0[i] then j := i+1 else for j from i+2 to m while nu0[j-1] = nu0[j] do
+ NULL end do end if; if min(n,m+1) < j then next elif j <= m then subs
+op(i = nu[i]-1,j = nu[j]+1,nu) else [op(subsop(i = nu[i]-1,nu)), 1] en
+d if; if not member(%,res) then res := [op(res), %] end if end do; sat
+ := sat+1 end do; res end proc;\n\n`MOPS/isdominate` := proc (k::list,
+ s::list) local i, s1, s2; s1 := 0; s2 := 0; for i to max(nops(k),nops
+(s)) do if i <= nops(k) then s1 := s1+k[i] end if; if i <= nops(s) the
+n s2 := s2+s[i] end if; if s1 < s2 then return false end if end do; re
+turn true end proc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%)MOPS/ParGf*6
+#%\"nG6\"F(F(@'/9#\"\"\"-%-MOPS/Par/subG6%9$F0F0/F+\"\"#-F.6%F0F0&9\"6
+#F2-F.6#F6F(F(F(" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%-MOPS/Par/subGf*
+6%%\"nG%$rowG%$colG6#%\"iG6\"F,C%@$/9$\"\"!-%'RETURNG6#7#7\"@$/9&F1-F3
+6#F67#-%$seqG6$-%#opG6#-%$mapG6%f*6$%\"xG%\"yGF,F,F,7$9%-FA6#F0F,F,F,-
+F$6%,&F0\"\"\"8$FQ,$FR!\"\",&F9FQFQFTFS/FR;,$-%$minG6$FKF0FT,$-%%iquoG
+6$,(F9FQF0FQFQFTF9FTF,F,F," }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%,MOPS/
+subParGf*6#%#muG6(%\"nG%\"mG%\"iG%\"lG%#nuG%\"jG6\"F/C$>8'-%%nopsG6#9$
+@%/9#\"\"\"C&@$/F67\"-%'RETURNG6#7#F>?(8&F:F:,&F2F:F:!\"\"/&F66#FD&F66
+#,&FDF:F:F:%%NULLG@%2F:FH>8),&FHF:F:FF>FQFM7$-%$seqG6$7$-%\"$G6$&F66#F
+:FD-%#opG6#8(/F[o-F$6#7#-Fin6$;FLF2F6-Fin6#-F$6#-%'subsopG6$/FDFQF6C(>
+8%-%(convertG6$F6%\"+G>8$&9\"6#\"\"#@&52F]pFcp2Fcp\"\"!-F@6#F>/FcpF]p-
+F@6#7#F6?(FDF:F:FEFGFM@%FO>FQFR>FQFM7$-FV6$FX/F[o-F$6$F_o,&FcpF:*&FDF:
+FfnF:FF-Fin6#-F$6$FgoFcpF/F/F/" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%.M
+OPS/dominateGf*6#%#muG6*%\"nG%#nuG%$resG%$satG%\"iG%\"jG%\"mG%$nu0G6\"
+F1C(>8$-%(convertG6$9$%\"+G@$2\"\"\"9#>F4-%$minG6$F4&9\"6#\"\"#>8&7#F8
+>8'\"\"!?(F1F<F<F12FJ-%%nopsG6#FGC'>8%&FG6#,&FJF<F<F<>8*-FO6#FS>8+7$-%
+#opGFZFK?(8(F<F<FX%%trueGC%@'/&Ffn6#F[o&Ffn6#,&F[oF<F<F<\\2,&FboF<F<F<
+F`o>8)Fdo?(Fio,&F[oF<FEF<F<FX/&Ffn6#,&FioF<F<!\"\"&Ffn6#Fio%%NULLG@'2-
+F@6$F4,&FXF<F<F<FioFeo1FioFX-%'subsopG6%/F[o,&&FSFaoF<F<F`p/Fio,&&FSFb
+pF<F<F<FS7$-Fin6#-F[q6$F]qFSF<@$4-%'memberG6$%\"%GFG>FG7$-FinFPF]r>FJF
+VFGF1F1F1" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%0MOPS/isdominateGf*6$'%
+\"kG%%listG'%\"sGF)6%%\"iG%#s1G%#s2G6\"F0C&>8%\"\"!>8&F4?(8$\"\"\"F9-%
+$maxG6$-%%nopsG6#9$-F>6#9%%%trueGC%@$1F8F=>F3,&F3F9&F@6#F8F9@$1F8FA>F6
+,&F6F9&FCFKF9@$2F3F6O%&falseGOFDF0F0F0" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 146 "`MOPS/rho`:=proc(a,k::list) local i; \n  if(not(`MOP
+S/parvalid`(k))) then return; end if;\n  sum(k[i]*(k[i]-1-(2/a)*(i-1))
+, i=1..nops(k)) \nend proc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%)MOPS
+/rhoGf*6$%\"aG'%\"kG%%listG6#%\"iG6\"F-C$@$4-%.MOPS/parvalidG6#9%OF--%
+$sumG6$*&&F46#8$\"\"\",(F:F=F=!\"\"*(\"\"#F=9$F?,&F<F=F=F?F=F?F=/F<;F=
+-%%nopsGF3F-F-F-" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 375 "`&<=`:
+= proc(k::list, l::list) local i;\nif(not(`MOPS/parvalid`(k))) then re
+turn; end if;\nif(not(`MOPS/parvalid`(l))) then return; end if;\nfor i
+ from 1 to min(nops(k),nops(l)) do\n  if (k[i]<l[i]) then return true;
+ end if;\n  if (l[i]<k[i]) then return false; end if;\nend do;\nreturn
+ evalb(nops(k)<=nops(l));\nend proc;\n\n`&>`:= proc(k::list, l::list) \+
+return not(k&<=l); end proc;\n" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%$&
+<=Gf*6$'%\"kG%%listG'%\"lGF)6#%\"iG6\"F.C&@$4-%.MOPS/parvalidG6#9$OF.@
+$4-F36#9%OF.?(8$\"\"\"F?-%$minG6$-%%nopsGF4-FDF:%%trueGC$@$2&F56#F>&F;
+FKOFF@$2FLFJO%&falseGO-%&evalbG6#1FCFEF.F.F." }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%#&>Gf*6$'%\"kG%%listG'%\"lGF)6\"F,F,O4-%$&<=G6$9$9%F,
+F,F," }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 97 "`MOPS/arm`:=proc(x:
+:list, a,b)\nif(not(`MOPS/parvalid`(x))) then return; end if;\nx[b]-a;
+\nend proc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%)MOPS/armGf*6%'%\"xG%
+%listG%\"aG%\"bG6\"F,F,C$@$4-%.MOPS/parvalidG6#9$OF,,&&F36#9&\"\"\"9%!
+\"\"F,F,F," }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 129 "`MOPS/leg`:=
+proc(x::list, a, b)\nif(not(`MOPS/parvalid`(x))) then return; end if;
+\n`MOPS/arm`(`MOPS/conjugate`(x), b,a);\nend proc;\n" }}{PARA 11 "" 1 
+"" {XPPMATH 20 "6#>%)MOPS/legGf*6%'%\"xG%%listG%\"aG%\"bG6\"F,F,C$@$4-
+%.MOPS/parvalidG6#9$OF,-%)MOPS/armG6%-%/MOPS/conjugateGF29&9%F,F,F," }
+}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 154 "`MOPS/Uhook`:= proc (a, k
+::list, x, y) \n  if(not(`MOPS/parvalid`(k))) then return; end if;\n  \+
+return `MOPS/leg`(k,x,y)+ a*(1+`MOPS/arm`(k,x,y)); \nend proc;" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#>%+MOPS/UhookGf*6&%\"aG'%\"kG%%listG%
+\"xG%\"yG6\"F-F-C$@$4-%.MOPS/parvalidG6#9%OF-O,&-%)MOPS/legG6%F49&9'\"
+\"\"*&9$F=,&F=F=-%)MOPS/armGF:F=F=F=F-F-F-" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 153 "`MOPS/Lhook`:= proc (a, k::list, x, y) \n  if(not(
+`MOPS/parvalid`(k))) then return; end if;\n  return `MOPS/leg`(k,x,y)+
+1+a*(`MOPS/arm`(k,x,y)); \nend proc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "
+6#>%+MOPS/LhookGf*6&%\"aG'%\"kG%%listG%\"xG%\"yG6\"F-F-C$@$4-%.MOPS/pa
+rvalidG6#9%OF-O,(-%)MOPS/legG6%F49&9'\"\"\"F=F=*&9$F=-%)MOPS/armGF:F=F
+=F-F-F-" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 313 "`&<`:= proc(k::
+list, l::list) local i;\nif(not(`MOPS/parvalid`(k))) then return; end \+
+if;\nif(not(`MOPS/parvalid`(l))) then return; end if;\nfor i from 1 to
+ min(nops(k),nops(l)) do\n  if (k[i]<l[i]) then return true; end if;\n
+  if (l[i]<k[i]) then return false; end if;\nend do;\nreturn evalb(nop
+s(k)<nops(l));\nend proc;\n" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 59 "`&>=
+`:= proc(k::list, l::list) return not(k&<l); end proc;\n" }}{PARA 12 "
+" 1 "" {XPPMATH 20 "6#>%#&<Gf*6$'%\"kG%%listG'%\"lGF)6#%\"iG6\"F.C&@$4
+-%.MOPS/parvalidG6#9$OF.@$4-F36#9%OF.?(8$\"\"\"F?-%$minG6$-%%nopsGF4-F
+DF:%%trueGC$@$2&F56#F>&F;FKOFF@$2FLFJO%&falseGO-%&evalbG6#2FCFEF.F.F.
+" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%$&>=Gf*6$'%\"kG%%listG'%\"lGF)6
+\"F,F,O4-%#&<G6$9$9%F,F,F," }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+2689 "`MOPS/Jack`:=proc(a, k::list, ar1, ar2) local i,s,l,scale,result
+,kl,temp,nd,scd,n,sc,p1,p2,jc,f,j;\n  option remember; \n  #get ar1 & \+
+ar2 \n  #ar1 & ar2 - optional args\n  #only ar1 used - ar1 = normaliza
+tion or #vars or values to evaluate at\n  #ar1 & ar2 used - ar1 = #var
+s or values to evaluate at, ar2 = normalization\n  if(k = [] ) then re
+turn 1; end if;\n  if(nargs=4) then \n    nd:=1;scd:=1; \n    n:=ar1;s
+c:=ar2;\n    if(type(sc,`string`)) then sc := convert(sc,`symbol`) end
+ if;\n  elif(nargs=3) then \n    if(type(ar1,'name')) then\n      scd:
+=1;sc:=ar1;\n      nd:=0;\n      if(type(sc,`string`)) then sc := conv
+ert(sc,`symbol`) end if;\n    else\n      nd:=1;n:=ar1;\n      sc:=0;
+\n    end if;\n  else\n    nd:=0;\n    scd:=0;\n  end if;  \n  scale :
+= 1;\n  kl:=sum(k[l],l=1..nops(k));\n  #compute normalization scalar\n
+  if(scd = 1) then\n    if(StringTools['IsPrefix']('sym',sc)) then\n  \+
+    if(StringTools['IsSuffix']('J',sc)) then\n        return `MOPS/Jto
+C`(a,k,0) * J[op(k)];      \n      elif(StringTools['IsSuffix']('P',sc
+)) then\n        return `MOPS/PtoC`(a,k,0) * P[op(k)];\n      else\n  \+
+      if(type(n,'list')) then\n          return `MOPS/eval`(a,k,n);\n \+
+       end if;      \n        return C[op(k)];\n      end if;\n    eli
+f(sc = 'J') then\n      scale := `MOPS/JtoC`(a,k,0);      \n    elif(s
+c = 'P') then\n      scale := `MOPS/PtoC`(a,k,0);\n    end if;\n  end \+
+if;\n  jc := `MOPS/JtoC`(a,k,n);\n  if(type(n,'list')) then\n    retur
+n simplify(scale / jc * `MOPS/evalJack`(a,k,n));\n  end if;\n  if(not(
+`MOPS/parvalid`(k))) then return; end if;\n  if(nd=1 and type(n,'numer
+ic')) then if(nops(k)>n) then return 0; end if; end if;\n  result:=0;
+\n  #faster algorithm for computing jack(m[k])\n  if(nops(k) = 1) then
+\n    for i in `MOPS/Par`(kl) do\n      if(nd = 1 and type(n,'numeric'
+) and nops(i)>n) then next; end if;\n      p1:=1;p2:=1;\n      for j f
+rom 1 to nops(i) do\n        p1:= p1 * i[j]!;\n        p2:= p2 * `MOPS
+/SFact`(1/a+1,i[j]-1);\n      end do;\n      result := result + simpli
+fy(scale / jc * m[op(i)] * kl! / p1 * a^(kl-nops(i)) * p2);           \+
+                                                                      \+
+                                              end do;\n    return resu
+lt;\n  end if;\n    if nops(k) <= 3 and kl/nops(k) > 4 then \n      f \+
+:= 1;\n      s := `MOPS/Par`(kl); \n    else \n      f := 0; \n      s
+ := `MOPS/dominate`(k);\n    end if;\n    for i in s do    \n    #comp
+ute coefficients\n    if (i&<=k and (f = 0 or (f = 1 and `MOPS/isdomin
+ate`(k,i)))) then \n      if(nd=0) then result:=result + simplify(m[op
+(i)]*scale*`MOPS/Jack/c`(a,k,i)); \n               else result:=result
+ + simplify(m[op(i)]*scale*`MOPS/Jack/c`(a,k,i,n));\n      end if;\n  \+
+  end if;\n  end do;\nreturn result;\nend proc;" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#>%*MOPS/JackGf*6&%\"aG'%\"kG%%listG%$ar1G%$ar2G62%\"iG%
+\"sG%\"lG%&scaleG%'resultG%#klG%%tempG%#ndG%$scdG%\"nG%#scG%#p1G%#p2G%
+#jcG%\"fG%\"jG6#%)rememberG6\"C0@$/9%7\"O\"\"\"@'/9#\"\"%C'>8+FG>8,FG>
+8-9&>8.9'@$-%%typeG6$FU%'stringG>FU-%(convertG6$FU%'symbolG/FJ\"\"$@%-
+FY6$FS.%%nameGC&>FPFG>FUFS>FN\"\"!@$FX>FUFgnC%>FNFG>FRFS>FUFfoC$>FNFfo
+>FPFfo>8'FG>8)-%$sumG6$&FD6#8&/Fip;FG-%%nopsG6#FD@$/FPFG@(-&%,StringTo
+olsG6#.%)IsPrefixG6$.%$symGFU@'-&Fdq6#.%)IsSuffixG6$.%\"JGFUO*&-%*MOPS
+/JtoCG6%9$FDFfoFG&Fcr6#-%#opGF^qFG-F]r6$.%\"PGFUO*&-%*MOPS/PtoCGFhrFG&
+FasF[sFGC$@$-FY6$FR.F*O-%*MOPS/evalG6%FirFDFRO&%\"CGF[s/FUFbr>FapFfr/F
+UF`s>FapFds>81-FgrF_t@$FisO-%)simplifyG6#*(FapFGFht!\"\"-%.MOPS/evalJa
+ckGF_tFG@$4-%.MOPS/parvalidGF^qOF@@$3/FNFG-FY6$FR.%(numericG@$2FRF\\qO
+Ffo>8(Ffo@$/F\\qFGC$?&8$-%)MOPS/ParG6#Fcp%%trueGC'@$3Fiu2FR-F]q6#Fhv\\
+>8/FG>80FG?(83FGFGFawF\\wC$>Few*&FewFG-%*factorialG6#&Fhv6#FiwFG>Fgw*&
+FgwFG-%+MOPS/SFactG6$,&*&FGFGFirF`uFGFGFG,&F`xFGFGF`uFG>Fcv,&FcvFG-F]u
+6#*0FapFGFhtF`u&%\"mG6#-F]sFbwFG-F^xF[wFGFewF`u)Fir,&FcpFGFawF`uFGFgwF
+GFGOFcv@%31F\\qF\\o2FK*&FcpFGF\\qF`uC$>82FG>8%FivC$>F^zFfo>F`z-%.MOPS/
+dominateGF^q?&FhvF`zF\\w@$3-%$&<=G6$FhvFD5/F^zFfo3/F^zFG-%0MOPS/isdomi
+nateG6$FDFhv@%/FNFfo>Fcv,&FcvFG-F]u6#*(F_yFGFapFG-%,MOPS/Jack/cG6%FirF
+DFhvFGFG>Fcv,&FcvFG-F]u6#*(F_yFGFapFG-F[\\l6&FirFDFhvFRFGFGOFcvF@F@F@
+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 72 "`MOPS/SFact`:= proc(a,b) local i;\nreturn prod
+uct(a+i,i=0..b-1)\nend proc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%+MOP
+S/SFactGf*6$%\"aG%\"bG6#%\"iG6\"F+O-%(productG6$,&9$\"\"\"8$F2/F3;\"\"
+!,&9%F2F2!\"\"F+F+F+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 190 "`M
+OPS/GSFact`:= proc(al,a,s::list) local i,result; \nif(not(`MOPS/parval
+id`(s))) then return; end if;\nresult:= product('`MOPS/SFact`(a-(i-1)/
+al,s[i])', i=1..nops(s));\nreturn result;\nend proc;" }}{PARA 12 "" 1 
+"" {XPPMATH 20 "6#>%,MOPS/GSFactGf*6%%#alG%\"aG'%\"sG%%listG6$%\"iG%'r
+esultG6\"F/C%@$4-%.MOPS/parvalidG6#9&OF/>8%-%(productG6$.-%+MOPS/SFact
+G6$,&9%\"\"\"*&9$!\"\",&8$FCFCFFFCFF&F66#FH/FH;FC-%%nopsGF5OF9F/F/F/" 
+}}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 196 "`MOPS/GSFact` := proc (a
+l, a, s::list) local i, result; if not `MOPS/parvalid`(s) then return \+
+end if; result := product('`MOPS/SFact`(a-1/al*(i-1),s[i])',i = 1 .. n
+ops(s)); return result end proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%
+,MOPS/GSFactGf*6%%#alG%\"aG'%\"sG%%listG6$%\"iG%'resultG6\"F/C%@$4-%.M
+OPS/parvalidG6#9&OF/>8%-%(productG6$.-%+MOPS/SFactG6$,&9%\"\"\"*&9$!\"
+\",&8$FCFCFFFCFF&F66#FH/FH;FC-%%nopsGF5OF9F/F/F/" }}}{EXCHG {PARA 0 ">
+ " 0 "" {MPLTEXT 1 0 281 "`MOPS/Jack/Identity`:=proc(a,k::list,m) opti
+on remember; local r,i,j,l;\nr:=1;\nfor i from 1 to nops(k) do\n  r:= \+
+r * product(`MOPS/Uhook`(a,k,j,i)*`MOPS/Lhook`(a,k,j,i),j=1..k[i]);\ne
+nd do;\nj:=sum(k[l],l=1..nops(k));\nreturn simplify((a^(2*j))*j!*(`MOP
+S/GSFact`(a,m/a,k))/r);\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#
+>%3MOPS/Jack/IdentityGf*6%%\"aG'%\"kG%%listG%\"mG6&%\"rG%\"iG%\"jG%\"l
+G6#%)rememberG6\"C&>8$\"\"\"?(8%F7F7-%%nopsG6#9%%%trueG>F6*&F6F7-%(pro
+ductG6$*&-%+MOPS/UhookG6&9$F=8&F9F7-%+MOPS/LhookGFGF7/FI;F7&F=6#F9F7>F
+I-%$sumG6$&F=6#8'/FV;F7F:O-%)simplifyG6#**)FH,$*&\"\"#F7FIF7F7F7-%*fac
+torialG6#FIF7-%,MOPS/GSFactG6%FH*&9&F7FH!\"\"F=F7F6FdoF3F3F3" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 678 "`MOPS/Jacobi/c`:=proc(a,k::
+list,s::list, m, a1, a2) option remember;\nlocal i,j,result,si, ks, ss
+, val;\nif (k=s) then return 1; end if;\nresult:=0;\nfor i from 1 to m
+in(nops(s)+1,nops(k)) do\n  if (i = nops(s)+1) then si:=[op(s),1]; els
+e \n                          si:=s; si[i]:=si[i]+1; end if; \n  if (s
+i = sort(si,`>`) and k&>=si) then            result:=result+(`MOPS/GBC
+`(a,k,si))*(`MOPS/GBC/cont`(a,si,i))*(`MOPS/Jacobi/c`(a,k,si, m, a1, a
+2));\n  end if;\nend do;\nks := sum(k[j],j=1..nops(k));\nss := sum(s[j
+],j=1..nops(s));\nval:=((a1+a2+2*(m-1)/a+2)*(ks-ss)+`MOPS/rho`(a,k)-`M
+OPS/rho`(a,s));\nif(val = 0) then return 0; end if;\nresult:=result/va
+l;\nreturn factor(result);\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 
+"6#>%.MOPS/Jacobi/cGf*6(%\"aG'%\"kG%%listG'%\"sGF*%\"mG%#a1G%#a2G6)%\"
+iG%\"jG%'resultG%#siG%#ksG%#ssG%$valG6#%)rememberG6\"C+@$/9%9&O\"\"\">
+8&\"\"!?(8$FAFA-%$minG6$,&-%%nopsG6#F?FAFAFA-FL6#F>%%trueGC$@%/FFFJ>8'
+7$-%#opGFMFAC$>FUF?>&FU6#FF,&FfnFAFAFA@$3/FU-%%sortG6$FU%\">G-%$&>=G6$
+F>FU>FC,&FCFA*(-%)MOPS/GBCG6%9$F>FUFA-%.MOPS/GBC/contG6%FioFUFFFA-F$6(
+FioF>FU9'9(9)FAFA>8(-%$sumG6$&F>6#8%/Fip;FAFN>8)-Fep6$&F?Fhp/Fip;FAFK>
+8*,(*&,*F`pFAFapFA*(\"\"#FA,&F_pFAFA!\"\"FAFioF[rFAFiqFAFA,&FcpFAF]qF[
+rFAFA-%)MOPS/rhoG6$FioF>FA-F^r6$FioF?F[r@$/FdqFDOFD>FC*&FCFAFdqF[rO-%'
+factorG6#FCF:F:F:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 875 "`MOPS
+/Jacobi`:=proc(a,k::list,a1,a2,n,norm) \nlocal sp,result,s,ss,i,cjack,
+cjackd,sc,kl,j,r,C,ks;\noption remember;\nif(nargs = 6) then\n  if(not
+(StringTools['IsPrefix']('m',norm))) then\n    sc := cat('sym',norm);
+\n  else\n    sc := convert(StringTools['SubString'](norm,2..length(no
+rm)),'symbol');\n  end if;\nelse\n  sc := 'symC';\nend if;\nif(not(`MO
+PS/parvalid`(k))) then return; end if;\nks:=n;\n#kss = #vars or vals t
+o evaluate at\nif(type(n,'list')) then ks:=nops(n); end if;  \nsp:=`MO
+PS/subPar`(k);\nresult:=0;\n#compute & add coefficients\nfor s in sp d
+o  \n  ss:=0;for i from 1 to nops(s) do ss:=ss+s[i]; end do;\n  result
+:=result+simplify((((-1)^ss)*(`MOPS/Jacobi/c`(a,k,s,ks,a1,a2))/\n    (
+`MOPS/GSFact`(a,a1+(ks-1)/a+1,s))*(`MOPS/Jack`(a,s,n,sc))/(`MOPS/Jack/
+Identity`(a,s,ks)))*\n     `MOPS/GSFact`(a,a1+(ks-1)/a+1,k)*`MOPS/Jack
+/Identity`(a,k,ks));\nend do;\nreturn result;\nend proc;\n" }}{PARA 
+12 "" 1 "" {XPPMATH 20 "6#>%,MOPS/JacobiGf*6(%\"aG'%\"kG%%listG%#a1G%#
+a2G%\"nG%%normG6/%#spG%'resultG%\"sG%#ssG%\"iG%&cjackG%'cjackdG%#scG%#
+klG%\"jG%\"rG%\"CG%#ksG6#%)rememberG6\"C*@%/9#\"\"'@%4-&%,StringToolsG
+6#.%)IsPrefixG6$.%\"mG9)>8+-%$catG6$.%$symGFP>FR-%(convertG6$-&FI6#.%*
+SubStringG6$FP;\"\"#-%'lengthG6#FP.%'symbolG>FR.%%symCG@$4-%.MOPS/parv
+alidG6#9%OF?>809(@$-%%typeG6$F_p.F*>F^p-%%nopsG6#F_p>8$-%,MOPS/subParG
+Fjo>8%\"\"!?&8&Fjp%%trueGC%>8'F_q?(8(\"\"\"Fhq-Fgp6#FaqFbq>Feq,&FeqFhq
+&Faq6#FgqFhq>F^q,&F^qFhq-%)simplifyG6#*0)!\"\"FeqFhq-%.MOPS/Jacobi/cG6
+(9$F[pFaqF^p9&9'Fhq-%,MOPS/GSFactG6%Fjr,(F[sFhq*&,&F^pFhqFhqFfrFhqFjrF
+frFhqFhqFhqFaqFfr-%*MOPS/JackG6&FjrFaqF_pFRFhq-%3MOPS/Jack/IdentityG6%
+FjrFaqF^pFfr-F^s6%FjrF`sF[pFhq-Fgs6%FjrF[pF^pFhqFhqOF^qF?F?F?" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 957 "`MOPS/Laguerre`:=proc(a,k::
+list,g,kss,norm) \nlocal sp,s,i,result,ss,sc,kl,j,r,ks;\noption rememb
+er;\n  ks:=kss;\n  #kss = #vars or vals to evaluate at\n  if(type(kss,
+'list')) then ks:=nops(kss); end if; \n  if(nargs = 5) then\n    if(no
+t(StringTools['IsPrefix']('m',norm))) then\n      sc := cat('sym',norm
+);\n    else\n     sc := convert(StringTools['SubString'](norm,2..leng
+th(norm)),'symbol');\n    end if;\n  else\n    sc := 'symC';\n  end if
+; \nkl:=sum(k[l],l=1..nops(k));\nif(not(`MOPS/parvalid`(k))) then retu
+rn; end if;\nsp:=`MOPS/subPar`(k); \nresult:=0;\n#compute & add coeffs
+\nfor s in sp do\nss:=0;for i from 1 to nops(s) do ss:=ss+s[i]; end do
+;\nresult:=result+simplify((((-1)^ss)*`MOPS/GBC`(a,k,s)/`MOPS/GSFact`(
+a,(g+(ks+a-1)/a),s)*\n                          `MOPS/Jack`(a,s,kss,sc
+)/`MOPS/Jack/Identity`(a,s,ks))*\n                          `MOPS/GSFa
+ct`(a,(g+(ks+a-1)/a),k)*\n                          `MOPS/Jack/Identit
+y`(a,k,ks));\nend do;\nreturn result;\nend proc;" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#>%.MOPS/LaguerreGf*6'%\"aG'%\"kG%%listG%\"gG%$kssG%%nor
+mG6,%#spG%\"sG%\"iG%'resultG%#ssG%#scG%#klG%\"jG%\"rG%#ksG6#%)remember
+G6\"C+>8-9'@$-%%typeG6$F?.F*>F>-%%nopsG6#F?@%/9#\"\"&@%4-&%,StringTool
+sG6#.%)IsPrefixG6$.%\"mG9(>8)-%$catG6$.%$symGFX>FZ-%(convertG6$-&FQ6#.
+%*SubStringG6$FX;\"\"#-%'lengthG6#FX.%'symbolG>FZ.%%symCG>8*-%$sumG6$&
+9%6#%\"lG/Ffp;\"\"\"-FG6#Fdp@$4-%.MOPS/parvalidGF[qOF;>8$-%,MOPS/subPa
+rGF[q>8'\"\"!?&8%Fbq%%trueGC%>8(Fgq?(8&FipFip-FG6#FiqFjq>F]r,&F]rFip&F
+iq6#F_rFip>Ffq,&FfqFip-%)simplifyG6#*0)!\"\"F]rFip-%)MOPS/GBCG6%9$FdpF
+iqFip-%,MOPS/GSFactG6%Fas,&9&Fip*&,(F>FipFasFipFipF]sFipFasF]sFipFiqF]
+s-%*MOPS/JackG6&FasFiqF?FZFip-%3MOPS/Jack/IdentityG6%FasFiqF>F]s-Fcs6%
+FasFesFdpFip-F]t6%FasFdpF>FipFipOFfqF;F;F;" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 802 "`MOPS/GBC`:=proc(a,k::list,s::list)  local i,j,res
+ult,si,ks,ss;\noption remember;\nif(not(`MOPS/parvalid`(k))) then retu
+rn; end if;\nif(not(`MOPS/parvalid`(s))) then return; end if;\nif (k=s
+) then return 1; end if;\nif (s=[0] or s=[]) then return 1; end if;\ni
+f (s=[1]) then return sum(k[i],i=1..nops(k)) end if;\nif (not(`MOPS/su
+bPar?`(s,k))) then return 0; end if;\nresult:=0;\nfor i from 1 to min(
+nops(k),nops(s)+1) do\n  if (i=nops(s)+1) then si:=[op(s),1]; else\n  \+
+                     si:=s; si[i]:=si[i]+1; end if;  \nif (si = k) the
+n return(`MOPS/GBC/cont`(a,k,i)); end if; \nif (si = sort(si,`>`) and \+
+k&>=si) then \n  result:=result+(`MOPS/GBC`(a,k,si)*`MOPS/GBC/cont`(a,
+si,i)); end if;\nend do;\nss:=sum(s[j],j=1..nops(s));\nks:=sum(k[j],j=
+1..nops(k));\nresult:=result/(ks-ss);\nreturn factor(result);\nend pro
+c;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%)MOPS/GBCGf*6%%\"aG'%\"kG%%lis
+tG'%\"sGF*6(%\"iG%\"jG%'resultG%#siG%#ksG%#ssG6#%)rememberG6\"C.@$4-%.
+MOPS/parvalidG6#9%OF6@$4-F;6#9&OF6@$/F=FCO\"\"\"@$5/FC7#\"\"!/FC7\"OFH
+@$/FC7#FHO-%$sumG6$&F=6#8$/FZ;FH-%%nopsGF<@$4-%-MOPS/subPar?G6$FCF=OFM
+>8&FM?(FZFHFH-%$minG6$Fgn,&-FhnFBFHFHFH%%trueGC%@%/FZFeo>8'7$-%#opGFBF
+HC$>F\\pFC>&F\\pFY,&FcpFHFHFH@$/F\\pF=O-%.MOPS/GBC/contG6%9$F=FZ@$3/F
+\\p-%%sortG6$F\\p%\">G-%$&>=G6$F=F\\p>F`o,&F`oFH*&-F$6%F[qF=F\\pFH-Fip
+6%F[qF\\pFZFHFH>8)-FV6$&FC6#8%/Fcr;FHFfo>8(-FV6$&F=Fbr/FcrFfn>F`o*&F`o
+FH,&FgrFHF^r!\"\"F_sO-%'factorG6#F`oF6F6F6" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 761 "`MOPS/GBC/cont`:= proc(a,u::list,n::integer) \nopt
+ion remember;\nlocal ab,i,j,l,lc,uc;\n  l:=u;\n  l[n] := l[n] - 1;\n  \+
+ab:=1;   \n  lc:=`MOPS/conjugate`(l);\n  uc:=`MOPS/conjugate`(u);\n  f
+or i from 1 to nops(u) do\n     for j from 1 to u[i] do\n      #print(
+i,j);\n      if (j <= nops(uc) and j <= nops(lc) and lc[j]=uc[j]) then
+\n        ab:=ab*(uc[j]-i+a*(u[i]-j+1));          \n      else\n      \+
+  ab:=ab*(uc[j]-i+1+a*(u[i]-j));          \n      end if\n    end do; \+
+ \n  end do;\n  for i from 1 to nops(l) do\n    for j from 1 to l[i] d
+o\n      if (j <= nops(uc) and j <= nops(lc) and lc[j]=uc[j]) then\n  \+
+      ab:=ab/(lc[j]-i+a*(l[i]-j+1));          \n      else\n        ab
+:=ab/(lc[j]-i+1+a*(l[i]-j));          \n      end if\n    end do;  \n \+
+ end do;\nreturn factor(ab);\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 
+20 "6#>%.MOPS/GBC/contGf*6%%\"aG'%\"uG%%listG'%\"nG%(integerG6(%#abG%
+\"iG%\"jG%\"lG%#lcG%#ucG6#%)rememberG6\"C*>8'9%>&F:6#9&,&F=\"\"\"FA!\"
+\">8$FA>8(-%/MOPS/conjugateG6#F:>8)-FH6#F;?(8%FAFA-%%nopsGFM%%trueG?(8
+&FAFA&F;6#FOFR@%331FT-FQ6#FK1FT-FQ6#FF/&FF6#FT&FKF\\o>FD*&FDFA,(F]oFAF
+OFB*&9$FA,(FUFAFTFBFAFAFAFAFA>FD*&FDFA,*F]oFAFOFBFAFA*&FboFA,&FUFAFTFB
+FAFAFA?(FOFAFA-FQFIFR?(FTFAFA&F:FVFR@%FX>FD*&FDFA,(F[oFAFOFB*&FboFA,(F
+\\pFAFTFBFAFAFAFAFB>FD*&FDFA,*F[oFAFOFBFAFA*&FboFA,&F\\pFAFTFBFAFAFBO-
+%'factorG6#FDF7F7F7" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 1365 "`M
+OPS/Hermite2`:=proc(a, k::list, mm, norm) option remember;\nlocal s,u,
+ut,uti,ul,ks,ss,j,i,sp,result,t,t1,r,jp,ssp,r1,m,\n      ul1,c,sc,kl;
+\n  if(type(mm,'list')) then m:= nops(mm) else m:=mm; end if;\n  if(no
+t(type(m,'symbol')) and m < nops(k)) then return 0; end if;\n  if(narg
+s = 4) then\n    if(not(StringTools['IsPrefix']('m',norm))) then\n    \+
+  sc := cat('sym',norm);\n    else\n      sc := convert(StringTools['S
+ubString'](norm,2..length(norm)),'symbol');\n    end if;\n  else\n    \+
+sc := 'symC';\n  end if;\n  kl:=sum(k[l],l=1..nops(k));\nif(not(`MOPS/
+parvalid`(k))) then return; end if;\nresult:=0;\nks:=kl;\nsp:=`MOPS/su
+bPar`(k);\n#compute & add coeffs\nfor s in sp do\n  ss:=0;for i from 1
+ to nops(s) do ss:=ss+s[i]; end do;\n  c:=0;\n  if not((ss mod 2) = (k
+s mod 2)) then next; end if;\n  for j from ss to (ks+ss)/2 do\n    jp:
+=`MOPS/Par`(j);\n    ul1:=(convert(jp,set) intersect convert(sp,set));
+\n    ul:=[];\n    for ut in ul1 do\n      if `MOPS/subPar?`(s,ut) the
+n ul:=[op(ul),ut]; end if;      \n    end do;\n    t:=0;\n    for u in
+ ul do \n      t1:=`MOPS/GSFact`(a,r1+(m+a-1)/a,k)/`MOPS/GSFact`(a,r1+
+(m+a-1)/a,u);\n      t:=t+`MOPS/GBC`(a,k,u)*`MOPS/GBC`(a,u,s)*coeff(t1
+,r1,(ks+ss)/2-j);\n    end do;\n    c:=c+t*(-1)^j;\n  end do;\n  resul
+t:=result+factor(c*`MOPS/Jack/Identity`(a,k,m)*`MOPS/Jack`(a,s,mm,sc)/
+`MOPS/Jack/Identity`(a,s,m));\nend do;\nreturn result*(-1)^(ks);\nend \+
+proc;" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#>%.MOPS/Hermite2Gf*6&%\"aG'%\"kG%%listG%#mmG%%normG68%
+\"sG%\"uG%#utG%$utiG%#ulG%#ksG%#ssG%\"jG%\"iG%#spG%'resultG%\"tG%#t1G%
+\"rG%#jpG%$sspG%#r1G%\"mG%$ul1G%\"cG%#scG%#klG6#%)rememberG6\"C,@%-%%t
+ypeG6$9&.F*>85-%%nopsG6#FL>FOFL@$34-FJ6$FO.%'symbolG2FO-FQ6#9%O\"\"!@%
+/9#\"\"%@%4-&%,StringToolsG6#.%)IsPrefixG6$.FO9'>88-%$catG6$.%$symGFio
+>F[p-%(convertG6$-&Fco6#.%*SubStringG6$Fio;\"\"#-%'lengthG6#FioFY>F[p.
+%%symCG>89-%$sumG6$&Fhn6#%\"lG/Fjq;\"\"\"Ffn@$4-%.MOPS/parvalidGFgnOFF
+>8.Fjn>8)Fdq>8--%,MOPS/subParGFgn?&8$Fhr%%trueGC(>8*Fjn?(8,F]rF]r-FQ6#
+F\\sF]s>F`s,&F`sF]r&F\\s6#FbsF]r>87Fjn@$4/-%$modG6$F`sF\\q-F_t6$FfrF\\
+q\\?(8+F`sF]r,&*&#F]rF\\qF]rFfrF]rF]r*&FhtF]rF`sF]rF]rF]sC)>82-%)MOPS/
+ParG6#Fet>86-%*intersectG6$-Fcp6$F\\u%$setG-Fcp6$FhrFgu>8(7\"?&8&FauF]
+s@$-%-MOPS/subPar?G6$F\\sF^v>F[v7$-%#opG6#F[vF^v>8/Fjn?&8%F[vF]sC$>80*
+&-%,MOPS/GSFactG6%9$,&84F]r*&,(FOF]rFcwF]rF]r!\"\"F]rFcwFhwF]rFhnF]r-F
+aw6%FcwFdwF[wFhw>Fiv,&FivF]r*(-%)MOPS/GBCG6%FcwFhnF[wF]r-F_x6%FcwF[wF
+\\sF]r-%&coeffG6%F^wFew,(*&FhtF]rFfrF]rF]r*&FhtF]rF`sF]rF]rFetFhwF]rF]
+r>Fjs,&FjsF]r*&FivF]r)FhwFetF]rF]r>Fdr,&FdrF]r-%'factorG6#**FjsF]r-%3M
+OPS/Jack/IdentityG6%FcwFhnFOF]r-%*MOPS/JackG6&FcwF\\sFLF[pF]r-Fdy6%Fcw
+F\\sFOFhwF]rO*&FdrF]r)FhwFfrF]rFFFFFF" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 277 "`MOPS/subPar?`:=proc(k::list, s::list) local i;\nif(
+not(`MOPS/parvalid`(k))) then return; end if;\nif(not(`MOPS/parvalid`(
+s))) then return; end if;\nfor i from 1 to min(nops(k),nops(s)) do\n  \+
+if k[i]>s[i] then return false; end if;\nend do;\nreturn evalb(nops(s)
+>=nops(k));\nend proc;" }{TEXT -1 0 "" }}{PARA 12 "" 1 "" {XPPMATH 20 
+"6#>%-MOPS/subPar?Gf*6$'%\"kG%%listG'%\"sGF)6#%\"iG6\"F.C&@$4-%.MOPS/p
+arvalidG6#9$OF.@$4-F36#9%OF.?(8$\"\"\"F?-%$minG6$-%%nopsGF4-FDF:%%true
+G@$2&F;6#F>&F5FJO%&falseGO-%&evalbG6#1FCFEF.F.F." }}}{EXCHG {PARA 0 ">
+ " 0 "" {MPLTEXT 1 0 0 "" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 1826 "`MOPS
+`:=module()\nexport arm, leg, uhook, lhook, gbinomial, gsfact, sfact, \+
+jack, jacobi, laguerre, hermite, issubpar, ghypergeom, rho, jackidenti
+ty, par, subpar, conjugate, m2jack,expJ,expH,expL,expHjacks,expJjacks,
+expLjacks,p2m,m2p,m2m,jack2jack,hermite2;\noption package;\narm:=`MOPS
+/arm`;\nleg:=`MOPS/leg`;\nuhook:=`MOPS/Uhook`;\nlhook:=`MOPS/Lhook`;\n
+gbinomial:=`MOPS/GBC`;\ngsfact:=`MOPS/GSFact`;\nsfact:=`MOPS/SFact`;\n
+jack:=`MOPS/Jack`;\njacobi:=`MOPS/Jacobi`;\nlaguerre:=`MOPS/Laguerre`;
+\nhermite:=`MOPS/Hermite`;\nhermite2:=`MOPS/Hermite2`;\nissubpar:=`MOP
+S/subPar?`;\nghypergeom:=`MOPS/HyperGeom`;\nrho:=`MOPS/rho`;\njackiden
+tity:=`MOPS/Jack/Identity`;\npar:=`MOPS/Par`;\nsubpar:=`MOPS/subPar`;
+\nconjugate:=`MOPS/conjugate`;\nexpH:=`MOPS/expH`;\nexpJ:=`MOPS/expJ`;
+\nexpL:=`MOPS/expL`;\nexpHjacks:=`MOPS/expHjacks`;\nexpJjacks:=`MOPS/e
+xpJjacks`;\nexpLjacks:=`MOPS/expLjacks`;\nm2jack:=`MOPS/Split`;\nm2p:=
+`MOPS/top`;\np2m:=`MOPS/tom`;\njack2jack:=`MOPS/Jexpand`;\nm2m:=`MOPS/
+mexp`;\nend module;\n\n\nall_MOPS_procs := [\n`&<=`,\n`&<`,\n`&>=`,\n`
+&>`,\n`igreater`,\n`MOPS/parvalid`,\n`MOPS/arm`,\n`MOPS/leg`,\n`MOPS/U
+hook`,\n`MOPS/Lhook`,\n`MOPS/GBC`,\n`MOPS/GBC/cont`,\n`MOPS/GSFact`,\n
+`MOPS/SFact`,\n`MOPS/Jack`,\n`MOPS/Jacobi`,\n`MOPS/Laguerre`,\n`MOPS/H
+ermite`,\n`MOPS/Hermite2`,\n`MOPS/subPar?`,\n`MOPS/HyperGeom`,\n`MOPS/
+rho`,\n`MOPS/Jack/Identity`,\n`MOPS/Jack/c`,\n`MOPS/Jacobi/c`,\n`MOPS/
+Par`,\n`MOPS/Par/sub`,\n`MOPS/subPar`,\n`MOPS/isdominate`,\n`MOPS/domi
+nate`,\n`MOPS/conjugate`,\n`MOPS/Split`,\n`MOPS/expH`,\n`MOPS/expJ`,\n
+`MOPS/expL`,\n`MOPS/expHjacks`,\n`MOPS/expJjacks`,\n`MOPS/expLjacks`,
+\n`MOPS/top`,\n`MOPS/tom`,\n`MOPS/Jexpand`,\n`MOPS/mexp`,\n`MOPS/eval`
+,\n`MOPS/evalJack`,\n`MOPS/lead`,\n`MOPS/JtoC`,\n`MOPS/PtoC`,\n`MOPS/M
+OPS_p`,\n`MOPS/Exp_e`,\n`MOPS/MOPS_ff`,\n`MOPS/MOPS_pl`,\n`MOPS/Exp_el
+`,\n`MOPS/Exp-laguerre`,\n`MOPS/expJacobi`,\n`MOPS/mtoq`,\n`MOPS/egen`
+,\n`MOPS/Hcoeff`,\n`MOPS`];" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#>%%MOPSG`6@%$armG%$legG%&uhookG%&lhook
+G%*gbinomialG%'gsfactG%&sfactG%%jackG%'jacobiG%)laguerreG%(hermiteG%)i
+ssubparG%+ghypergeomG%$rhoG%-jackidentityG%$parG%'subparG%*conjugateG%
+'m2jackG%%expJG%%expHG%%expLG%*expHjacksG%*expJjacksG%*expLjacksG%$p2m
+G%$m2pG%$m2mG%*jack2jackG%)hermite2Gb6#%+thismoduleG6\"6#%(packageG6@%
+$armG%$legG%&uhookG%&lhookG%*gbinomialG%'gsfactG%&sfactG%%jackG%'jacob
+iG%)laguerreG%(hermiteG%)issubparG%+ghypergeomG%$rhoG%-jackidentityG%$
+parG%'subparGF8%'m2jackG%%expJG%%expHG%%expLG%*expHjacksG%*expJjacksG%
+*expLjacksG%$p2mG%$m2pG%$m2mG%*jack2jackG%)hermite2GFHFHFHFH6\"6\"" }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#>%/all_MOPS_procsG7fn%$&<=G%#&<G%$&>=G
+%#&>G%)igreaterG%.MOPS/parvalidG%)MOPS/armG%)MOPS/legG%+MOPS/UhookG%+M
+OPS/LhookG%)MOPS/GBCG%.MOPS/GBC/contG%,MOPS/GSFactG%+MOPS/SFactG%*MOPS
+/JackG%,MOPS/JacobiG%.MOPS/LaguerreG%-MOPS/HermiteG%.MOPS/Hermite2G%-M
+OPS/subPar?G%/MOPS/HyperGeomG%)MOPS/rhoG%3MOPS/Jack/IdentityG%,MOPS/Ja
+ck/cG%.MOPS/Jacobi/cG%)MOPS/ParG%-MOPS/Par/subG%,MOPS/subParG%0MOPS/is
+dominateG%.MOPS/dominateG%/MOPS/conjugateG%+MOPS/SplitG%*MOPS/expHG%*M
+OPS/expJG%*MOPS/expLG%/MOPS/expHjacksG%/MOPS/expJjacksG%/MOPS/expLjack
+sG%)MOPS/topG%)MOPS/tomG%-MOPS/JexpandG%*MOPS/mexpG%*MOPS/evalG%.MOPS/
+evalJackG%*MOPS/leadG%*MOPS/JtoCG%*MOPS/PtoCG%,MOPS/MOPS_pG%+MOPS/Exp_
+eG%-MOPS/MOPS_ffG%-MOPS/MOPS_plG%,MOPS/Exp_elG%2MOPS/Exp-laguerreG%/MO
+PS/expJacobiG%*MOPS/mtoqG%*MOPS/egenG%,MOPS/HcoeffG%%MOPSG" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 2852 "`MOPS/HyperGeom`:=proc(a,pl::list
+,ql::list,mmm,ar1,ar2) \nlocal ks,result,t,i,j,k,z,m,sc,pls,qls,mi,as,
+mms,p,p1,lim,mm,pars,pars2; \n  #ar1,ar2,ar3 - optional args\n  #ar1 o
+nly - ar1 = normalization, or computation limit\n  #ar1&ar2  - ar1 = n
+ormalization, ar2 = computation limit\n  if(member(0,pl)) then return \+
+1;  end if;\n  if(pl = [] and ql = []) then\n    if (type(mmm,'list'))
+ then \n      return exp(sum(mmm[i], i = 1..nops(mmm)));\n    else\n  \+
+    return exp(mmm);\n    end if;\n  end if;  \n  if(nops(pl) = 1 and \+
+nops(ql) = 0 and not(type(mmm,'list'))) then\n    return `det(I-X)^` |
+| (-1 * op(pl)); \n  end if;\n  lim:= 0;\n  sc := 'C';  \n  if(nargs =
+ 6) then\n    lim := ar2;\n    sc := ar1;\n  elif(nargs = 5) then\n   \+
+ if(type(ar1,'symbol')) then\n      sc := ar1;\n    else\n      lim :=
+ ar1;\n    end if;\n  end if;\n\n  if(not(sc = 'C')) then\n    if(not(
+StringTools['IsPrefix']('m',sc))) then\n      sc := cat('sym',sc);\n  \+
+  else\n      sc := convert(StringTools['SubString'](sc,2..length(sc))
+,'symbol');\n    end if;\n  else\n    sc := 'symC';\n  end if;\n  mm:=
+mmm;\n  if(type(mm,'list')) then \n    mm:=nops(mmm); \n    if(mmm = [
+]) then return 1; end if;\n  end if;\n  mi := 0;\n  for i from 1 to no
+ps(pl) do\n    if pl[i] < 0 and (pl[i] > mi or mi = 0) then\n      mi \+
+:= pl[i];\n    end if;\n  end do;\n  if(type(mm,'symbol') = true or (m
+i = 0 and lim = 0)) then \n    as := convert(a,'string');\n    pls := \+
+convert(pl,'string');\n    qls := convert(ql,'string');\n    mms := co
+nvert(mmm,'string');\n    return \"ghypergeom(\" || as ||\",\" || pls \+
+|| \",\" || qls || \",\" || mms || \")\"; \n  end if;\n  pars := [];\n
+  p1 := [];\n  if(lim = 0) then\n    for i from 1 to -1 * mi do\n     \+
+ pars := [op(pars),[i]];\n    end do;\n\n    for k from 1 to mm-1 do\n
+      pars2 := [];\n      for j from 1 to nops(pars) do\n        for i
+ from 0 to -1 * mi do\n          p := pars[j]; \n          if i = 0 th
+en\n            pars2 := [op(pars2),p]; \n          elif (nops(p) = 0 \+
+or i <= p[nops(p)]) and nops(p) = k then\n            p1 := [op(p),i];
+\n            pars2 := [op(pars2),p1];\n          end if;       \n    \+
+    end do;\n      end do;  \n      pars := pars2;\n    end do;\n\n   \+
+ pars := [[],op(pars)];\n  else\n    for i from 1 to lim do\n      p1 \+
+:= `MOPS/Par`(i);\n      pars:=[op(pars),op(p1)];\n    end do;\n  end \+
+if;\n  \n\n  #return pars;\n  result := 0;\n  for k in pars do\n    if
+(nops(k)>mm) then next;  end if;\n    ks :=0; for i from 1 to nops(k) \+
+do ks := ks + k[i]; end do;\n    t:=1/(ks!)*`MOPS/Jack`(a,k,mmm,sc);\n
+    for i from 1 to nops(pl) do\n      t:=t*`MOPS/GSFact`(a,pl[i],k);
+\n    end do;\n    for i from 1 to nops(ql) do\n      z:=`MOPS/GSFact`
+(a,ql[i],k);\n      if (z=0) then\n        print(\"Hypergeometric func
+tion not defined for these arguments\");\n        return;\n      end i
+f;\n      t:=t/z;\n    end do;\n    #if(t = 0) then break; end if;\n  \+
+  result:=result + simplify(t);\n  end do;\n  return result;\nend proc
+;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%/MOPS/HyperGeomGf*6(%\"aG'%#plG
+%%listG'%#qlGF*%$mmmG%$ar1G%$ar2G66%#ksG%'resultG%\"tG%\"iG%\"jG%\"kG%
+\"zG%\"mG%#scG%$plsG%$qlsG%#miG%#asG%$mmsG%\"pG%#p1G%$limG%#mmG%%parsG
+%&pars2G6\"FEC4@$-%'memberG6$\"\"!9%O\"\"\"@$3/FL7\"/9&FR@%-%%typeG6$9
+'.F*O-%$expG6#-%$sumG6$&FY6#8'/F^o;FN-%%nopsG6#FYO-FgnFco@$33/-Fbo6#FL
+FN/-Fbo6#FTFK4FVO(%*det(I-X)^G,$-%#opGF[p!\"\">84FK>8,.%\"CG@&/9#\"\"'
+C$>Fhp9)>Fjp9(/F_q\"\"&@%-FW6$Feq.%'symbolG>FjpFeq>FhpFeq@%4/FjpF[q@%4
+-&%,StringToolsG6#.%)IsPrefixG6$.8+Fjp>Fjp-%$catG6$.%$symGFjp>Fjp-%(co
+nvertG6$-&Ffr6#.%*SubStringG6$Fjp;\"\"#-%'lengthG6#FjpF[r>Fjp.%%symCG>
+85FY@$-FW6$FftFZC$>FftFao@$/FYFROFN>8/FK?(F^oFNFNFjo%%trueG@$32&FLF]oF
+K52F`uFfu/F`uFK>F`uFfu@$5/-FW6$FftF[rFbu3Fiu/FhpFKC'>80-Fes6$9$.%'stri
+ngG>8--Fes6$FLFhv>8.-Fes6$FTFhv>81-Fes6$FYFhvO((((((((Q,ghypergeom(FEF
+dvQ\",FEF[wF`xF_wF`xFcwQ\")FE>86FR>83FR@%FavC%?(F^oFNFN,$F`uFfpFbu>Fcx
+7$-Fep6#Fcx7#F^o?(8)FNFN,&FftFNFNFfpFbuC%>87FR?(8(FNFN-FboF]yFbu?(F^oF
+KFNFixFbuC$>82&Fcx6#Ffy@&/F^oFK>Fdy7$-Fep6#FdyF[z35/-Fbo6#F[zFK1F^o&F[
+z6#Fgz/FgzF`yC$>Fex7$-FepFhzF^o>Fdy7$FbzFex>FcxFdy>Fcx7$FRF\\y?(F^oFNF
+NFhpFbuC$>Fex-%)MOPS/ParGF]o>Fcx7$F\\y-Fep6#Fex>8%FK?&F`yFcxFbuC)@$2Ff
+t-Fbo6#F`y\\>8$FK?(F^oFNFNFe\\lFbu>Fi\\l,&Fi\\lFN&F`yF]oFN>8&*&-%*fact
+orialG6#Fi\\lFfp-%*MOPS/JackG6&FgvF`yFYFjpFN?(F^oFNFNFjoFbu>F_]l*&F_]l
+FN-%,MOPS/GSFactG6%FgvFfuF`yFN?(F^oFNFNF]pFbuC%>8*-F[^l6%Fgv&FTF]oF`y@
+$/F`^lFKC$-%&printG6#QXHypergeometric~function~not~defined~for~these~a
+rgumentsFEOFE>F_]l*&F_]lFNF`^lFfp>F`\\l,&F`\\lFN-%)simplifyG6#F_]lFNOF
+`\\lFEFEFE" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 1002 "`MOPS/Jack/
+c`:=proc(a,k::list,l::list,mm) local result,i,j,t,u,ks,br,ui; \noption
+ remember;\nif(nargs = 3 or not(type(mm,'numeric'))) then m:= sum(k[i]
+,i=1..nops(k)); else m:=mm; end if;\nif(nops(l)>m) then return 0; end \+
+if;\nif (k=l) then \n  result:=product(product(`MOPS/Uhook`(a,k,i,j),i
+=1..k[j]),j=1..nops(k));\n  ks:= sum(k[i],i=1..nops(k));\n  return ((a
+^ks)*(ks)!)/result;\nend if;\nresult:= 0;\nu:=l;\nfor i from 1 to nops
+(l)-1 do\n  for t from 1 to k[1]-u[i] do\n    br:=0;\n    u:=l;\n    u
+[i]:=u[i]+t;\n    ui:=u;\n    for j from i+1 to nops(l) do  \n      if
+ (br = 1) then break; end if;\n      u:=ui;\n      u[j]:=u[j]-t;\n    \+
+  if (u[j]<0) then br:=1; break; end if;\n      u:=sort(u,`>`);\n     \+
+ if (u[nops(u)]=0) then u:=u[1..nops(u)-1]; end if;\n      if(u&<=l or
+ u&>k) then br:=1; break; end if;\n      result:=result + (l[i]-l[j]+2
+*t)*`MOPS/Jack/c`(a,k,u,m); \n    end do;\n  end do;\nend do;\ni:=`MOP
+S/rho`(a,k);\nj:=`MOPS/rho`(a,l);\nif (i=j) then return 0;end if;\nret
+urn simplify((2/a)/(i-j)*result);\nend proc;" }}{PARA 7 "" 1 "" {TEXT 
+-1 69 "Warning, `m` is implicitly declared local to procedure `MOPS/Ja
+ck/c`\n" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%,MOPS/Jack/cGf*6&%\"aG'%
+\"kG%%listG'%\"lGF*%#mmG6+%'resultG%\"iG%\"jG%\"tG%\"uG%#ksG%#brG%#uiG
+%\"mG6#%)rememberG6\"C,@%5/9#\"\"$4-%%typeG6$9'.%(numericG>8,-%$sumG6$
+&9%6#8%/FP;\"\"\"-%%nopsG6#FN>FIFE@$2FI-FU6#9&O\"\"!@$/FNFfnC%>8$-%(pr
+oductG6$-F_o6$-%+MOPS/UhookG6&9$FNFP8&/FP;FS&FN6#Fgo/FgoFR>8)FJO*()Ffo
+F^pFS-%*factorialG6#F^pFSF]o!\"\">F]oFhn>8(Ffn?(FPFSFS,&FZFSFSFep%%tru
+eG?(8'FSFS,&&FN6#FSFS&FhpFOFepF[qC'>8*Fhn>FhpFfn>Faq,&FaqFSF]qFS>8+Fhp
+?(Fgo,&FPFSFSFSFSFZF[qC*@$/FdqFS[>FhpFiq>&FhpF[p,&FbrFSF]qFep@$2FbrFhn
+C$>FdqFSF_r>Fhp-%%sortG6$Fhp%\">G@$/&Fhp6#-FU6#FhpFhn>Fhp&Fhp6#;FS,&Fa
+sFSFSFep@$5-%$&<=G6$FhpFfn-%#&>G6$FhpFNC$>FdqFSF_r>F]o,&F]oFS*&,(&FfnF
+OFS&FfnF[pFep*&\"\"#FSF]qFSFSFS-F$6&FfoFNFhpFIFSFS>FP-%)MOPS/rhoG6$Ffo
+FN>Fgo-F^u6$FfoFfn@$/FPFgoOFhnO-%)simplifyG6#,$**FitFSFfoFep,&FPFSFgoF
+epFepF]oFSFSF:F:F:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 254 "`igr
+eater`:=proc(term1, term2) local t1,t2;\n  t1:=term1; t2:=term2;\n  if
+(not(type(term1,indexed))) then\n    t1:=op(2,[op(term1)]);\n  end if;
+\n  if(not(type(term2,indexed))) then\n    t2:=op(2,[op(term2)]);\n  e
+nd if;\n  return [op(t1)] &> [op(t2)];\nend proc;" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#>%)igreaterGf*6$%&term1G%&term2G6$%#t1G%#t2G6\"F,C'>8$9
+$>8%9%@$4-%%typeG6$F0%(indexedG>F/-%#opG6$\"\"#7#-F<6#F0@$4-F76$F3F9>F
+2-F<6$F>7#-F<6#F3O-%#&>G6$7#-F<6#F/7#-F<6#F2F,F,F," }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 371 "`MOPS/conjugate`:=proc(l::list) local i,j,
+k,result;\n  if(not(`MOPS/parvalid`(l))) then return; end if;\n  if(l=
+[]) then return [] end if;\n  result:=[];\n  k:=l;\n  while(k[1] > 0) \+
+do\n    j:=1;\n    while(j<=nops(k) and k[j]>0) do j:=j+1; end do;\n  \+
+  result:=[op(result),j-1];\n    for i from 1 to nops(l) do\n      k[i
+]:=k[i]-1;\n    end do;\n  end do;\n  return result;\nend proc;" }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#>%/MOPS/conjugateGf*6#'%\"lG%%listG6&%
+\"iG%\"jG%\"kG%'resultG6\"F/C(@$4-%.MOPS/parvalidG6#9$OF/@$/F67\"OF:>8
+'F:>8&F6?(F/\"\"\"FAF/2\"\"!&F?6#FAC&>8%FA?(F/FAFAF/31FH-%%nopsG6#F?2F
+C&F?6#FH>FH,&FHFAFAFA>F=7$-%#opG6#F=,&FHFAFA!\"\"?(8$FAFA-FMF5%%trueG>
+&F?6#Ffn,&FjnFAFAFZOF=F/F/F/" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 288 "`MOPS/parvalid`:=proc(k::list) local i;\nif(k=[])then return tr
+ue; end if;\n  for i from 1 to nops(k)-1 do\n    if(type(k[i],integer)
+ and k[i]<k[i+1]) then \n      printf(\"partition %q must be ordered f
+rom greatest to least\",k); \n      return false; end if;\n  end do;\n
+  return true;\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%.MOPS/p
+arvalidGf*6#'%\"kG%%listG6#%\"iG6\"F,C%@$/9$7\"O%%trueG?(8$\"\"\"F6,&-
+%%nopsG6#F0F6F6!\"\"F3@$3-%%typeG6$&F06#F5%(integerG2FA&F06#,&F5F6F6F6
+C$-%'printfG6$QTpartition~%q~must~be~ordered~from~greatest~to~leastF,F
+0O%&falseGOF3F,F,F," }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 925 "`MOPS/Split`:=proc(a,p1,n,a
+r1) local lead1,l1,l2,poly,lead2,r,i,tmp,p,nn;\n#p:=expand(p);\np:= co
+llect(simplify(p1),select((f)->op(0,f)=m,indets(simplify(p1))));\nif(p
+=0) then return 0; end if;\n#print(p);\nlead1:=`MOPS/lead`(p);\nl1:= l
+ead1[2];\nlead1:=lead1[1];\n#print(l1);\n#print(lead1);\n#print(\"a\")
+;\nif(nargs = 2 or not(type(n,`numeric`))) then nn:=sum(l1[i],i=1..nop
+s(l1)) else nn := n end if;\nif(nargs = 4) then poly:=`MOPS/Jack`(a,l1
+,nn,true,ar1);\nelse poly:=`MOPS/Jack`(a,l1,nn,true);\nend if;\nlead2:
+=`MOPS/lead`(poly);\nl2:= lead2[2];\nlead2:=lead2[1];\nr:=(lead1/m[op(
+l1)])/(lead2/m[op(l2)]);\nif(nargs = 4 and ar1 = 'J') then\n  tmp:=r*J
+[op(l2)] + `MOPS/Split`(a,p-r*poly,nn,ar1);\nelif(nargs = 4 and ar1 = \+
+'P') then\n  tmp:=r*P[op(l2)] + `MOPS/Split`(a,p-r*poly,nn,ar1);\nelse
+\n  tmp:=r*C[op(l2)] + `MOPS/Split`(a,p-r*poly,nn);\nend if;\n\nreturn
+ collect(simplify(tmp),select((f)->op(0,f)=C,indets(simplify(tmp))));
+\nend proc;        " }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%+MOPS/SplitGf
+*6&%\"aG%#p1G%\"nG%$ar1G6,%&lead1G%#l1G%#l2G%%polyG%&lead2G%\"rG%\"iG%
+$tmpG%\"pG%#nnG6\"F6C/>8,-%(collectG6$-%)simplifyG6#9%-%'selectG6$f*6#
+%\"fGF66$%)operatorG%&arrowGF6/-%#opG6$\"\"!9$%\"mGF6F6F6-%'indetsG6#F
+=@$/F9FNOFN>8$-%*MOPS/leadG6#F9>8%&FX6#\"\"#>FX&FX6#\"\"\"@%5/9#Fjn4-%
+%typeG6$9&%(numericG>8--%$sumG6$&Fgn6#8*/F`p;F^o-%%nopsG6#Fgn>FjoFgo@%
+/Fbo\"\"%>8'-%*MOPS/JackG6'FOFgnFjo%%trueG9'>F[q-F]q6&FOFgnFjoF_q>8(-F
+Z6#F[q>8&&FeqFin>Feq&FeqF]o>8)**FXF^o&FP6#-FLFep!\"\"FeqFcr&FP6#-FL6#F
+iqF^o@'3Fhp/F`q.%\"JG>8+,&*&F^rF^o&F\\sFerF^oF^o-F$6&FO,&F9F^o*&F^rF^o
+F[qF^oFcrFjoF`qF^o3Fhp/F`q.%\"PG>F^s,&*&F^rF^o&FisFerF^oF^oFbsF^o>F^s,
+&*&F^rF^o&%\"CGFerF^oF^o-F$6%FOFdsFjoF^oO-F;6$-F>6#F^s-FB6$f*FEF6FGF6/
+FKFbtF6F6F6-FR6#FhtF6F6F6" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+700 "`MOPS/lead`:=proc(poly) local p, aterms,aterm,mterms,mterm,max,le
+ad;  \n  lead:=0;\n  max:=[];\n  p:=poly;\n  if(p=0) then return 0; en
+d if;\n  #print(p);\n  aterms := `minus`(\{op(p+nothing)\},\{nothing\}
+); \n  #print(aterms);\n  for aterm in aterms do  \n    mterms := `min
+us`(\{op(aterm*nothing)\},\{nothing\}); \n    #print(mterms);\n    for
+ mterm in mterms do     \n      if evalb(StringTools['Explode'](conver
+t(mterm,'string'))[1] = \"m\") then   \n        if type(mterm,indexed)
+ then\n          #print(mterm);\n          if([op(mterm)]&>max) then\n
+            max:= [op(mterm)];\n            lead:= aterm;\n          e
+nd if; \n        end if;\n      end if;\n    end do;\n  end do;\n#prin
+t(lead); \nreturn [lead,max];\nend proc;" }}{PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 0 "" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}{PARA 12 "" 
+1 "" {XPPMATH 20 "6#>%*MOPS/leadGf*6#%%polyG6)%\"pG%'atermsG%&atermG%'
+mtermsG%&mtermG%$maxG%%leadG6\"F0C)>8*\"\"!>8)7\">8$9$@$/F9F4OF4>8%-%&
+minusG6$<#-%#opG6#,&F9\"\"\"%(nothingGFH<#FI?&8&F?%%trueGC$>8'-FA6$<#-
+FE6#*&FLFHFIFHFJ?&8(FPFM@$-%&evalbG6#/&-&%,StringToolsG6#.%(ExplodeG6#
+-%(convertG6$FX.%'stringG6#FHQ\"mF0@$-%%typeG6$FX%(indexedG@$-%#&>G6$7
+#-FE6#FXF6C$>F6F`p>F3FLO7$F3F6F0F0F0" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 0 "" }{TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 251 "`MOPS/JtoC`:=proc(a,k::list,m) local r,i,j,l;  \n  option rem
+ember;\n  r:=1;\n  for i from 1 to nops(k) do\n    r:= r * product(`MO
+PS/Uhook`(a,k,j,i)*`MOPS/Lhook`(a,k,j,i),j=1..k[i]);\n  end do;\n  j:=
+sum(k[l],l=1..nops(k));\n  return r/(a^j*j!);\n  end proc;" }}{PARA 
+12 "" 1 "" {XPPMATH 20 "6#>%*MOPS/JtoCGf*6%%\"aG'%\"kG%%listG%\"mG6&%
+\"rG%\"iG%\"jG%\"lG6#%)rememberG6\"C&>8$\"\"\"?(8%F7F7-%%nopsG6#9%%%tr
+ueG>F6*&F6F7-%(productG6$*&-%+MOPS/UhookG6&9$F=8&F9F7-%+MOPS/LhookGFGF
+7/FI;F7&F=6#F9F7>FI-%$sumG6$&F=6#8'/FV;F7F:O*(F6F7)FHFI!\"\"-%*factori
+alG6#FIFfnF3F3F3" }}}{EXCHG {PARA 12 "" 1 "" {TEXT -1 0 "" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 230 "`MOPS/PtoC`:=proc(a,k::list,m) loc
+al r,i,j,l;  \n  option remember;\n  r:=1;\n  for i from 1 to nops(k) \+
+do\n    r:= r * product(`MOPS/Uhook`(a,k,j,i),j=1..k[i]);\n  end do;\n
+  j:=sum(k[l],l=1..nops(k)); \n    return r/(a^j*j!);\nend proc;" }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#>%*MOPS/PtoCGf*6%%\"aG'%\"kG%%listG%\"
+mG6&%\"rG%\"iG%\"jG%\"lG6#%)rememberG6\"C&>8$\"\"\"?(8%F7F7-%%nopsG6#9
+%%%trueG>F6*&F6F7-%(productG6$-%+MOPS/UhookG6&9$F=8&F9/FH;F7&F=6#F9F7>
+FH-%$sumG6$&F=6#8'/FS;F7F:O*(F6F7)FGFH!\"\"-%*factorialG6#FHFYF3F3F3" 
+}}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 197 "`MOPS/MOPS_p`:=proc(n) o
+ption remember; if(n = 0) then return 1; end if;\nif(n = 1) then retur
+n x-a[1]; end if; \nreturn expand((x-a[n])*`MOPS/MOPS_p`(n-1)-((b[n-1]
+)^2)*`MOPS/MOPS_p`(n-2));\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "
+6#>%,MOPS/MOPS_pGf*6#%\"nG6\"6#%)rememberGF(C%@$/9$\"\"!O\"\"\"@$/F.F1
+O,&%\"xGF1&%\"aG6#F1!\"\"O-%'expandG6#,&*&,&F6F1&F86#F.F:F1-F$6#,&F.F1
+F1F:F1F1*&)&%\"bGFE\"\"#F1-F$6#,&F.F1FKF:F1F:F(F(F(" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 709 "`MOPS/Exp_e`:=proc(a,k,m) local i,l,p,ex
+p,n,ks;\nexp:=toe(`MOPS/Jack`(a,k,m));\nl:=[];\np:=`MOPS/MOPS_p`(m);\n
+ks:=sum(k[i],i=1..nops(k));\n#print(p);\n#print(exp);\nfor i from 1 to
+ ks do\n  l:= [op(l),parse(cat('e',i,\"=\",convert(coeff(p,x,m-i),stri
+ng)))];\nend do;\n#print(l);\nexp:=expand(eval(exp,l));\n#print(exp);
+\nl:=[];\nfor i from 1 to m do\n  for n from 1 to ks do\n    if(n mod \+
+2 = 1) then \n      l:=[op(l),parse(cat(\"a[\",i,\"]^\",n,\"=\",0))];
+\n    else \n      l:= [op(l),parse(cat(\"a[\",i,\"]^\",n,\"=\",conver
+t(`MOPS/MOPS_ff`(n-1),string)))];\n      l:=[op(l),parse(cat(\"b[\",i,
+\"]^\",n,\"=\",convert(GAMMA(i/a+n/2)/GAMMA(i/a),string)))]; \n    end
+ if;      \n    end do;\nend do;\n#print(l);\nreturn simplify(eval(exp
+,l));\nend proc;\n" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%+MOPS/Exp_eGf*
+6%%\"aG%\"kG%\"mG6(%\"iG%\"lG%\"pG%$expG%\"nG%#ksG6\"F1C+>8'-%$toeG6#-
+%*MOPS/JackG6%9$9%9&>8%7\">8&-%,MOPS/MOPS_pG6#F=>8)-%$sumG6$&F<6#8$/FM
+;\"\"\"-%%nopsG6#F<?(FMFPFPFG%%trueG>F?7$-%#opG6#F?-%&parseG6#-%$catG6
+&.%\"eGFMQ\"=F1-%(convertG6$-%&coeffG6%FB%\"xG,&F=FPFM!\"\"%'stringG>F
+4-%'expandG6#-%%evalG6$F4F?>F?F@?(FMFPFPF=FU?(8(FPFPFGFU@%/-%$modG6$Fb
+p\"\"#FP>F?7$FX-Ffn6#-Fin6(Q#a[F1FMQ#]^F1FbpF]o\"\"!C$>F?7$FX-Ffn6#-Fi
+n6(F_qFMF`qFbpF]o-F_o6$-%-MOPS/MOPS_ffG6#,&FbpFPFPFfoFgo>F?7$FX-Ffn6#-
+Fin6(Q#b[F1FMF`qFbpF]o-F_o6$*&-%&GAMMAG6#,&*&FMFPF;FfoFP*&#FPFhpFPFbpF
+PFPFP-Fjr6#F]sFfoFgoO-%)simplifyGF[pF1F1F1" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 122 "`MOPS/MOPS_ff`:= proc(n::integer) local i;\nif(n=0
+ or n=1) then return 1; end if;\nreturn (n)*`MOPS/MOPS_ff`(n-2);\nend \+
+proc;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%-MOPS/MOPS_ffGf*6#'%\"nG%(i
+ntegerG6#%\"iG6\"F,C$@$5/9$\"\"!/F1\"\"\"OF4O*&F1F4-F$6#,&F1F4\"\"#!\"
+\"F4F,F,F," }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 2107 "`MOPS/tom` := proc (exp) \nlocal \+
+aterms,mterms,aterm,mterm,num,max,i,j,plist,subslst,xexp,fexp,texp,eli
+st,mlist,co;\nmax := 0; \n#print(exp);\naterms := `minus`(\{op(expand(
+exp+nothing))\},\{nothing\}); \n#print(aterms);\n#get max degree\nfor \+
+aterm in aterms do  \n  mterms := `minus`(\{op(aterm*nothing)\},\{noth
+ing\}); \n  #print(mterms);\n  for mterm in mterms do     \n    mterm \+
+:= convert(mterm,'string'); \n    if evalb(StringTools['Explode'](mter
+m)[1] = \"p\") then \n      if not nops(parse(mterm)) = 1 then mterm :
+= op(parse(mterm))[1] end if; \n      mterm := convert(mterm,'string')
+; \n      num := parse(StringTools['SubString'](mterm,2 .. length(mter
+m))); \n      if (not type(num,'integer')) then next; end if; \n      \+
+if max < num then max := num; end if; \n    end if; \n  end do; \nend \+
+do; \n#print(max); \nplist := []; \nfor i to max do \n  plist := [op(p
+list), parse(\"p\"||i)] \nend do; \nmax := 0; \nfor aterm in aterms do
+ \n  num := degree(aterm,plist); \n  if max < num then max := num; end
+ if;\nend do; \n#print(max); \nsubslst := []; \nfor i to nops(plist) d
+o \n  xexp := 0; \n  for j to max do \n    xexp := xexp+parse(\"q\"||j
+||\"^\"||i) ;\n  end do; \n  subslst := [op(subslst), parse(cat('p',i,
+\"=\",convert(xexp,string)))];\nend do; \ntexp := expand(eval(exp,subs
+lst)); \n#print(texp);\n#create m expression\nmlist:=[];\nfexp:=0;\nat
+erms := `minus`(\{op(expand(texp+nothing))\},\{nothing\}); \nfor aterm
+ in aterms do  \n  #print(aterm);\n  mterms := `minus`(\{op(aterm*noth
+ing)\},\{nothing\}); \n  co:=1;\n  elist:=[];\n  for mterm in mterms d
+o     \n    #print(mterm);   \n    if evalb(StringTools['Explode'](con
+vert(mterm,'string'))[1] = \"q\") then\n      if(nops(mterm)=1) then \+
+\n        elist:=[op(elist),1]; \n      elif(nops(mterm)=2) then      \+
+     \n          elist:=[op(elist),\{op(mterm)\}[1]]; \n      else \n \+
+         co:=co*mterm; \n      end if;\n    else\n      co:=co*mterm;
+\n    end if; \n  end do;\n  elist:=sort(elist,`>`);\n  #print(elist);
+\n  if (not(member(elist,mlist))) then\n    mlist:=[op(mlist),elist];
+\n    if(nargs = 1 or (nops([op(elist)]) <= max)) then\n      fexp:=fe
+xp+co*m[op(elist)];\n    end if;\n  end if; \nend do; \nreturn fexp;\n
+end proc;   " }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%)MOPS/tomGf*6#%$expG
+62%'atermsG%'mtermsG%&atermG%&mtermG%$numG%$maxG%\"iG%\"jG%&plistG%(su
+bslstG%%xexpG%%fexpG%%texpG%&elistG%&mlistG%#coG6\"F9C1>8)\"\"!>8$-%&m
+inusG6$<#-%#opG6#-%'expandG6#,&9$\"\"\"%(nothingGFL<#FM?&8&F?%%trueGC$
+>8%-FA6$<#-FE6#*&FPFLFMFLFN?&8'FTFQC$>Ffn-%(convertG6$Ffn.%'stringG@$-
+%&evalbG6#/&-&%,StringToolsG6#.%(ExplodeG6#Ffn6#FLQ\"pF9C'@$4/-%%nopsG
+6#-%&parseGFjoFL>Ffn&-FEFcpF[p>FfnFin>8(-Fep6#-&Ffo6#.%*SubStringG6$Ff
+n;\"\"#-%'lengthGFjo@$4-%%typeG6$F[q.%(integerG\\@$2F<F[q>F<F[q>8,7\"?
+(8*FLFLF<FQ>Fdr7$-FE6#Fdr-Fep6#(F\\pFgr>F<F=?&FPF?FQC$>F[q-%'degreeG6$
+FPFdr@$Far>F<F[q>8-Fer?(FgrFLFL-FbpF[sFQC%>8.F=?(8+FLFLF<FQ>F^t,&F^tFL
+-Fep6#(((Q\"qF9F`tQ\"^F9FgrFL>Fis7$-FE6#Fis-Fep6#-%$catG6&.%\"pGFgrQ\"
+=F9-Fjn6$F^tF]o>80-FH6#-%%evalG6$FKFis>82Fer>8/F=>F?-FA6$<#-FE6#-FH6#,
+&FiuFLFMFLFN?&FPF?FQC(>FTFU>83FL>81Fer?&FfnFTFQ@%-F`o6#/&-Feo6#FinF[pF
+ht@'/-FbpFjoFL>Fbw7$-FE6#FbwFL/F]xFeq>Fbw7$F`x&<#-FEFjoF[p>F`w*&F`wFLF
+fnFL>F`wFix>Fbw-%%sortG6$Fbw%\">G@$4-%'memberG6$FbwF`vC$>F`v7$-FE6#F`v
+Fbw@$5/9#FL1-Fbp6#7#F`xF<>Fbv,&FbvFL*&F`wFL&%\"mG6#F`xFLFLOFbvF9F9F9" 
+}}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 233 "`MOPS/MOPS_pl`:=proc(n) \+
+option remember; if(n = 0) then return 1; end if;\nif(n = 1) then retu
+rn (a[1])^2+(b[1])^2-x; end if; \nreturn expand(((a[n])^2+(b[n])^2-x)*
+`MOPS/MOPS_pl`(n-1)-(a[n])^2*(b[n-1])^2*`MOPS/MOPS_pl`(n-2));\nend pro
+c;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%(MOPS/plGf*6#%\"nG6\"6#%)remem
+berGF(C%@$/9$\"\"!O\"\"\"@$/F.F1O,(*$)&%\"aG6#F1\"\"#F1F1*$)&%\"bGF:F;
+F1F1%\"xG!\"\"O-%'expandG6#,&*&,(*$)&F96#F.F;F1F1*$)&F?FLF;F1F1F@FAF1-
+F$6#,&F.F1F1FAF1F1*(FJF1)&F?FQF;F1-F$6#,&F.F1F;FAF1FAF(F(F(" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 901 "`MOPS/Exp_el`:=proc(a,k,g) \+
+local i,l,p,exp,n,ks,m;\nexp:=`SF/toe`(`MOPS/Laguerre`(a,k,g,true));\n
+l:=[];\nks:=sum(k[i],i=1..nops(k));\nm:=ks;\np:=`MOPS/MOPS_pl`(ks);\n#
+print(p);\n#print(exp);\nfor i from 1 to ks do\n  l:= [op(l),parse(cat
+('e',i,\"=\",convert(coeff(p,x,m-i),string)))];\nend do;\n#print(l);\n
+exp:=expand(eval(exp,l));\n#print(exp);\nl:=[];\nfor i from 1 to ks do
+\n  for n from 1 to 2*ks do\n    if(n mod 2 = 1) then \n      l:=[op(l
+),parse(cat(\"a[\",i,\"]^\",n,\"=\",0))];\n    else \n      l:= [op(l)
+,parse(cat(\"a[\",i,\"]^\",n,\"=\",convert(2^(n/2)*GAMMA((2*g+2/a*(i-1
+)+n)/2)/\n                                                     GAMMA((
+2*g+2/a*(i-1))/2),string)))];\n      l:=[op(l),parse(cat(\"b[\",i,\"]^
+\",n,\"=\",convert(2^(n/2)*GAMMA((i+n)/2)/\n                          \+
+                                  GAMMA(i/2),string)))]; \n    end if;
+      \n    end do;\nend do;\n#print(l);\nreturn simplify(eval(exp,l))
+;\nend proc;\n" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%,MOPS/Exp_elGf*6%%
+\"aG%\"kG%\"gG6)%\"iG%\"lG%\"pG%$expG%\"nG%#ksG%\"mG6\"F2C,>8'-%'SF/to
+eG6#-%.MOPS/LaguerreG6&9$9%9&%%trueG>8%7\">8)-%$sumG6$&F=6#8$/FJ;\"\"
+\"-%%nopsG6#F=>8*FD>8&-%-MOPS/MOPS_plG6#FD?(FJFMFMFDF?>FA7$-%#opG6#FA-
+%&parseG6#-%$catG6&.%\"eGFJQ\"=F2-%(convertG6$-%&coeffG6%FT%\"xG,&FRFM
+FJ!\"\"%'stringG>F5-%'expandG6#-%%evalG6$F5FA>FAFB?(FJFMFMFDF??(8(FMFM
+,$*&\"\"#FMFDFMFMF?@%/-%$modG6$FepFhpFM>FA7$Fen-Fin6#-F\\o6(Q#a[F2FJQ#
+]^F2FepF`o\"\"!C$>FA7$Fen-Fin6#-F\\o6(FdqFJFeqFepF`o-Fbo6$*()Fhp,$*&#F
+MFhpFMFepFMFMFM-%&GAMMAG6#,(F>FM*&F<Fio,&FJFMFMFioFMFM*&FdrFMFepFMFMFM
+-Ffr6#,&F>FMFirFMFioFjo>FA7$Fen-Fin6#-F\\o6(Q#b[F2FJFeqFepF`o-Fbo6$*(F
+arFM-Ffr6#,&*&FdrFMFJFMFM*&FdrFMFepFMFMFM-Ffr6#,$*&FdrFMFJFMFMFioFjoO-
+%)simplifyGF^pF2F2F2" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 97 "sav
+eAll := proc() local p;\nfor p in all_MOPS_procs do\n  savelib(p);\nen
+d do;\nend proc;\n\nsaveAll();" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%(s
+aveAllGf*6\"6#%\"pGF&F&?&8$%/all_MOPS_procsG%%trueG-%(savelibG6#F*F&F&
+F&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 131 "`MOPS/Exp-laguerre`:
+=proc(a,k,g,m) local ks,i;\nreturn factor(`MOPS/Jack/Identity`(a,k,m)*
+`MOPS/GSFact`(a,g+1+(m-1)/a,k));\nend proc;" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%2MOPS/Exp-laguerreGf*6&%\"aG%\"kG%\"gG%\"mG6$%#ksG%\"
+iG6\"F.O-%'factorG6#*&-%3MOPS/Jack/IdentityG6%9$9%9'\"\"\"-%,MOPS/GSFa
+ctG6%F7,(9&F:F:F:*&,&F9F:F:!\"\"F:F7FBF:F8F:F.F.F." }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 1005 "`MOPS/Jexpand`:=proc(a,exp,n,ar1) local a
+terms,aterm,mterms,mterm,elist,par,jack,temp,ch;\nelist:=[];\naterms :
+= `minus`(\{op(expand(exp+nothing))\},\{nothing\}); \nfor aterm in ate
+rms do  \n  #print(aterm);\n  mterms := `minus`(\{op(aterm*nothing)\},
+\{nothing\}); \n  for mterm in mterms do     \n    #print(mterm);  \n \+
+   ch := StringTools['Explode'](convert(mterm,'string'))[1];  \n    #p
+rint(ch);\n    if evalb(ch = \"C\" or ch = \"J\" or ch = \"P\") then  \+
+ \n      if nops(mterm)=2 and type(op(1,mterm),indexed) then mterm:=op
+(1,mterm); end if;   \n      if type(mterm,indexed) then\n        #pri
+nt(mterm);\n        jack:=`MOPS/Jack`(a,[op(mterm)],n,ch);\n        el
+ist:=[op(elist),parse(cat(convert(mterm,'string'),\"=\",convert(jack,'
+string')))];            end if;\n    end if;\n  end do;\nend do;\n#pri
+nt(elist);\ntemp:=`MOPS/mexp`(expand(eval(exp,elist)),n);\n#temp:=tom(
+expand(eval(exp,elist)));\nif(nargs = 4) then return factor(expand(`MO
+PS/Split`(a,temp,n,ar1))); end if; \nreturn factor(expand(`MOPS/Split`
+(a,temp,n)));\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%-MOPS/Je
+xpandGf*6&%\"aG%$expG%\"nG%$ar1G6+%'atermsG%&atermG%'mtermsG%&mtermG%&
+elistG%$parG%%jackG%%tempG%#chG6\"F5C(>8(7\">8$-%&minusG6$<#-%#opG6#-%
+'expandG6#,&9%\"\"\"%(nothingGFH<#FI?&8%F;%%trueGC$>8&-F=6$<#-FA6#*&FL
+FHFIFHFJ?&8'FPFMC$>8,&-&%,StringToolsG6#.%(ExplodeG6#-%(convertG6$FX.%
+'stringG6#FH@$-%&evalbG6#55/FenQ\"CF5/FenQ\"JF5/FenQ\"PF5C$@$3/-%%nops
+G6#FX\"\"#-%%typeG6$-FA6$FHFX%(indexedG>FXF[q@$-Fip6$FXF]qC$>8*-%*MOPS
+/JackG6&9$7#-FAFfp9&Fen>F87$-FA6#F8-%&parseG6#-%$catG6%F^oQ\"=F5-F_o6$
+FdqFao>8+-%*MOPS/mexpG6$-FD6#-%%evalG6$FGF8F[r@$/9#\"\"%O-%'factorG6#-
+FD6#-%+MOPS/SplitG6&FhqFjrF[r9'O-Fis6#-FD6#-F^t6%FhqFjrF[rF5F5F5" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2066 "`MOPS/expLjacks`:=proc(a,e
+xp,g,nn) \nlocal aterms,aterm,mterms,mterm,elist,par,jack,temp,val,ch,
+num,flag,jexp,n;\nif(nargs > 3) then n := nn; end if;\n#check for prod
+ucts\nflag := 0;\naterms := `minus`(\{op(expand(exp+nothing))\},\{noth
+ing\}); \nfor aterm in aterms do  \n  mterms := `minus`(\{op(aterm*not
+hing)\},\{nothing\}); \n  num := 0;\n  for mterm in mterms do     \n  \+
+  ch:=StringTools['Explode'](convert(mterm,'string'))[1]; \n    if eva
+lb(ch = \"C\" or ch = \"J\" or ch = \"P\") then\n      if nops(mterm) \+
+= 2 and mterm = ([op(mterm)][1])^([op(mterm)][2]) and \n              \+
+           ([op(mterm)][2]) > 1 then\n        #flag := 1;\n      end i
+f;\n      num := num + 1;\n    end if;\n  end do;\n  if num > 1 then f
+lag := 1; end if;\nend do;\n#print(flag);\nelist:=[];\naterms := `minu
+s`(\{op(expand(exp+nothing))\},\{nothing\}); \nfor aterm in aterms do \+
+ \n  #print(aterm);\n  mterms := `minus`(\{op(aterm*nothing)\},\{nothi
+ng\}); \n  for mterm in mterms do     \n    #print(mterm);   \n    ch:
+=StringTools['Explode'](convert(mterm,'string'))[1]; \n    if evalb(ch
+ = \"C\" or ch = \"J\" or ch = \"P\") then \n      if(nops(mterm) = 2 \+
+and mterm = ([op(mterm)][1])^([op(mterm)][2])) then\n        mterm := \+
+([op(mterm)][1]);\n      end if;   \n      if type(mterm,indexed) then
+\n        #print(mterm);\n          if(ch = \"J\") then\n            v
+al := `MOPS/JtoC`(a,[op(mterm)],n);\n          elif(ch = \"P\") then\n
+            val := `MOPS/PtoC`(a,[op(mterm)],n);\n          else\n    \+
+        val := 1;\n          end if;                                  \+
+        \n          if flag = 1 then\n            val := val * `MOPS/J
+ack`(a,[op(mterm)],n); \n          else \n            val := factor(va
+l * `MOPS/Exp-laguerre`(a,[op(mterm)],g,n));  \n          end if;\n   \+
+       elist:=[op(elist),parse(cat(convert(mterm,'string'),\"=\",\n   \+
+                                   convert(val,'string')))];   \n     \+
+     #print(elist);      \n      end if;\n    end if;\n  end do;\nend \+
+do;\njexp := eval(exp,elist);\n#jexp := expand(eval(exp,elist));\n#pri
+nt(jexp);\nif flag = 1 then\n  return `MOPS/expL`(a,jexp,g,n);\nend if
+;\nreturn factor(jexp);\nend proc;\n\n" }}{PARA 12 "" 1 "" {XPPMATH 
+20 "6#>%/MOPS/expLjacksGf*6&%\"aG%$expG%\"gG%#nnG60%'atermsG%&atermG%'
+mtermsG%&mtermG%&elistG%$parG%%jackG%%tempG%$valG%#chG%$numG%%flagG%%j
+expG%\"nG6\"F:C,@$2\"\"$9#>819'>8/\"\"!>8$-%&minusG6$<#-%#opG6#-%'expa
+ndG6#,&9%\"\"\"%(nothingGFT<#FU?&8%FG%%trueGC&>8&-FI6$<#-FM6#*&FXFTFUF
+TFV>8.FE?&8'FfnFYC$>8-&-&%,StringToolsG6#.%(ExplodeG6#-%(convertG6$F`o
+.%'stringG6#FT@$-%&evalbG6#55/FcoQ\"CF:/FcoQ\"JF:/FcoQ\"PF:C$@$33/-%%n
+opsG6#F`o\"\"#/F`o)&7#-FMFeqFap&Fjq6#Ffq2FTF\\rF:>F^o,&F^oFTFTFT@$2FTF
+^o>FDFT>8(7\">FGFH?&FXFGFYC$>FfnFgn?&F`oFfnFYC$>FcoFdo@$FcpC$@$Faq>F`o
+Fiq@$-%%typeG6$F`o%(indexedGC%@'Fjp>8,-%*MOPS/JtoCG6%9$FjqFAF\\q>Fjs-%
+*MOPS/PtoCGF]t>FjsFT@%/FDFT>Fjs*&FjsFT-%*MOPS/JackGF]tFT>Fjs-%'factorG
+6#*&FjsFT-%2MOPS/Exp-laguerreG6&F^tFjq9&FAFT>Fer7$-FM6#Fer-%&parseG6#-
+%$catG6%F\\pQ\"=F:-F]p6$FjsF_p>80-%%evalG6$FSFer@$FdtO-%*MOPS/expLG6&F
+^tF`vFauFAO-F[u6#F`vF:F:F:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+2074 "`MOPS/expJjacks`:=proc(a,exp,g1,g2,nn) local aterms,aterm,mterms
+,mterm,elist,par,jack,temp,val,ch,num,flag,jexp,n;\nif(nargs > 4) then
+ n := nn; end if;\n#check for products\nflag := 0;\naterms := `minus`(
+\{op(expand(exp+nothing))\},\{nothing\}); \nfor aterm in aterms do  \n
+  mterms := `minus`(\{op(aterm*nothing)\},\{nothing\}); \n  num := 0;
+\n  for mterm in mterms do     \n    ch:=StringTools['Explode'](conver
+t(mterm,'string'))[1]; \n    if evalb(ch = \"C\" or ch = \"J\" or ch =
+ \"P\") then\n      if nops(mterm) = 2 and mterm = ([op(mterm)][1])^([
+op(mterm)][2]) and \n                         ([op(mterm)][2]) > 1 the
+n\n        #flag := 1;\n      end if;\n      num := num + 1;\n    end \+
+if;\n  end do;\n  if num > 1 then flag := 1; end if;\nend do;\n#print(
+flag);\nelist:=[];\naterms := `minus`(\{op(expand(exp+nothing))\},\{no
+thing\}); \nfor aterm in aterms do  \n  #print(aterm);\n  mterms := `m
+inus`(\{op(aterm*nothing)\},\{nothing\}); \n  for mterm in mterms do  \+
+   \n    #print(mterm);   \n    ch:=StringTools['Explode'](convert(mte
+rm,'string'))[1]; \n    if evalb(ch = \"C\" or ch = \"J\" or ch = \"P
+\") then \n      if(nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(
+mterm)][2])) then\n        mterm := ([op(mterm)][1]);\n      end if;  \+
+ \n      if type(mterm,indexed) then\n        #print(mterm);\n        \+
+  if(ch = \"J\") then\n            val := `MOPS/JtoC`(a,[op(mterm)],n)
+;\n          elif(ch = \"P\") then\n            val := `MOPS/PtoC`(a,[
+op(mterm)],n);\n          else\n            val := 1;\n          end i
+f;                                          \n          if flag = 1 th
+en\n            val := val * `MOPS/Jack`(a,[op(mterm)],n); \n         \+
+ else \n            val := factor(val * `MOPS/expJacobi`(a,[op(mterm)]
+,g1,g2,n));  \n          end if;\n          elist:=[op(elist),parse(ca
+t(convert(mterm,'string'),\"=\",\n                                    \+
+  convert(val,'string')))];   \n          #print(elist);      \n      \+
+end if;\n    end if;\n  end do;\nend do;\njexp := eval(exp, elist);\n#
+jexp := expand(eval(exp,elist));\n#print(jexp);\nif flag = 1 then\n  r
+eturn `MOPS/expJ`(a,jexp,g1,g2,n);\nend if;\nreturn factor(jexp);\nend
+ proc;\n" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%/MOPS/expJjacksGf*6'%\"a
+G%$expG%#g1G%#g2G%#nnG60%'atermsG%&atermG%'mtermsG%&mtermG%&elistG%$pa
+rG%%jackG%%tempG%$valG%#chG%$numG%%flagG%%jexpG%\"nG6\"F;C,@$2\"\"%9#>
+819(>8/\"\"!>8$-%&minusG6$<#-%#opG6#-%'expandG6#,&9%\"\"\"%(nothingGFU
+<#FV?&8%FH%%trueGC&>8&-FJ6$<#-FN6#*&FYFUFVFUFW>8.FF?&8'FgnFZC$>8-&-&%,
+StringToolsG6#.%(ExplodeG6#-%(convertG6$Fao.%'stringG6#FU@$-%&evalbG6#
+55/FdoQ\"CF;/FdoQ\"JF;/FdoQ\"PF;C$@$33/-%%nopsG6#Fao\"\"#/Fao)&7#-FNFf
+qFbp&F[r6#Fgq2FUF]rF;>F_o,&F_oFUFUFU@$2FUF_o>FEFU>8(7\">FHFI?&FYFHFZC$
+>FgnFhn?&FaoFgnFZC$>FdoFeo@$FdpC$@$Fbq>FaoFjq@$-%%typeG6$Fao%(indexedG
+C%@'F[q>8,-%*MOPS/JtoCG6%9$F[rFBF]q>F[t-%*MOPS/PtoCGF^t>F[tFU@%/FEFU>F
+[t*&F[tFU-%*MOPS/JackGF^tFU>F[t-%'factorG6#*&F[tFU-%/MOPS/expJacobiG6'
+F_tF[r9&9'FBFU>Ffr7$-FN6#Ffr-%&parseG6#-%$catG6%F]pQ\"=F;-F^p6$F[tF`p>
+80-%%evalG6$FTFfr@$FetO-%*MOPS/expJG6'F_tFbvFbuFcuFBO-F\\u6#FbvF;F;F;
+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 627 "`MOPS/Exp-jack`:=proc(
+a,k::list,m) local c,ks,jp,ul,t1,t,j,u;\n  if(not(`MOPS/parvalid`(k)))
+ then return; end if;\n  c:=0;\n  ks:=sum(k[i],i=1..nops(k));\n  if no
+t((ks mod 2) = 0) then return 0; end if;\n  for j from 0 to ks/2 do\n \+
+   jp:=`MOPS/Par`(j);\n    ul:=(convert(jp,set) intersect convert(`MOP
+S/subPar`(k),set));\n    t:=0;\n    for u in ul do \n      t1:=`MOPS/G
+SFact`(a,r+(m+a-1)/a,k)/`MOPS/GSFact`(a,r+(m+a-1)/a,u);\n      t:=t+`M
+OPS/GBC`(a,k,u)*`MOPS/GBC`(a,u,[])*coeff(t1,r,ks/2-j);\n    end do;\n \+
+   c:=c+t*(-1)^j;\n  end do;\n  return factor((-1)^(ks/2)*c*`MOPS/Jack
+/Identity`(a,k,m)/`MOPS/Jack/Identity`(a,[],m));\nend proc;  " }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#>%.MOPS/Exp-jackGf*6%%\"aG'%\"kG%%list
+G%\"mG6*%\"cG%#ksG%#jpG%#ulG%#t1G%\"tG%\"jG%\"uG6\"F5C(@$4-%.MOPS/parv
+alidG6#9%OF5>8$\"\"!>8%-%$sumG6$&F<6#%\"iG/FH;\"\"\"-%%nopsGF;@$4/-%$m
+odG6$FB\"\"#F@OF@?(8*F@FK,$*&#FKFTFKFBFKFK%%trueGC'>8&-%)MOPS/ParG6#FW
+>8'-%*intersectG6$-%(convertG6$Fhn%$setG-Fbo6$-%,MOPS/subParGF;Fdo>8)F
+@?&8+F]oFenC$>8(*&-%,MOPS/GSFactG6%9$,&%\"rGFK*&,(9&FKFdpFKFK!\"\"FKFd
+pFjpFKF<FK-Fbp6%FdpFepF\\pFjp>Fjo,&FjoFK*(-%)MOPS/GBCG6%FdpF<F\\pFK-Fa
+q6%FdpF\\p7\"FK-%&coeffG6%F_pFfp,&*&FZFKFBFKFKFWFjpFKFK>F?,&F?FK*&FjoF
+K)FjpFWFKFKO-%'factorG6#**)FjpFXFKF?FK-%3MOPS/Jack/IdentityG6%FdpF<Fip
+FK-Ffr6%FdpFeqFipFjpF5F5F5" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+2027 "`MOPS/expHjacks`:=proc(a,exp,nn) local aterms,aterm,mterms,mterm
+,elist,par,jack,temp,val,ch,num,flag,jexp,n;\nif(nargs > 2) then n := \+
+nn; end if;\n#check for products\nflag := 0;\naterms := `minus`(\{op(e
+xpand(exp+nothing))\},\{nothing\}); \nfor aterm in aterms do  \n  mter
+ms := `minus`(\{op(aterm*nothing)\},\{nothing\}); \n  num := 0;\n  for
+ mterm in mterms do     \n    ch:=StringTools['Explode'](convert(mterm
+,'string'))[1]; \n    if evalb(ch = \"C\" or ch = \"J\" or ch = \"P\")
+ then\n      if nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(mter
+m)][2]) and \n                         ([op(mterm)][2]) > 1 then\n    \+
+    #flag := 1;\n      end if;\n      num := num + 1;\n    end if;\n  \+
+end do;\n  if num > 1 then flag := 1; end if;\nend do;\n#print(flag);
+\nelist:=[];\naterms := `minus`(\{op(expand(exp+nothing))\},\{nothing
+\}); \nfor aterm in aterms do  \n  #print(aterm);\n  mterms := `minus`
+(\{op(aterm*nothing)\},\{nothing\}); \n  for mterm in mterms do     \n
+    #print(mterm);   \n    ch:=StringTools['Explode'](convert(mterm,'s
+tring'))[1]; \n    if evalb(ch = \"C\" or ch = \"J\" or ch = \"P\") th
+en \n      if(nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(mterm)
+][2])) then\n        mterm := ([op(mterm)][1]);\n      end if;   \n   \+
+   if type(mterm,indexed) then\n        #print(mterm);\n          if(c
+h = \"J\") then\n            val := `MOPS/JtoC`(a,[op(mterm)],n);\n   \+
+       elif(ch = \"P\") then\n            val := `MOPS/PtoC`(a,[op(mte
+rm)],n);\n          else\n            val := 1;\n          end if;    \+
+                                      \n          if flag = 1 then\n  \+
+          val := val * `MOPS/Jack`(a,[op(mterm)],n); \n          else \+
+\n            val := factor(val * `MOPS/Exp-jack`(a,[op(mterm)],n));  \+
+\n          end if;\n          elist:=[op(elist),parse(cat(convert(mte
+rm,'string'),\"=\",\n                                      convert(val
+,'string')))];   \n          #print(elist);      \n      end if;\n    \+
+end if;\n  end do;\nend do;\njexp := expand(eval(exp,elist));\n#print(
+jexp);\nif flag = 1 then\n  return `MOPS/expH`(a,jexp,n);\nend if;\nre
+turn factor(jexp);\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%/MO
+PS/expHjacksGf*6%%\"aG%$expG%#nnG60%'atermsG%&atermG%'mtermsG%&mtermG%
+&elistG%$parG%%jackG%%tempG%$valG%#chG%$numG%%flagG%%jexpG%\"nG6\"F9C,
+@$2\"\"#9#>819&>8/\"\"!>8$-%&minusG6$<#-%#opG6#-%'expandG6#,&9%\"\"\"%
+(nothingGFS<#FT?&8%FF%%trueGC&>8&-FH6$<#-FL6#*&FWFSFTFSFU>8.FD?&8'FenF
+XC$>8-&-&%,StringToolsG6#.%(ExplodeG6#-%(convertG6$F_o.%'stringG6#FS@$
+-%&evalbG6#55/FboQ\"CF9/FboQ\"JF9/FboQ\"PF9C$@$33/-%%nopsG6#F_oF=/F_o)
+&7#-FLFdqF`p&Fhq6#F=2FSFjqF9>F]o,&F]oFSFSFS@$2FSF]o>FCFS>8(7\">FFFG?&F
+WFFFXC$>FenFfn?&F_oFenFXC$>FboFco@$FbpC$@$F`q>F_oFgq@$-%%typeG6$F_o%(i
+ndexedGC%@'Fip>8,-%*MOPS/JtoCG6%9$FhqF@F[q>Fhs-%*MOPS/PtoCGF[t>FhsFS@%
+/FCFS>Fhs*&FhsFS-%*MOPS/JackGF[tFS>Fhs-%'factorG6#*&FhsFS-%.MOPS/Exp-j
+ackGF[tFS>Fcr7$-FL6#Fcr-%&parseG6#-%$catG6%F[pQ\"=F9-F\\p6$FhsF^p>80-F
+O6#-%%evalG6$FRFcr@$FbtO-%*MOPS/expHG6%F\\tF\\vF@O-Fit6#F\\vF9F9F9" }}
+}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 1467 "`MOPS/evalJack`:=proc(a,l
+,x) local uvalid,u,result,term,ls,us,i,j,ab,lc,uc;\n#option remember;
+\n  if(nops(l)>nops(x)) then return 0; end if;\n  if(l = []) then retu
+rn 1; end if;\n  if(nops(x)=1) then\n    #if(nops(l)>1 and l[2] != 0) \+
+then return 0; end if;  \n    return simplify((x[1]^l[1])*(a^(l[1]-1))
+*`MOPS/SFact`(1/a+1,l[1]-1));\n  end if;\n  #compute uvalid\n  uvalid \+
+:= `MOPS/egen`(`MOPS/conjugate`(l));\n  #print(uvalid);\n  ls:=sum(l[i
+],i=1..nops(l));\n  lc:=`MOPS/conjugate`(l);\n  result := 0;\n  for u \+
+in uvalid do\n    u := `MOPS/conjugate`(u);\n    #print(u);\n    us:=0
+; for j from 1 to nops(u) do us:=us+u[j]; end do;\n    uc:=`MOPS/conju
+gate`(u);\n    #compute AB\n    ab:=1;   \n    for i from 1 to nops(u)
+ do\n       for j from 1 to u[i] do\n        #print(i,j);\n        if \+
+(j <= nops(uc) and j <= nops(lc) and lc[j]=uc[j]) then\n          ab:=
+ab/(uc[j]-i+a*(u[i]-j+1));          \n        else\n          ab:=ab/(
+uc[j]-i+1+a*(u[i]-j));          \n        end if\n      end do;  \n   \+
+ end do;\n    for i from 1 to nops(l) do\n      for j from 1 to l[i] d
+o\n        if (j <= nops(uc) and j <= nops(lc) and lc[j]=uc[j]) then\n
+          ab:=ab*(lc[j]-i+a*(l[i]-j+1));          \n        else\n    \+
+      ab:=ab*(lc[j]-i+1+a*(l[i]-j));          \n        end if\n      \+
+end do;  \n    end do;\n    #print(ab);\n    #multiply & add \n    ter
+m:=(x[nops(x)]^(ls-us))*ab*`MOPS/evalJack`(a,u,x[1..nops(x)-1]);    \n
+    #print(term);\n    result:=result+term;       \n  end do;\n  retur
+n result;\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%.MOPS/evalJa
+ckGf*6%%\"aG%\"lG%\"xG6-%'uvalidG%\"uG%'resultG%%termG%#lsG%#usG%\"iG%
+\"jG%#abG%#lcG%#ucG6\"F6C+@$2-%%nopsG6#9&-F;6#9%O\"\"!@$/F@7\"O\"\"\"@
+$/F:FGO-%)simplifyG6#*()&F=6#FG&F@FQFG)9$,&FRFGFG!\"\"FG-%+MOPS/SFactG
+6$,&*&FGFGFTFVFGFGFGFUFG>8$-%*MOPS/egenG6#-%/MOPS/conjugateGF?>8(-%$su
+mG6$&F@6#8*/Fdo;FGF>>8-F[o>8&FB?&8%Fgn%%trueGC+>F\\p-F\\o6#F\\p>8)FB?(
+8+FGFG-F;FapF]p>Fcp,&FcpFG&F\\p6#FepFG>8.F`p>8,FG?(FdoFGFGFfpF]p?(FepF
+GFG&F\\pFcoF]p@%331Fep-F;6#F\\q1Fep-F;6#Fho/&FhoFjp&F\\qFjp>F^q*&F^qFG
+,(F]rFGFdoFV*&FTFG,(FaqFGFepFVFGFGFGFGFV>F^q*&F^qFG,*F]rFGFdoFVFGFG*&F
+TFG,&FaqFGFepFVFGFGFV?(FdoFGFGF>F]p?(FepFGFGFboF]p@%Fcq>F^q*&F^qFG,(F
+\\rFGFdoFV*&FTFG,(FboFGFepFVFGFGFGFGFG>F^q*&F^qFG,*F\\rFGFdoFVFGFG*&FT
+FG,&FboFGFepFVFGFGFG>8'*()&F=6#F:,&F^oFGFcpFVFGF^qFG-F$6%FTF\\p&F=6#;F
+G,&F:FGFGFVFG>Fjo,&FjoFGFfsFGOFjoF6F6F6" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 24 "savelib(`MOPS/Hermite`);" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 185 "`MOPS/expJacobi`:=proc(a,k::list,a1,a2,n) local i,
+val;\nreturn factor(`MOPS/Jack/Identity`(a,k,n)*`MOPS/GSFact`(a,a1+(n-
+1)/a+1,k)/`MOPS/GSFact`(a,a2+a1+2*(n-1)/a+2,k));\nend proc;        " }
+}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%/MOPS/expJacobiGf*6'%\"aG'%\"kG%%li
+stG%#a1G%#a2G%\"nG6$%\"iG%$valG6\"F1O-%'factorG6#*(-%3MOPS/Jack/Identi
+tyG6%9$9%9(\"\"\"-%,MOPS/GSFactG6%F:,(9&F=*&,&F<F=F=!\"\"F=F:FEF=F=F=F
+;F=-F?6%F:,*9'F=FBF=*(\"\"#F=FDF=F:FEF=FKF=F;FEF1F1F1" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 2089 "`MOPS/top` := proc(exp) option re
+member;\nlocal aterms,aterm,mterms,mterm,mtcoeff,poly,pcoeff,pexp,i,el
+ist,fexp,flag;\n  aterms := `minus`(\{op(expand(exp+nothing))\},\{noth
+ing\}); \n  #check if a single term\n  flag := 0;\n  if(nops(aterms) =
+ 1) then\n    aterm := aterms[1];\n    if(nops(aterm) = 2 and aterm = \+
+[op(aterm)][1]^[op(aterm)][2]) then\n      flag := 1;\n    end if;\n  \+
+  if(nops([StringTools['SearchAll'](\"m\",convert(exp,'string'))])=1 a
+nd flag = 0) then\n      mterms := `minus`(\{op(aterm*nothing)\},\{not
+hing\}); \n      mtcoeff := 1;\n      for mterm in mterms do         \+
+\n        if evalb(StringTools['Explode']\n                   (convert
+(mterm,'string'))[1] = \"m\") then          \n          #form m[k]\n  \+
+        if(nops([op(mterm)]) = 1) then\n            return cat('p',[op
+(mterm)][1]);\n          end if;\n            #print(mterm);\n        \+
+    pexp:=1;\n            for i from 1 to nops([op(mterm)]) do\n      \+
+        pexp := pexp * cat('p',[op(mterm)][i]);\n            end do;\n
+            #print(pexp);\n            poly := `MOPS/tom`(pexp);\n    \+
+        #print(poly);\n            pcoeff := coeff(poly, mterm);\n    \+
+        poly := poly - pcoeff * mterm;\n            #print(poly);\n   \+
+         return mtcoeff*(pexp - `MOPS/top`(poly)) / pcoeff;\n        e
+lse\n          mtcoeff := mtcoeff * mterm;\n        end if;\n      end
+ do;\n      if flag = 0 then\n        return mtcoeff * result;\n      \+
+end if;\n    end if;\n  end if;\n  elist:=[];\n  aterms := `minus`(\{o
+p(expand(exp+nothing))\},\{nothing\}); \n  for aterm in aterms do  \n \+
+   #print(aterm);\n    mterms := `minus`(\{op(aterm*nothing)\},\{nothi
+ng\}); \n    for mterm in mterms do     \n      #print(mterm);   \n   \+
+   if(nops(mterm) = 2 and mterm = [op(mterm)][1]^[op(mterm)][2]) then
+\n        mterm := [op(mterm)][1];\n      end if;\n      if evalb(Stri
+ngTools['Explode'](convert(mterm,'string'))[1]=\"m\") then\n        el
+ist := [op(elist) , parse(cat(convert(mterm,'string'), \"=\", \n      \+
+            convert(`MOPS/top`(mterm),'string')))];\n      end if; \n \+
+   end do;\n  end do;\n  #print(elist);\n  fexp := simplify(expand(eva
+l(exp,elist)));\n  return fexp;\nend proc;" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#>%)MOPS/topGf*6#%$expG6.%'atermsG%&atermG%'mtermsG%&mte
+rmG%(mtcoeffG%%polyG%'pcoeffG%%pexpG%\"iG%&elistG%%fexpG%%flagG6#%)rem
+emberG6\"C*>8$-%&minusG6$<#-%#opG6#-%'expandG6#,&9$\"\"\"%(nothingGFG<
+#FH>8/\"\"!@$/-%%nopsG6#F:FGC%>8%&F:6#FG@$3/-FP6#FT\"\"#/FT)&7#-F@FenF
+V&Fjn6#Ffn>FKFG@$3/-FP6#7#-&%,StringToolsG6#.%*SearchAllG6$Q\"mF7-%(co
+nvertG6$FF.%'stringGFG/FKFLC&>8&-F<6$<#-F@6#*&FTFGFHFGFI>8(FG?&8'Fep%%
+trueG@%-%&evalbG6#/&-&Fgo6#.%(ExplodeG6#-F^p6$F_qF`pFVF\\pC)@$/-FP6#7#
+-F@6#F_qFGO-%$catG6$.%\"pG&FdrFV>8+FG?(8,FGFGFbrF`q>F_s*&F_sFG-Fir6$F[
+s&Fdr6#FasFG>8)-%)MOPS/tomG6#F_s>8*-%&coeffG6$FisF_q>Fis,&FisFG*&F^tFG
+F_qFG!\"\"O*(F]qFG,&F_sFG-F$6#FisFetFGF^tFet>F]q*&F]qFGF_qFG@$FbpO*&F]
+qFG%'resultGFG>8-7\">F:F;?&FTF:F`qC$>FepFfp?&F_qFepF`qC$@$3/-FPFfrFfn/
+F_q)F]s&FdrF]o>F_qF]s@$Fbq>Fbu7$-F@6#Fbu-%&parseG6#-Fir6%F]rQ\"=F7-F^p
+6$-F$FfrF`p>8.-%)simplifyG6#-FC6#-%%evalG6$FFFbuOFawF7F7F7" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 12 "" 1 "" {TEXT 
+-1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 580 "`MOPS/expH`:=pro
+c(a,exp,n) local aterms,aterm,mterms,mterm,elist,jexp,ch,val;\njexp :=
+ `MOPS/mexp`(exp,n);\njexp := `MOPS/Split`(a,jexp,n);\n#print(jexp);\n
+return `MOPS/expHjacks`(a,jexp,n);\nend proc;\n\n`MOPS/expJ`:=proc(a,e
+xp,g1,g2,n) local aterms,aterm,mterms,mterm,elist,jexp,ch,val;\njexp :
+= `MOPS/mexp`(exp,n);\njexp := `MOPS/Split`(a,jexp,n);\nreturn `MOPS/e
+xpJjacks`(a,jexp,g1,g2,n);\nend proc;\n\n`MOPS/expL`:=proc(a,exp,g,n) \+
+local aterms,aterm,mterms,mterm,elist,jexp,ch,val;\njexp := `MOPS/mexp
+`(exp,n);\njexp := `MOPS/Split`(a,jexp,n);\nreturn `MOPS/expLjacks`(a,
+jexp,g,n);\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%*MOPS/expHG
+f*6%%\"aG%$expG%\"nG6*%'atermsG%&atermG%'mtermsG%&mtermG%&elistG%%jexp
+G%#chG%$valG6\"F3C%>8)-%*MOPS/mexpG6$9%9&>F6-%+MOPS/SplitG6%9$F6F;O-%/
+MOPS/expHjacksGF?F3F3F3" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%*MOPS/exp
+JGf*6'%\"aG%$expG%#g1G%#g2G%\"nG6*%'atermsG%&atermG%'mtermsG%&mtermG%&
+elistG%%jexpG%#chG%$valG6\"F5C%>8)-%*MOPS/mexpG6$9%9(>F8-%+MOPS/SplitG
+6%9$F8F=O-%/MOPS/expJjacksG6'FBF89&9'F=F5F5F5" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#>%*MOPS/expLGf*6&%\"aG%$expG%\"gG%\"nG6*%'atermsG%&ater
+mG%'mtermsG%&mtermG%&elistG%%jexpG%#chG%$valG6\"F4C%>8)-%*MOPS/mexpG6$
+9%9'>F7-%+MOPS/SplitG6%9$F7F<O-%/MOPS/expLjacksG6&FAF79&F<F4F4F4" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 744 "`MOPS/mtoq`:= proc(k::list,
+ vars::list, l, nvars) option remember;\nlocal result,i,nvar,cnt;\n  i
+f(nvars < l) then return 0; end if;\n  result := 0;\n  if(l = 1) then \+
+\n    for i from 1 to nops(vars) do\n      if(vars[i] = 0) then\n     \+
+   result := result + (parse(cat('q',i)))^k[1];\n      end if;\n    en
+d do;\n    return result;\n  end if;\n  cnt := 1;\n  while(cnt < nops(
+k) and k[cnt] = k[cnt + 1]) do cnt:= cnt + 1; end do; \n  for i from 1
+ to nops(vars) do\n    if(vars[i] = 0) then\n      nvar := vars; \n   \+
+   nvar[i] := 1;\n      result := result + (parse(cat('q',i)))^k[1] * \+
+\n                         `MOPS/mtoq`(k[2..nops(k)],nvar,l-1,nvars-1)
+;\n      result := result;\n    end if;\n    #print(result);\n  end do
+;\n  return expand(result/cnt);\nend proc;" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#>%*MOPS/mtoqGf*6&'%\"kG%%listG'%%varsGF)%\"lG%&nvarsG6&
+%'resultG%\"iG%%nvarG%$cntG6#%)rememberG6\"C)@$29'9&O\"\"!>8$F<@$/F:\"
+\"\"C$?(8%FAFA-%%nopsG6#9%%%trueG@$/&FH6#FDF<>F>,&F>FA)-%&parseG6#-%$c
+atG6$.%\"qGFD&9$6#FAFAOF>>8'FA?(F5FAFAF532Fhn-FF6#FZ/&FZ6#Fhn&FZ6#,&Fh
+nFAFAFA>FhnFco?(FDFAFAFEFI@$FKC&>8&FH>&FioFMFA>F>,&F>FA*&FPFA-F$6&&FZ6
+#;\"\"#F\\oFio,&F:FAFA!\"\",&F9FAFAFfpFAFA>F>F>O-%'expandG6#*&F>FAFhnF
+fpF5F5F5" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 3041 "`MOPS/mexp`:=
+ proc(exp,nvars) local aterms,aterm,mterms,mterm,elist,res,i,zlist,par
+,qexp,mlist,fexp,co,nlz,num1,num2,nv,max,ex;\nif((nargs = 1) or ((narg
+s = 2) and not type(nvars,'numeric'))) then  \n  aterms := `minus`(\{o
+p(expand(exp+nothing))\},\{nothing\});\n  #get max degree\n  max := 0;
+\n  for aterm in aterms do  \n    mterms := `minus`(\{op(aterm*nothing
+)\},\{nothing\}); \n    #print(mterms);\n    num1:=0;\n    for mterm i
+n mterms do     \n      mterm := convert(mterm,'string'); \n      if e
+valb(StringTools['Explode'](mterm)[1] = \"m\") then \n        ex:=1;\n
+        if not type(([op(parse(mterm))])[1],'numeric') then\n         \+
+ #ex := op(parse(mterm))[nops(parse(mterm))]; \n          mterm := op(
+parse(mterm))[1];          \n        end if; \n        mterm := conver
+t(mterm,'string'); \n        num2 := parse(StringTools['SubString'](mt
+erm,2 .. length(mterm))); \n        if (not type(num2,'list')) then ne
+xt; end if; \n        num1:=num1+ex*nops(num2);\n      end if; \n    e
+nd do; \n    if max < num1 then max := num1; end if; \n  end do; \n  #
+print(max); \n  nv:=max;\nelse\n  nv:=nvars;\nend if;\nelist:=[];\nate
+rms := `minus`(\{op(expand(exp+nothing))\},\{nothing\}); \nfor aterm i
+n aterms do  \n  #print(aterm);\n  mterms := `minus`(\{op(aterm*nothin
+g)\},\{nothing\}); \n  for mterm in mterms do     \n    #print(mterm);
+   \n    if evalb(StringTools['Explode'](convert(mterm,'string'))[1] =
+ \"m\") then\n      if(nops(mterm) = 2 and mterm = ([op(mterm)][1])^([
+op(mterm)][2])) then\n        mterm := ([op(mterm)][1]);\n      end if
+;\n      if(type(mterm,'indexed')) then           \n        zlist := [
+];\n        par := [op(mterm)];\n        for i from 1 to nv do\n      \+
+    zlist :=[op(zlist),0];\n        end do;   \n        res := `MOPS/m
+toq`(par,zlist,nops(par),nv);\n        elist:=[op(elist),parse(cat(con
+vert(mterm,'string'),\"=\",\n                                    conve
+rt(res,'string')))]; \n        #print(elist);\n      end if;\n    end \+
+if;\n  end do;\nend do;\nqexp := expand(eval(exp,elist));\n#print(qexp
+);\nmlist:=[];\nfexp:=0;\naterms := `minus`(\{op(expand(qexp+nothing))
+\},\{nothing\}); \nfor aterm in aterms do  \n  #print(aterm);\n  mterm
+s := `minus`(\{op(aterm*nothing)\},\{nothing\}); \n  co:=1;\n  elist:=
+[];\n  for mterm in mterms do     \n    #print(mterm);   \n    if eval
+b(StringTools['Explode'](convert(mterm,'string'))[1] = \"q\") then\n  \+
+    if(nops(mterm)=1) then \n        elist:=[op(elist),1]; \n      eli
+f(nops(mterm)=2) then           \n          elist:=[op(elist),\{op(mte
+rm)\}[1]]; \n      else \n          co:=co*mterm; \n      end if;\n   \+
+ else\n      co:=co*mterm;\n    end if; \n  end do;\n  elist:=sort(eli
+st,`>`);\n  #print(elist);\n  num1:=1;\n  num2:=1;\n  for i from 1 to \+
+nops(elist)-1 do\n   if elist[i] = elist[i+1] then\n     num2 := num2 \+
++ 1;\n   else\n     num1 := num2! * num1;\n     num2 := 1;\n   end if;
+\n  end do;\n  num1 := num2! * num1;\n  #print(num1);\n  nlz := produc
+t(j,j=nv-nops(elist)+1..nv);\n  #print(elist);\n  #print(nlz);    \n  \+
+fexp:=fexp+co*m[op(elist)]* num1 /nlz;\n  #end if; \nend do;\nreturn c
+ollect(fexp,select((f)->op(0,f)=m,indets(fexp)));\n#return factor(fexp
+);\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%*MOPS/mexpGf*6$%$ex
+pG%&nvarsG65%'atermsG%&atermG%'mtermsG%&mtermG%&elistG%$resG%\"iG%&zli
+stG%$parG%%qexpG%&mlistG%%fexpG%#coG%$nlzG%%num1G%%num2G%#nvG%$maxG%#e
+xG6\"F=C,@%5/9#\"\"\"3/FB\"\"#4-%%typeG6$9%.%(numericGC&>8$-%&minusG6$
+<#-%#opG6#-%'expandG6#,&9$FC%(nothingGFC<#Fgn>85\"\"!?&8%FP%%trueGC&>8
+&-FR6$<#-FV6#*&F]oFCFgnFCFhn>82F[o?&8'FaoF^oC$>F[p-%(convertG6$F[p.%'s
+tringG@$-%&evalbG6#/&-&%,StringToolsG6#.%(ExplodeG6#F[p6#FCQ\"mF=C(>86
+FC@$4-FI6$&7#-FV6#-%&parseGF_qF`qFL>F[p&F[rF`q>F[pF^p>83-F^r6#-&F[q6#.
+%*SubStringG6$F[p;FF-%'lengthGF_q@$4-FI6$Fcr.%%listG\\>Fio,&FioFC*&Fdq
+FC-%%nopsG6#FcrFCFC@$2FjnFio>FjnFio>84Fjn>F`tFK>8(7\">FPFQ?&F]oFPF^oC$
+>FaoFbo?&F[pFaoF^o@$-Fep6#/&-Fjp6#F^pF`qFaqC$@$3/-FjsF_qFF/F[p)&7#-FVF
+_qF`q&Fiu6#FF>F[pFhu@$-FI6$F[p.%(indexedGC'>8+Fdt>8,Fiu?(8*FCFCF`tF^o>
+Fev7$-FV6#FevF[o>8)-%*MOPS/mtoqG6&FgvFev-Fjs6#FgvF`t>Fct7$-FV6#Fct-F^r
+6#-%$catG6%F^pQ\"=F=-F_p6$F_wFap>8--FY6#-%%evalG6$FfnFct>8.Fdt>8/F[o>F
+P-FR6$<#-FV6#-FY6#,&FbxFCFgnFCFhn?&F]oFPF^oC->FaoFbo>80FC>FctFdt?&F[pF
+aoF^o@%-Fep6#/F^uQ\"qF=@'/FeuFC>Fct7$FgwFCFdu>Fct7$Fgw&<#FjuF`q>Fiy*&F
+iyFCF[pFC>FiyFjz>Fct-%%sortG6$Fct%\">G>FioFC>FcrFC?(FivFCFC,&-FjsFhwFC
+FC!\"\"F^o@%/&Fct6#Fiv&Fct6#,&FivFCFCFC>Fcr,&FcrFCFCFCC$>Fio*&-%*facto
+rialGF[tFCFioFC>FcrFC>FioFb\\l>81-%(productG6$%\"jG/F\\]l;,(F`tFCFe[lF
+f[lFCFCF`t>F[y,&F[yFC**FiyFC&%\"mG6#FgwFCFioFCFh\\lFf[lFCO-%(collectG6
+$F[y-%'selectG6$f*6#%\"fGF=6$%)operatorG%&arrowGF=/-FV6$F[oFfnFd]lF=F=
+F=-%'indetsG6#F[yF=F=F=" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "
+" }}}{EXCHG {PARA 12 "" 1 "" {TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 721 "`MOP
+S/egen`:=proc(k::list) local lst1,lst2,l,l2;\n  if(nops(k) = 1) then\n
+    if(op(k) = 1) then\n      return [[],k];\n    end if; \n    return
+ [[op(k)-1],k];\n  end if;\n  \n  lst1 := `MOPS/egen`(k[1..nops(k)-1])
+;\n  lst2 := [];\n  for l in lst1 do\n    if(nops(l) = nops(k)-1) then
+\n      if(l[nops(l)] < k[nops(k)]) then\n        l := [op(l),k[nops(k
+)]-1];\n        if(l[nops(l)] = 0) then l := l[1..nops(l)-1]; end if;
+\n        lst2 := [op(lst2),l];\n      else\n        l2 := [op(l),k[no
+ps(k)]];\n        l := [op(l),k[nops(k)]-1];\n        if(l[nops(l)] = \+
+0) then l := l[1..nops(l)-1]; end if;\n        lst2 := [op(lst2),l,l2]
+;        \n      end if;\n    else\n      lst2 := [op(lst2),l];\n    e
+nd if;\n  end do;\n  return lst2;\nend proc;\n" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#>%*MOPS/egenGf*6#'%\"kG%%listG6&%%lst1G%%lst2G%\"lG%#l2
+G6\"F/C'@$/-%%nopsG6#9$\"\"\"C$@$/-%#opGF5F7O7$7\"F6O7$7#,&F;F7F7!\"\"
+F6>8$-F$6#&F66#;F7,&F3F7F7FD>8%F??&8&FF%%trueG@%/-F46#FPFL@%2&FP6#FT&F
+66#F3C%>FP7$-F<FU,&FZF7F7FD@$/FX\"\"!>FP&FP6#;F7,&FTF7F7FD>FN7$-F<6#FN
+FPC&>8'7$FinFZ>FPFhn@$F\\o>FPF_o>FN7%FeoFPFio>FNFdoOFNF/F/F/" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 385 "`MOPS/eval`:=proc(a,k::list
+,x::list,arg1)\nlocal sc,val;\n  if(nargs = 4) then\n    sc := arg1;\n
+  else\n    sc := 'C';\n  end if;\n  val:=`MOPS/evalJack`(a,k,x);\n  i
+f(sc = 'J' or sc = 'symJ') then\n    return val;\n  else\n    val := v
+al / `MOPS/JtoC`(a,k,0);\n    if(sc = 'C' or sc = 'symC') then\n      \+
+return val;\n    else\n      return val * `MOPS/PtoC`(a,k,0);\n    end
+ if;\n  end if;\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%*MOPS/
+evalGf*6&%\"aG'%\"kG%%listG'%\"xGF*%%arg1G6$%#scG%$valG6\"F1C%@%/9#\"
+\"%>8$9'>F8.%\"CG>8%-%.MOPS/evalJackG6%9$9%9&@%5/F8.%\"JG/F8.%%symJGOF
+>C$>F>*&F>\"\"\"-%*MOPS/JtoCG6%FBFC\"\"!!\"\"@%5/F8F;/F8.%%symCGOF>O*&
+F>FQ-%*MOPS/PtoCGFTFQF1F1F1" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+3001 "`MOPS/Hcoeff`:=proc(a,k::list,l::list) option remember;\nlocal i
+,j,ks,ls,w,li,lii,res,lj,lij,f;\n  if(l &> k) then return 0; end if;\n
+  if k = l then return 1; end if;\n  ks := 0; for w from 1 to nops(k) \+
+do ks := ks + k[w]; end do;\n  ls := 0; for w from 1 to nops(l) do ls \+
+:= ls + l[w]; end do;\n    \n  res := 0;\n    for i from 1 to min(nops
+(l) + 1,nops(k)) do\n       #print(((i = nops(l) + 1) and (i = 1 or (l
+[i-1] >= 2 and 2 <= k[i])));\n    if ((i = nops(l) + 1) and (i = 1 or \+
+(l[i-1] >= 2 and 2  <= k[i]))) then\n      li := [op(l),1];\n      lii
+ := [op(l),2];\n      res := res + `MOPS/GBC/cont`(a,lii,i) * `MOPS/GB
+C/cont`(a,li,i) * \n                   `MOPS/Hcoeff`(a,k,lii);\n    el
+if( not(i=nops(l)+1 )) then\n        # print(foo);\n         if (i = 1
+ or l[i-1] >= l[i] + 2) and l[i] + 2  <= k[i] then\n           #print(
+foo);\n               li := l;\n               li[i] := l[i] + 1;\n   \+
+            lii := l;\n               lii[i] := l[i] +2 ;\n           \+
+    res := res + `MOPS/GBC/cont`(a,lii,i) * `MOPS/GBC/cont`(a,li,i) * \+
+\n                   `MOPS/Hcoeff`(a,k,lii);\n          end if;\n    e
+nd if;\n  end do;\n\n  \n#print(foo);\n  for i from 1 to min(nops(l) +
+ 1,nops(k)) do\n    #print(i);\n    f := 0;\n    if i = nops(l) + 1 th
+en\n      li := [op(l),1];\n      f := 1;\n    elif((i = 1 or l[i-1] >
+= l[i] + 1) and l[i] + 1  <= k[i]) then\n      li := l;\n      li[i] :
+= l[i] + 1;\n      f := 1;\n    end if;\n    if (f = 1) then\n      fo
+r j from i+1 to min(nops(li) + 1, nops(k)) do \n        #print ();    \+
+           \n        if j = nops(li) + 1 then\n          lj := [op(l),
+1];\n          lij := [op(li),1];\n          #print(li);\n          #p
+rint(lj);\n          #print(lij);   \n          if not(j = i + 1 and l
+ij[i] = lij[j] and (j = nops(lij) or lij[j] > lij[j+1])) then\n       \+
+  res := res + (lij[i] - lij[j] - (i - j) / a) * (`MOPS/GBC/cont`(a,li
+j,i) *\n                       `MOPS/GBC/cont`(a,lj,j)-`MOPS/GBC/cont`
+(a,lij,j)*`MOPS/GBC/cont`(a,li,i))*\n                       `MOPS/Hcoe
+ff`(a,k,lij);\n          else\n         res := res - (1 / a) * (`MOPS/
+GBC/cont`(a,lij,j) *\n                       `MOPS/GBC/cont`(a,li,i))*
+\n                       `MOPS/Hcoeff`(a,k,lij);\n           end if;\n
+          #print('b');\n        elif(not (j=nops(li)+1) and ( j > i an
+d li[j-1] >= li[j] + 1 and li[j] + 1  <= k[j])) then\n          lj := \+
+l;\n          lj[j] := l[j] + 1;\n          lij := li;\n          lij[
+j] := li[j] + 1;\n          if not(j = i + 1 and lij[i] = lij[j] and (
+j = nops(lij) or lij[j] > lij[j+1])) then          res := res + (l[i] \+
+- l[j] - (i - j) / a) * (`MOPS/GBC/cont`(a,lij,i) *\n                 \+
+      `MOPS/GBC/cont`(a,lj,j)-`MOPS/GBC/cont`(a,lij,j)*`MOPS/GBC/cont`
+(a,li,i))*\n                       `MOPS/Hcoeff`(a,k,lij);\n          \+
+else\n          res := res - (1 / a) * (`MOPS/GBC/cont`(a,lij,j) *\n  \+
+                     `MOPS/GBC/cont`(a,li,i))*\n                      \+
+ `MOPS/Hcoeff`(a,k,lij);\n\n\n          end if;\n        end if;\n    \+
+  end do;    \n    end if;\n  end do;\n\n  return -1 * res/(ks-ls);\ne
+nd proc;\n" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%,MOPS/HcoeffGf*6%%\"aG
+'%\"kG%%listG'%\"lGF*6-%\"iG%\"jG%#ksG%#lsG%\"wG%#liG%$liiG%$resG%#ljG
+%$lijG%\"fG6#%)rememberG6\"C,@$-%#&>G6$9&9%O\"\"!@$/FBFAO\"\"\">8&FD?(
+8(FHFH-%%nopsG6#FB%%trueG>FJ,&FJFH&FB6#FLFH>8'FD?(FLFHFH-FN6#FAFP>FV,&
+FVFH&FAFTFH>8+FD?(8$FHFH-%$minG6$,&FXFHFHFHFMFP@&3/FjnF^o5/FjnFH31\"\"
+#&FA6#,&FjnFHFH!\"\"1Ffo&FB6#FjnC%>8)7$-%#opGFYFH>8*7$FbpFfo>Fhn,&FhnF
+H*(-%.MOPS/GBC/contG6%9$FepFjnFH-F[q6%F]qF`pFjnFH-F$6%F]qFBFepFHFH4Fao
+@$35Fco1,&&FAF]pFHFfoFHFgo1FgqF\\pC'>F`pFA>&F`pF]p,&FhqFHFHFH>FepFA>&F
+epF]pFgq>FhnFhp?(FjnFHFHF[oFPC%>8.FD@&FaoC$>F`pFap>FfrFH35Fco1F^rFgo1F
+^rF\\pC%>F`pFA>F]rF^r>FfrFH@$/FfrFH?(8%,&FjnFHFHFHFH-F\\o6$,&-FN6#F`pF
+HFHFHFMFP@&/FfsFjsC%>8,Fap>8-7$-FcpF\\tFH@%433/FfsFgs/&FctF]p&Fct6#Ffs
+5/Ffs-FN6#Fct2&Fct6#,&FfsFHFHFHF]u>Fhn,&FhnFH*(,(F\\uFHF]uFjo*&,&FjnFH
+FfsFjoFHF]qFjoFjoFH,&*&-F[q6%F]qFctFjnFH-F[q6%F]qFatFfsFHFH*&-F[q6%F]q
+FctFfsFHF^qFHFjoFH-F$6%F]qFBFctFHFH>Fhn,&FhnFH**F]qFjoFdvFHF^qFHFfvFHF
+jo34F^t332FjnFfs1,&&F`pF^uFHFHFH&F`p6#,&FfsFHFHFjo1Faw&FBF^uC'>FatFA>&
+FatF^u,&&FAF^uFHFHFH>FctF`p>F]uFaw@%Fgt>Fhn,&FhnFH*(,(FhqFHF]xFjoF[vFj
+oFHF]vFHFfvFHFH>FhnFivO,$*&FhnFH,&FJFHFVFjoFjoFjoF;F;F;" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 725 "`MOPS/Hermite` := proc(a, k::list,
+ nn, norm) option remember;\nlocal p, par, res,sc,n;\n  if(nargs > 2) \+
+then \n    if(type(nn,'list')) then n:=nops(nn) else n:=nn; end if;  \+
+\n    if(type(n,'numeric')) then\n      if(nops(k)>n) then return 0; e
+nd if;\n    end if;\n  end if;\n  if(nargs = 4) then\n    if(not(Strin
+gTools['IsPrefix']('m',norm))) then\n      sc := cat('sym',norm);\n   \+
+ else\n      sc := convert(StringTools['SubString'](norm,2..length(nor
+m)),'symbol');\n    end if;\n  else\n    sc := 'symC';\n  end if;\n  p
+ar := `MOPS/subPar`(k);\n  res := 0;\n  for p in par do\n    res := re
+s + simplify(`MOPS/Hcoeff`(a,k,p,n) *`MOPS/Jack/Identity`(a, k,n)/`MOP
+S/Jack/Identity`(a,p,n))*`MOPS/Jack`(a,p,nn,sc);\n  end do;\n  return \+
+res;\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%-MOPS/HermiteGf*6
+&%\"aG'%\"kG%%listG%#nnG%%normG6'%\"pG%$parG%$resG%#scG%\"nG6#%)rememb
+erG6\"C(@$2\"\"#9#C$@%-%%typeG6$9&.F*>8(-%%nopsG6#F@>FCF@@$-F>6$FC.%(n
+umericG@$2FC-FE6#9%O\"\"!@%/F:\"\"%@%4-&%,StringToolsG6#.%)IsPrefixG6$
+.%\"mG9'>8'-%$catG6$.%$symGF\\o>F^o-%(convertG6$-&Fen6#.%*SubStringG6$
+F\\o;F9-%'lengthG6#F\\o.%'symbolG>F^o.%%symCG>8%-%,MOPS/subParGFP>8&FS
+?&8$Fhp%%trueG>F\\q,&F\\q\"\"\"*&-%)simplifyG6#*(-%,MOPS/HcoeffG6&9$FQ
+F^qFCFbq-%3MOPS/Jack/IdentityG6%F[rFQFCFbq-F]r6%F[rF^qFC!\"\"Fbq-%*MOP
+S/JackG6&F[rF^qF@F^oFbqFbqOF\\qF5F5F5" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 471 "# !!!!!!!! WILL NOT WORK IF MOPS IS LOADED     !!!!!
+!!!!!!\n# MUST CHANGE DIRECTORY NAMES\n# adds help file s as argument \+
+to help database\naddhelp:=proc(s)\nprint(`e:\\\\Program Files\\\\mapl
+e 8\\\\MOPS\\\\Help Files\\\\h`||s||`.mws`);\nmakehelp(`Mathematics/MO
+PS/`||s, `e:\\\\Program Files\\\\maple 8\\\\MOPS\\\\Help Files\\\\h`||
+s||`.mws`, `e:\\\\program files\\\\maple 8\\\\mops`);\nINTERFACE_HELP(
+insert, topic=\"Mathematics/MOPS/\"||s, browser=\"Mathematics/MOPS/\"|
+|s, library=savelibname);\nend proc;" }}{PARA 12 "" 1 "" {XPPMATH 20 "
+6#>%(addhelpGf*6#%\"sG6\"F(F(C%-%&printG6#((%Ke:\\Program~Files\\maple
+~8\\MOPS\\Help~Files\\hG9$%%.mwsG-%)makehelpG6%(%2Mathematics/MOPS/GF0
+F-%>e:\\program~files\\maple~8\\mopsG-%/INTERFACE_HELPG6&%'insertG/%&t
+opicG(Q2Mathematics/MOPS/F(F0/%(browserGF>/%(libraryG%,savelibnameGF(F
+(F(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 459 "# !!!!!!!! WILL NOT
+ WORK IF MOPS IS LOADED     !!!!!!!!!!!\n# MUST CHANGE DIRECTORY NAMES
+\n# adds help file s as argument to help database under subsection sub
+\naddhelp2:=proc(sub, s)\nmakehelp(`Mathematics/MOPS/`||sub||`/`||s, `
+e:\\\\Program Files\\\\maple 8\\\\MOPS\\\\Help Files\\\\h`||s||`.mws`,
+ `e:\\\\program files\\\\maple 8\\\\mops`);\nINTERFACE_HELP(insert, to
+pic=\"Mathematics/MOPS/\"||sub||\"/\"||s, browser=\"Mathematics/MOPS/
+\"||sub||\"/\"||s, library=savelibname);\nend proc;" }}{PARA 12 "" 1 "
+" {XPPMATH 20 "6#>%)addhelp2Gf*6$%$subG%\"sG6\"F)F)C$-%)makehelpG6%(((
+%2Mathematics/MOPS/G9$%\"/G9%((%Ke:\\Program~Files\\maple~8\\MOPS\\Hel
+p~Files\\hGF4%%.mwsG%>e:\\program~files\\maple~8\\mopsG-%/INTERFACE_HE
+LPG6&%'insertG/%&topicG(((Q2Mathematics/MOPS/F)F2Q\"/F)F4/%(browserGF@
+/%(libraryG%,savelibnameGF)F)F)" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 26 "addhelp2(Conversion, p2m);" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 0 "" }}}}{MARK "63 0 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 
+1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

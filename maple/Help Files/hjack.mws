@@ -1,0 +1,103 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Comment" 2 18 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "Help Bold" -1 39 "Times" 1 12 0 0 0 0 0 1 0 0 0 0 0 0 0 1 }
+{CSTYLE "Help Italic" -1 42 "Times" 1 12 0 0 0 0 1 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 1 18 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 263 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 265 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+267 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 268 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" 39 269 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 270 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 271 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+272 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 273 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 274 "" 1 14 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 275 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" 39 276 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+277 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 280 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" 42 281 "" 0 1 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 
+1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Out
+put" -1 11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 
+1 }3 3 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 12 1 
+{CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 
+0 1 0 1 0 2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT 258 0 "" }{TEXT 256 0 "" }{TEXT 
+257 7 "jack - " }{TEXT 259 0 "" }{TEXT 260 40 "Jack polynomials\n\nCal
+ling Sequence:\n    " }{TEXT 262 10 "jack(a,k,[" }{TEXT -1 0 "" }
+{TEXT 265 8 "x], 'N')" }{TEXT 261 16 "   \n\nParameters:" }}{PARA 0 "
+" 0 "" {TEXT 263 50 "     a - the Jack parameter (real positive number
+)" }}{PARA 0 "" 0 "" {TEXT 270 163 "     k - the partition (in list fo
+rmat)\n     [x] - the list of variables (in numerical or symbolic form
+at) or the number of variables (numerically or symbolically)" }}{PARA 
+0 "" 0 "" {TEXT 271 66 "     'N' - the normalization of the Jack polyn
+omial requested   \n\n" }{TEXT 264 10 "Synopsis:\n" }{TEXT -1 197 "
+\011Jack polynomials constitute a special basis for the space of symme
+tric polynomials; the simplest way to define them explicitly is as hom
+ogeneous eigenfunctions of a Laplace-Beltrami operator (see " }{TEXT 
+272 13 "Release Notes" }{TEXT -1 2 ")." }}{PARA 0 "" 0 "" {TEXT -1 0 "
+" }}{PARA 0 "" 0 "" {TEXT -1 180 "The Jack polynomial of parameter a a
+nd partition k can be expressed in terms of the monomials basis as a l
+inear combination of monomials corresponding to partitions dominated b
+y k." }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 375 "
+They have multiple normalizations, of which we have implemented the \"
+J\" normalization (where the coefficient of the smallest monomial, cor
+responding to the partition [1, 1, ..., 1], is |k|!), the \"P\" normal
+ization (where the coefficient of the highest monomial, corresponding \+
+to k, is 1), and the \"C\" normalization (for which the sum of all Jac
+k polynomials on the variables " }{XPPEDIT 18 0 "x[1];" "6#&%\"xG6#\"
+\"\"" }{TEXT -1 2 ", " }{XPPEDIT 18 0 "x[2];" "6#&%\"xG6#\"\"#" }
+{TEXT -1 7 ", ..., " }{XPPEDIT 18 0 "x[n];" "6#&%\"xG6#%\"nG" }{TEXT 
+-1 39 " corresponding to partitions of |k| is " }{XPPEDIT 18 0 "sum(x[
+i],i = 1 .. n)^abs(k);" "6#)-%$sumG6$&%\"xG6#%\"iG/F*;\"\"\"%\"nG-%$ab
+sG6#%\"kG" }{TEXT -1 2 ")." }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 
+"" 0 "" {TEXT -1 26 "For more information, see " }{TEXT 273 14 "Releas
+e Notes." }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 266 
+27 "References: Release Notes, " }}{PARA 0 "" 0 "" {TEXT -1 22 "      \+
+                " }{TEXT 274 1 " " }{TEXT 276 11 "Muirhead, R" }{TEXT 
+275 5 ". ,  " }{TEXT 42 42 "Aspects of Multivariate Statistical Theory
+" }{TEXT -1 65 ", Wiley Series in Probability and Mathematical Statist
+ics,   1982" }}{PARA 0 "" 0 "" {TEXT -1 22 "                      " }
+{TEXT 280 1 " " }{TEXT 277 16 " Macdonald, Ian," }{TEXT 281 1 " " }
+{TEXT 42 43 " Symmetric Functions and Hall Polynomials, " }{TEXT -1 
+23 "Oxford University Press" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 
+0 "" 0 "" {TEXT 269 9 "Examples:" }{TEXT -1 2 "  " }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 14 "jack(a,[2,2]);" }}{PARA 11 "" 1 "" {XPPMATH 
+20 "6#,(*,\"#7\"\"\"&%\"mG6$\"\"#F*F&%\"aGF*,&F&F&*&F*F&F+F&F&!\"\",&F
++F&F&F&F.F&*,\"#CF&&F(6%F*F&F&F&F+F*F/!\"#F,F.F&*.\"$W\"F&&F(6&F&F&F&F
+&F&F+F*,&F*F&F+F&F.F/F4F,F.F&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 18 "jack(a,[3,1],'J');" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,**(\"\"#
+\"\"\"&%\"mG6$\"\"$F&F&),&%\"aGF&F&F&F%F&F&*(\"\"%F&&F(6$F%F%F&F,F&F&*
+(F%F&,&*&F*F&F-F&F&\"\"&F&F&&F(6%F%F&F&F&F&*&\"#CF&&F(6&F&F&F&F&F&F&" 
+}}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 18 "jack(a,[3,1],'P');" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#,*&%\"mG6$\"\"$\"\"\"F(*(\"\"#F(&F%6$F
+*F*F(,&%\"aGF(F(F(!\"\"F(*(&F%6%F*F(F(F(,&*&F'F(F.F(F(\"\"&F(F(F-!\"#F
+(*(\"#7F(&F%6&F(F(F(F(F(F-F6F(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 15 "jack(2,[6], 2);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,*&%\"mG6#
+\"\"'\"\"\"*&#F'\"#6F(&F%6$\"\"&F(F(F(*&#F.F+F(&F%6$\"\"%\"\"#F(F(*&#
+\"$+\"\"$J#F(&F%6$\"\"$F;F(F(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 20 "jack(a, [6,1,1], 3);" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,,*,\"$o
+\"\"\"\"&%\"mG6%\"\"'F&F&F&%\"aG\"\"#,&F+F&F&F&!\"\",&F&F&*&\"\"$F&F+F
+&F&F.F&*.\"$S)F&&F(6%\"\"&F,F&F&F+F,,&*&\"\"%F&F+F&F&F&F&F.F/F.F-F.F&*
+,\"%!o\"F&&F(6%F9F1F&F&F+F,F7F.F/!\"#F&*.\"%S]F&&F(6%F1F1F,F&F+F,F/F>F
+7F.,&F&F&*&F,F&F+F&F&F.F&*.\"%gLF&&F(6%F9F,F,F&F+F,F/F>F7F.F-F.F&" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 22 "jack(1, [4], [x,y,z]);" }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#,@*$)%\"zG\"\"%\"\"\"F(*&)F&\"\"$F(%\"
+yGF(F(*&F*F(%\"xGF(F(*&)F&\"\"#F()F,F1F(F(*(F0F(F,F(F.F(F(*&F0F()F.F1F
+(F(*&F&F()F,F+F(F(*(F&F(F2F(F.F(F(*(F&F(F,F(F5F(F(*&F&F()F.F+F(F(*$)F,
+F'F(F(*&F7F(F.F(F(*&F2F(F5F(F(*&F,F(F;F(F(*$)F.F'F(F(" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 24 "jack(a, [3,2], 10, 'P');" }}{PARA 
+11 "" 1 "" {XPPMATH 20 "6#,,&%\"mG6$\"\"$\"\"#\"\"\"*(&F%6%F(F(F)F),&*
+&F'F)%\"aGF)F)\"\"&F)F),&F/F)F)F)!\"#F)*(F(F)&F%6%F'F)F)F)F1!\"\"F)*(
+\"#7F)&F%6&F(F)F)F)F)F1F2F)**\"#gF)&F%6'F)F)F)F)F)F),&F(F)F/F)F6F1F2F)
+" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 267 9 "See Also:" }{TEXT 268 1 " " }
+{TEXT -1 41 "rho, jacobi, hermite, laguerre, gbinomial" }}}}{MARK "8 0
+ 2" 41 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

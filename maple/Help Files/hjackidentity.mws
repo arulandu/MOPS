@@ -1,0 +1,86 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Comment" 2 18 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 263 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 265 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+267 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 269 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 270 "" 1 14 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 271 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 272 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+273 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 274 "" 0 1 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 275 "" 0 1 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 }{CSTYLE "" -1 276 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 277 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+278 "" 0 1 0 0 0 0 0 2 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 279 "" 1 12 0 0 
+0 0 0 2 0 0 0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Tim
+es" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }
+{PSTYLE "Maple Output" 0 11 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }3 3 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "" 11 12 1 
+{CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }1 0 0 -1 -1 -1 0 
+0 0 0 0 0 -1 0 }{PSTYLE "Normal" -1 256 1 {CSTYLE "" -1 -1 "Times" 1 
+18 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "
+Normal" -1 257 1 {CSTYLE "" -1 -1 "Times" 1 18 0 0 0 1 2 2 2 2 2 2 1 
+1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "" 0 258 1 {CSTYLE "" -1 
+-1 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 
+0 }}
+{SECT 0 {EXCHG {PARA 256 "" 0 "" {TEXT -1 12 "jackidentity" }{TEXT 
+256 0 "" }{TEXT 257 85 " - The value of the Jack \"C\" polynomial at t
+he point with all coordinates equal to 1 " }}{PARA 0 "" 0 "" {TEXT -1 
+0 "" }}{PARA 0 "" 0 "" {TEXT 258 17 "Calling sequence:" }}{PARA 0 "" 
+0 "" {TEXT -1 27 "      jackidentity(a, k, m)" }}{PARA 0 "" 0 "" 
+{TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }{TEXT 259 0 "" }{TEXT 
+260 11 "Parameters:" }}{PARA 0 "" 0 "" {TEXT -1 6 "      " }{TEXT 261 
+0 "" }{TEXT 262 0 "" }{TEXT 263 60 "a     - the Jack polynomial parame
+ter (real positive number)" }}{PARA 0 "" 0 "" {TEXT -1 6 "      " }
+{TEXT 264 38 "k     - the partition (in list format)" }}{PARA 0 "" 0 "
+" {TEXT -1 6 "      " }{TEXT 265 30 "m    - the number of variables" }
+}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }{TEXT 
+266 0 "" }{TEXT 267 9 "Synopsis:" }}{PARA 0 "" 0 "" {TEXT -1 121 "Give
+n a, k, and m, this function computes the value of the Jack \"C\" poly
+nomial at the vector of all ones. This value is  " }{XPPEDIT 18 0 "C[k
+]^\{a\};" "6#)&%\"CG6#%\"kG<#%\"aG" }{TEXT -1 17 "(1, 1, ..., 1)  =" }
+{XPPEDIT 18 0 "a^(2*abs(k))*abs(k)!/j[k]*gsfact(m/a,k);" "6#**)%\"aG*&
+\"\"#\"\"\"-%$absG6#%\"kGF(F(-%*factorialG6#-F*6#F,F(&%\"jG6#F,!\"\"-%
+'gsfactG6$*&%\"mGF(F%F5F,F(" }{TEXT -1 8 " , with " }{XPPEDIT 18 0 "j[
+k];" "6#&%\"jG6#%\"kG" }{TEXT -1 210 " being the product of all upper \+
+and lower hook lengths corresponding to the partition k. For more info
+rmation, including a way to convert between the values of the differen
+t normalizations at the identity, see " }{TEXT 269 13 "Release Notes" 
+}{TEXT -1 1 "." }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" 
+{TEXT -1 0 "" }{TEXT 270 0 "" }{TEXT 271 26 "References: Release Notes
+," }}{PARA 0 "" 0 "" {TEXT 272 32 "                   Stanley, R., " }
+{TEXT 273 0 "" }{TEXT -1 0 "" }{TEXT 274 57 "Some combinatorial proper
+ties of Jack symmetric functions" }{TEXT -1 42 ", Advances in Mathemat
+ics, 77:76-115, 1989" }{TEXT 275 1 " " }}{PARA 0 "" 0 "" {TEXT -1 0 "
+" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }{TEXT 276 0 "" }{TEXT 277 9 "Exampl
+es:" }{TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 29 "jacki
+dentity(a, [4,3,2,1],m);" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,$*F\"(+)G
+O\"\"\"%\"aG\"\"'%\"mGF&,&F)F&F'F&F&,&F)F&*&\"\"#F&F'F&F&F&,&F)F&*&\"
+\"$F&F'F&F&F&,&F)F&F&!\"\"F&,(F)F&F&F2F'F&F&,(F)F&F&F2*&F-F&F'F&F&F&,&
+F)F&F-F2F&,(F)F&F-F2F'F&F&,&F)F&F0F2F&,&F0F&*&\"\"%F&F'F&F&F2,&*&F0F&F
+'F&F&F;F&F2,&F-F&*&F0F&F'F&F&!\"#,&F0F&*&F-F&F'F&F&F@,&F&F&*&F-F&F'F&F
+&!\"$,&F-F&F'F&FEF&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 29 "jack
+identity(1, [6,5,2,1],m);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,$*8\"%wX
+\"\"\"\"'vwH!\"\"%\"mG\"\"#,&F)F&F&F&F*,&F)F&F*F&F*,&F)F&\"\"$F&F*,&F)
+F&\"\"%F&F&,&F)F&\"\"&F&F&,&F)F&F&F(F*,&F)F&F*F(F&,&F)F&F.F(F&F&" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 29 "jackidentity(7/2, [3,2], 10)
+;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6##\"(Dco%\"$1&" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 28 "jackidentity(a, [10,2], 20);" }}{PARA 12 "
+" 1 "" {XPPMATH 20 "6#,$*N\"*+?:h$\"\"\"%\"aG\"\"#,&\"#?F&F'F&F&,&\"#5
+F&F'F&F&,&F*F&*&\"\"$F&F'F&F&F&,&\"\"&F&F'F&F&,&\"\"%F&F'F&F&,&F,F&*&F
+/F&F'F&F&F&,&F*F&*&\"\"(F&F'F&F&F&,&F1F&*&F(F&F'F&F&F&,&F*F&*&\"\"*F&F
+'F&F&F&,&\"#>F&F'F&F&,&F&F&*&F,F&F'F&F&!\"\",&F(F&*&F=F&F'F&F&FB,&F&F&
+*&F=F&F'F&F&FB,&*&F3F&F'F&F&F&F&!\"#,&F&F&*&F8F&F'F&F&FB,&F&F&*&\"\"'F
+&F'F&F&FB,&F&F&*&F1F&F'F&F&FB,&F&F&*&F/F&F'F&F&FB,&F&F&*&F(F&F'F&F&FB,
+&F'F&F&F&FIF&" }}}{EXCHG {PARA 258 "" 0 "" {TEXT -1 9 "See Also:" }
+{TEXT 278 0 "" }{TEXT 279 13 " jack, gsfact" }}}}{MARK "5 0 2" 13 }
+{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

@@ -1,0 +1,44 @@
+{VERSION 5 0 "IBM INTEL NT" "5.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "Help Bold" -1 39 "Times" 1 12 0 0 0 0 0 1 0 0 0 0 0 0 0 1 }
+{CSTYLE "Help Italic" -1 42 "Times" 1 12 0 0 0 0 1 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 1 18 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 263 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 265 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+267 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" 39 268 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 269 "" 0 1 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Maple Out
+put" 0 11 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }3 3 
+0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT 258 0 "" }{TEXT 256 0 "" }{TEXT 
+257 6 "arm - " }{TEXT 259 1 "\000" }{TEXT 260 9 "Arm lengt" }{TEXT 42 
+0 "" }{TEXT 267 63 "h of a partition at one of its points  \n\nCalling
+ Sequence:\n    " }{TEXT 263 10 "arm(k,x,y)" }{TEXT 262 20 "       \n
+\nParameters:" }{TEXT 261 38 "\n     k - the partition (in list form)
+" }}{PARA 0 "" 0 "" {TEXT 266 175 "     x - x coordinate of point in p
+artition diagram of k at which arm length is desired\n     y - y coord
+inate of point in partition diagram of k at which arm length is desire
+d" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 268 10 "Syn
+opsis: " }{TEXT -1 144 "\011Given the diagram of the partition k, the \+
+arm-length of the (i,j) square is the number of diagram squares to the
+ right of (i,j), in other words" }}{PARA 0 "" 0 "" {TEXT 269 41 "     \+
+              arm(k, i,j) = k(j) - i" }{TEXT -1 2 ".\n" }}{PARA 0 "" 
+0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 10 "Reference:" }{TEXT 
+39 16 "    I. Macdonald" }{TEXT 42 45 ",  Symmetric Functions and Hall
+ Polynomials, " }{TEXT -1 23 "Oxford University Press" }}{PARA 0 "" 0 
+"" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 265 9 "Examples:" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 17 "arm([4,2,2],2,1);" }}{PARA 11 "" 1 
+"" {XPPMATH 20 "6#\"\"#" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 22 "
+arm([k+5, k+1], 1, 2);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#%\"kG" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT 264 8 "See Also" }{TEXT -1 19 ": leg, uho
+ok, lhook" }}}}{MARK "0 0 6" 40 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }
+{PAGENUMBERS 0 1 2 33 1 1 }

@@ -1,0 +1,48 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Comment" 2 18 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "Help Bold" -1 39 "Times" 1 12 0 0 0 0 0 1 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 1 18 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 265 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 267 "" 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+268 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 269 "" 1 14 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 270 "" 1 14 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 271 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 273 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{PSTYLE "Normal
+" -1 0 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }0 0 0 
+-1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Maple Output" 0 11 1 {CSTYLE "" 
+-1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }3 3 0 -1 -1 -1 0 0 0 0 0 0 
+-1 0 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT 258 0 "" }{TEXT 256 0 "" }{TEXT 
+257 6 "rho - " }{TEXT 270 27 "Parameterized rho constant " }{TEXT 259 
+1 "\n" }}{PARA 0 "" 0 "" {TEXT 271 22 "Calling Sequence:\n    " }
+{TEXT 262 8 "rho(a,k)" }{TEXT 261 20 "       \n\nParameters:" }{TEXT 
+260 94 "\n     a - the Jack parameter (real positive integer)\n     k \+
+- the partition (in list format)\n\n" }{TEXT 273 9 "Synopsis:" }{TEXT 
+-1 36 "\n\011Given a partition k and a value a," }}{PARA 0 "" 0 "" 
+{XPPEDIT 18 0 "rho(a,k) = sum(k[i]*(k[i]-1-2*(i-1)/a),i = 1 .. nops(k)
+);" "6#/-%$rhoG6$%\"aG%\"kG-%$sumG6$*&&F(6#%\"iG\"\"\",(&F(6#F/F0F0!\"
+\"*(\"\"#F0,&F/F0F0F4F0F'F4F4F0/F/;F0-%%nopsG6#F(" }}{PARA 0 "" 0 "" 
+{TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 266 10 "Reference:" }{TEXT 269 
+1 " " }{TEXT 39 13 "Release Notes" }{TEXT -1 2 ", " }}{PARA 0 "" 0 "" 
+{TEXT -1 20 "                    " }{TEXT 39 9 "James, A." }{TEXT -1 
+2 ", " }{TEXT 267 61 "Special Functions of Matrix and Single Argument \+
+in Statistics" }{TEXT -1 2 ", " }}{PARA 0 "" 0 "" {TEXT -1 82 "       \+
+                             Theory and Applications of Special Functi
+ons, " }}{PARA 0 "" 0 "" {TEXT -1 55 "                                \+
+    editor R.A. Askey, " }{TEXT 268 14 "Academic Press" }{TEXT -1 16 "
+, New York, 1975" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" 
+{TEXT 264 9 "Examples:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 13 "r
+ho(2,[3,1]);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#\"\"&" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 15 "rho(a,[4,1,1]);" }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6#,&\"#7\"\"\"*&\"\"'F%%\"aG!\"\"F)" }}}{EXCHG {PARA 0 
+"" 0 "" {TEXT 265 8 "See Also" }{TEXT -1 6 ": jack" }}}}{MARK "0 1 0" 
+7 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

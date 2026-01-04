@@ -1,0 +1,37 @@
+{VERSION 4 0 "SUN SPARC SOLARIS" "4.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 1 18 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 263 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 265 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+267 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 
+{CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }0 0 0 -1 -1 -1 0 
+0 0 0 0 0 -1 0 }{PSTYLE "Maple Output" 0 11 1 {CSTYLE "" -1 -1 "" 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 }3 3 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE 
+"" 0 256 1 {CSTYLE "" -1 -1 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }0 0 
+0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT 258 0 "" }{TEXT 256 0 "" }{TEXT 
+257 8 "sfact - " }{TEXT 259 1 "\000" }{TEXT 260 41 "Shifted factorial
+\n\nCalling Sequence:\n    " }{TEXT 262 13 "sfact(r,k)   " }{TEXT 263 
+17 "    \n\nParameters:" }{TEXT 261 71 "\n     r - the algebraic expre
+ssion \n     k - the shifting number \n     " }}{PARA 256 "" 0 "" 
+{TEXT -1 12 "Description:" }}{PARA 0 "" 0 "" {TEXT -1 22 "The shifted \+
+factorial " }{TEXT 267 11 "sfact(r,k) " }{TEXT -1 204 "is the ratio of
+ two factorials (r+k-1)! and (r-1)!, or equivalently, the ratio of GAM
+MA(r+k) and GAMMA(r). It is a generalization of the factorial.  Can al
+so be obtained in MAPLE as the pochhammer symbol," }}{PARA 0 "" 0 "" 
+{TEXT -1 17 " pochhammer(r,k)." }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}
+{PARA 0 "" 0 "" {TEXT 264 9 "Examples:" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 11 "sfact(3,5);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#\"%?D
+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 11 "sfact(n,3);" }}{PARA 
+11 "" 1 "" {XPPMATH 20 "6#*(%\"nG\"\"\",&F%F%F$F%F%,&\"\"#F%F$F%F%" }}
+}{EXCHG {PARA 0 "" 0 "" {TEXT 265 9 "See Also:" }{TEXT 266 7 " gsfact
+" }}}}{MARK "0 3 0" 15 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }
+{PAGENUMBERS 0 1 2 33 1 1 }

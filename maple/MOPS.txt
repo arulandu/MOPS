@@ -1,0 +1,1553 @@
+march('create',"c:\\Program Files\\Maple 8\\MOPS\\MOPS.lib",50);
+
+`MOPS/Par` := proc (n) 
+  if nargs = 1 then 
+    `MOPS/Par/sub`(n,n,n) 
+  elif nargs = 2 
+    then `MOPS/Par/sub`(n,n,args[2]) 
+  else `MOPS/Par/sub`(args) 
+  end if end proc;
+
+`MOPS/Par/sub` := proc (n, row, col) local i; 
+  if n = 0 then RETURN([[]]) end if; 
+  if col = 0 then RETURN([]) end if; 
+  [seq(op(map(proc (x, y) [y, op(x)] end proc,`MOPS/Par/sub`(n+i,-i,col-1),-i)),i = -min(row,n) .. -iquo(col+n-1,col))] 
+end proc;
+
+`MOPS/subPar` := proc (mu) local n, m, i, l, nu, j; l := nops(mu); if nargs = 1 then if mu = [] then RETURN([[]]) end if; for i to l-1 while mu[i] = mu[i+1] do NULL end do; if 1 < mu[i] then j := mu[i]-1 else j := NULL end if; [seq([`$`(mu[1],i), op(nu)],nu = `MOPS/subPar`([op(i+1 .. l,mu)])), op(`MOPS/subPar`(subsop(i = j,mu)))] else m := convert(mu,`+`); n := args[2]; if m < n or n < 0 then RETURN([]) elif n = m then RETURN([mu]) end if; for i to l-1 while mu[i] = mu[i+1] do NULL end do; if 1 < mu[i] then j := mu[i]-1 else j := NULL end if; [seq([`$`(mu[1],i), op(nu)],nu = `MOPS/subPar`([op(i+1 .. l,mu)],n-i*mu[1])), op(`MOPS/subPar`(subsop(i = j,mu),n))] end if end proc;
+
+`MOPS/dominate` := proc (mu) local n, nu, res, sat, i, j, m, nu0; n := convert(mu,`+`); if 1 < nargs then n := min(n,args[2]) end if; res := [mu]; sat := 0;  while sat < nops(res) do nu := res[sat+1]; m := nops(nu); nu0 := [op(nu), 0]; for i to m do if nu0[i] = nu0[i+1] then next elif nu0[i+1]+1 < nu0[i] then j := i+1 else for j from i+2 to m while nu0[j-1] = nu0[j] do NULL end do end if; if min(n,m+1) < j then next elif j <= m then subsop(i = nu[i]-1,j = nu[j]+1,nu) else [op(subsop(i = nu[i]-1,nu)), 1] end if; if not member(%,res) then res := [op(res), %] end if end do; sat := sat+1 end do; res end proc;
+
+`MOPS/isdominate` := proc (k::list, s::list) local i, s1, s2; s1 := 0; s2 := 0; for i to max(nops(k),nops(s)) do if i <= nops(k) then s1 := s1+k[i] end if; if i <= nops(s) then s2 := s2+s[i] end if; if s1 < s2 then return false end if end do; return true end proc;
+
+`MOPS/rho`:=proc(a,k::list) local i; 
+  if(not(`MOPS/parvalid`(k))) then return; end if;
+  sum(k[i]*(k[i]-1-(2/a)*(i-1)), i=1..nops(k)) 
+end proc;
+
+`&<=`:= proc(k::list, l::list) local i;
+if(not(`MOPS/parvalid`(k))) then return; end if;
+if(not(`MOPS/parvalid`(l))) then return; end if;
+for i from 1 to min(nops(k),nops(l)) do
+  if (k[i]<l[i]) then return true; end if;
+  if (l[i]<k[i]) then return false; end if;
+end do;
+return evalb(nops(k)<=nops(l));
+end proc;
+
+`&>`:= proc(k::list, l::list) return not(k&<=l); end proc;
+
+`MOPS/arm`:=proc(x::list, a,b)
+if(not(`MOPS/parvalid`(x))) then return; end if;
+x[b]-a;
+end proc;
+
+`MOPS/leg`:=proc(x::list, a, b)
+if(not(`MOPS/parvalid`(x))) then return; end if;
+`MOPS/arm`(`MOPS/conjugate`(x), b,a);
+end proc;
+
+`MOPS/Uhook`:= proc (a, k::list, x, y) 
+  if(not(`MOPS/parvalid`(k))) then return; end if;
+  return `MOPS/leg`(k,x,y)+ a*(1+`MOPS/arm`(k,x,y)); 
+end proc;
+
+`MOPS/Lhook`:= proc (a, k::list, x, y) 
+  if(not(`MOPS/parvalid`(k))) then return; end if;
+  return `MOPS/leg`(k,x,y)+1+a*(`MOPS/arm`(k,x,y)); 
+end proc;
+
+`&<`:= proc(k::list, l::list) local i;
+if(not(`MOPS/parvalid`(k))) then return; end if;
+if(not(`MOPS/parvalid`(l))) then return; end if;
+for i from 1 to min(nops(k),nops(l)) do
+  if (k[i]<l[i]) then return true; end if;
+  if (l[i]<k[i]) then return false; end if;
+end do;
+return evalb(nops(k)<nops(l));
+end proc;
+
+`&>=`:= proc(k::list, l::list) return not(k&<l); end proc;
+
+`MOPS/Jack`:=proc(a, k::list, ar1, ar2) local i,s,l,scale,result,kl,temp,nd,scd,n,sc,p1,p2,jc,f,j;
+  option remember; 
+  #get ar1 & ar2 
+  #ar1 & ar2 - optional args
+  #only ar1 used - ar1 = normalization or #vars or values to evaluate at
+  #ar1 & ar2 used - ar1 = #vars or values to evaluate at, ar2 = normalization
+  if(k = [] ) then return 1; end if;
+  if(nargs=4) then 
+    nd:=1;scd:=1; 
+    n:=ar1;sc:=ar2;
+    if(type(sc,`string`)) then sc := convert(sc,`symbol`) end if;
+  elif(nargs=3) then 
+    if(type(ar1,'name')) then
+      scd:=1;sc:=ar1;
+      nd:=0;
+      if(type(sc,`string`)) then sc := convert(sc,`symbol`) end if;
+    else
+      nd:=1;n:=ar1;
+      sc:=0;
+    end if;
+  else
+    nd:=0;
+    scd:=0;
+  end if;  
+  scale := 1;
+  kl:=sum(k[l],l=1..nops(k));
+  #compute normalization scalar
+  if(scd = 1) then
+    if(StringTools['IsPrefix']('sym',sc)) then
+      if(StringTools['IsSuffix']('J',sc)) then
+        return `MOPS/JtoC`(a,k,0) * J[op(k)];      
+      elif(StringTools['IsSuffix']('P',sc)) then
+        return `MOPS/PtoC`(a,k,0) * P[op(k)];
+      else
+        if(type(n,'list')) then
+          return `MOPS/eval`(a,k,n);
+       end if;      
+        return C[op(k)];
+      end if;
+    elif(sc = 'J') then
+      scale := `MOPS/JtoC`(a,k,0);      
+    elif(sc = 'P') then
+      scale := `MOPS/PtoC`(a,k,0);
+    end if;
+  end if;
+  jc := `MOPS/JtoC`(a,k,n);
+  if(type(n,'list')) then
+    return simplify(scale / jc * `MOPS/evalJack`(a,k,n));
+  end if;
+  if(not(`MOPS/parvalid`(k))) then return; end if;
+  if(nd=1 and type(n,'numeric')) then if(nops(k)>n) then return 0; end if; end if;
+  result:=0;
+  #faster algorithm for computing jack(m[k])
+  if(nops(k) = 1) then
+    for i in `MOPS/Par`(kl) do
+      if(nd = 1 and type(n,'numeric') and nops(i)>n) then next; end if;
+      p1:=1;p2:=1;
+      for j from 1 to nops(i) do
+        p1:= p1 * i[j]!;
+        p2:= p2 * `MOPS/SFact`(1/a+1,i[j]-1);
+      end do;
+      result := result + simplify(scale / jc * m[op(i)] * kl! / p1 * a^(kl-nops(i)) * p2);                                                                      
+                                              end do;
+    return result;
+  end if;
+    if nops(k) <= 3 and kl/nops(k) > 4 then 
+      f := 1;
+      s := `MOPS/Par`(kl); 
+    else 
+      f := 0; 
+      s := `MOPS/dominate`(k);
+    end if;
+    for i in s do    
+    #compute coefficients
+    if (i&<=k and (f = 0 or (f = 1 and `MOPS/isdominate`(k,i)))) then 
+      if(nd=0) then result:=result + simplify(m[op(i)]*scale*`MOPS/Jack/c`(a,k,i)); 
+               else result:=result + simplify(m[op(i)]*scale*`MOPS/Jack/c`(a,k,i,n));
+      end if;
+    end if;
+  end do;
+return result;
+end proc;
+
+`MOPS/SFact`:= proc(a,b) local i;
+return product(a+i,i=0..b-1)
+end proc;
+
+`MOPS/GSFact`:= proc(al,a,s::list) local i,result; 
+if(not(`MOPS/parvalid`(s))) then return; end if;
+result:= product('`MOPS/SFact`(a-(i-1)/al,s[i])', i=1..nops(s));
+return result;
+end proc;
+
+`MOPS/GSFact` := proc (al, a, s::list) local i, result; if not `MOPS/parvalid`(s) then return end if; result := product('`MOPS/SFact`(a-1/al*(i-1),s[i])',i = 1 .. nops(s)); return result end proc;
+
+`MOPS/Jack/Identity`:=proc(a,k::list,m) option remember; local r,i,j,l;
+r:=1;
+for i from 1 to nops(k) do
+  r:= r * product(`MOPS/Uhook`(a,k,j,i)*`MOPS/Lhook`(a,k,j,i),j=1..k[i]);
+end do;
+j:=sum(k[l],l=1..nops(k));
+return simplify((a^(2*j))*j!*(`MOPS/GSFact`(a,m/a,k))/r);
+end proc;
+
+`MOPS/Jacobi/c`:=proc(a,k::list,s::list, m, a1, a2) option remember;
+local i,j,result,si, ks, ss, val;
+if (k=s) then return 1; end if;
+result:=0;
+for i from 1 to min(nops(s)+1,nops(k)) do
+  if (i = nops(s)+1) then si:=[op(s),1]; else 
+                          si:=s; si[i]:=si[i]+1; end if; 
+  if (si = sort(si,`>`) and k&>=si) then            result:=result+(`MOPS/GBC`(a,k,si))*(`MOPS/GBC/cont`(a,si,i))*(`MOPS/Jacobi/c`(a,k,si, m, a1, a2));
+  end if;
+end do;
+ks := sum(k[j],j=1..nops(k));
+ss := sum(s[j],j=1..nops(s));
+val:=((a1+a2+2*(m-1)/a+2)*(ks-ss)+`MOPS/rho`(a,k)-`MOPS/rho`(a,s));
+if(val = 0) then return 0; end if;
+result:=result/val;
+return factor(result);
+end proc;
+
+`MOPS/Jacobi`:=proc(a,k::list,a1,a2,n,norm) 
+local sp,result,s,ss,i,cjack,cjackd,sc,kl,j,r,C,ks;
+option remember;
+if(nargs = 6) then
+  if(not(StringTools['IsPrefix']('m',norm))) then
+    sc := cat('sym',norm);
+  else
+    sc := convert(StringTools['SubString'](norm,2..length(norm)),'symbol');
+  end if;
+else
+  sc := 'symC';
+end if;
+if(not(`MOPS/parvalid`(k))) then return; end if;
+ks:=n;
+#kss = #vars or vals to evaluate at
+if(type(n,'list')) then ks:=nops(n); end if;  
+sp:=`MOPS/subPar`(k);
+result:=0;
+#compute & add coefficients
+for s in sp do  
+  ss:=0;for i from 1 to nops(s) do ss:=ss+s[i]; end do;
+  result:=result+simplify((((-1)^ss)*(`MOPS/Jacobi/c`(a,k,s,ks,a1,a2))/
+    (`MOPS/GSFact`(a,a1+(ks-1)/a+1,s))*(`MOPS/Jack`(a,s,n,sc))/(`MOPS/Jack/Identity`(a,s,ks)))*
+     `MOPS/GSFact`(a,a1+(ks-1)/a+1,k)*`MOPS/Jack/Identity`(a,k,ks));
+end do;
+return result;
+end proc;
+
+`MOPS/Laguerre`:=proc(a,k::list,g,kss,norm) 
+local sp,s,i,result,ss,sc,kl,j,r,ks;
+option remember;
+  ks:=kss;
+  #kss = #vars or vals to evaluate at
+  if(type(kss,'list')) then ks:=nops(kss); end if; 
+  if(nargs = 5) then
+    if(not(StringTools['IsPrefix']('m',norm))) then
+      sc := cat('sym',norm);
+    else
+     sc := convert(StringTools['SubString'](norm,2..length(norm)),'symbol');
+    end if;
+  else
+    sc := 'symC';
+  end if; 
+kl:=sum(k[l],l=1..nops(k));
+if(not(`MOPS/parvalid`(k))) then return; end if;
+sp:=`MOPS/subPar`(k); 
+result:=0;
+#compute & add coeffs
+for s in sp do
+ss:=0;for i from 1 to nops(s) do ss:=ss+s[i]; end do;
+result:=result+simplify((((-1)^ss)*`MOPS/GBC`(a,k,s)/`MOPS/GSFact`(a,(g+(ks+a-1)/a),s)*
+                          `MOPS/Jack`(a,s,kss,sc)/`MOPS/Jack/Identity`(a,s,ks))*
+                          `MOPS/GSFact`(a,(g+(ks+a-1)/a),k)*
+                          `MOPS/Jack/Identity`(a,k,ks));
+end do;
+return result;
+end proc;
+
+`MOPS/GBC`:=proc(a,k::list,s::list)  local i,j,result,si,ks,ss;
+option remember;
+if(not(`MOPS/parvalid`(k))) then return; end if;
+if(not(`MOPS/parvalid`(s))) then return; end if;
+if (k=s) then return 1; end if;
+if (s=[0] or s=[]) then return 1; end if;
+if (s=[1]) then return sum(k[i],i=1..nops(k)) end if;
+if (not(`MOPS/subPar?`(s,k))) then return 0; end if;
+result:=0;
+for i from 1 to min(nops(k),nops(s)+1) do
+  if (i=nops(s)+1) then si:=[op(s),1]; else
+                     si:=s; si[i]:=si[i]+1; end if;  
+if (si = k) then return(`MOPS/GBC/cont`(a,k,i)); end if; 
+if (si = sort(si,`>`) and k&>=si) then 
+  result:=result+(`MOPS/GBC`(a,k,si)*`MOPS/GBC/cont`(a,si,i)); end if;
+end do;
+ss:=sum(s[j],j=1..nops(s));
+ks:=sum(k[j],j=1..nops(k));
+result:=result/(ks-ss);
+return factor(result);
+end proc;
+
+`MOPS/GBC/cont`:= proc(a,u::list,n::integer) 
+option remember;
+local ab,i,j,l,lc,uc;
+  l:=u;
+  l[n] := l[n] - 1;
+  ab:=1;   
+  lc:=`MOPS/conjugate`(l);
+  uc:=`MOPS/conjugate`(u);
+  for i from 1 to nops(u) do
+     for j from 1 to u[i] do
+      #print(i,j);
+      if (j <= nops(uc) and j <= nops(lc) and lc[j]=uc[j]) then
+        ab:=ab*(uc[j]-i+a*(u[i]-j+1));          
+      else
+        ab:=ab*(uc[j]-i+1+a*(u[i]-j));          
+      end if
+    end do; 
+  end do;
+  for i from 1 to nops(l) do
+    for j from 1 to l[i] do
+      if (j <= nops(uc) and j <= nops(lc) and lc[j]=uc[j]) then
+        ab:=ab/(lc[j]-i+a*(l[i]-j+1));          
+      else
+        ab:=ab/(lc[j]-i+1+a*(l[i]-j));          
+      end if
+    end do;  
+  end do;
+return factor(ab);
+end proc;
+
+`MOPS/Hermite2`:=proc(a, k::list, mm, norm) option remember;
+local s,u,ut,uti,ul,ks,ss,j,i,sp,result,t,t1,r,jp,ssp,r1,m,
+      ul1,c,sc,kl;
+  if(type(mm,'list')) then m:= nops(mm) else m:=mm; end if;
+  if(not(type(m,'symbol')) and m < nops(k)) then return 0; end if;
+  if(nargs = 4) then
+    if(not(StringTools['IsPrefix']('m',norm))) then
+      sc := cat('sym',norm);
+    else
+      sc := convert(StringTools['SubString'](norm,2..length(norm)),'symbol');
+    end if;
+  else
+    sc := 'symC';
+  end if;
+  kl:=sum(k[l],l=1..nops(k));
+if(not(`MOPS/parvalid`(k))) then return; end if;
+result:=0;
+ks:=kl;
+sp:=`MOPS/subPar`(k);
+#compute & add coeffs
+for s in sp do
+  ss:=0;for i from 1 to nops(s) do ss:=ss+s[i]; end do;
+  c:=0;
+  if not((ss mod 2) = (ks mod 2)) then next; end if;
+  for j from ss to (ks+ss)/2 do
+    jp:=`MOPS/Par`(j);
+    ul1:=(convert(jp,set) intersect convert(sp,set));
+    ul:=[];
+    for ut in ul1 do
+      if `MOPS/subPar?`(s,ut) then ul:=[op(ul),ut]; end if;      
+    end do;
+    t:=0;
+    for u in ul do 
+      t1:=`MOPS/GSFact`(a,r1+(m+a-1)/a,k)/`MOPS/GSFact`(a,r1+(m+a-1)/a,u);
+      t:=t+`MOPS/GBC`(a,k,u)*`MOPS/GBC`(a,u,s)*coeff(t1,r1,(ks+ss)/2-j);
+    end do;
+    c:=c+t*(-1)^j;
+  end do;
+  result:=result+factor(c*`MOPS/Jack/Identity`(a,k,m)*`MOPS/Jack`(a,s,mm,sc)/
+`MOPS/Jack/Identity`(a,s,m));
+end do;
+return result*(-1)^(ks);
+end proc;
+
+`MOPS/subPar?`:=proc(k::list, s::list) local i;
+if(not(`MOPS/parvalid`(k))) then return; end if;
+if(not(`MOPS/parvalid`(s))) then return; end if;
+for i from 1 to min(nops(k),nops(s)) do
+  if k[i]>s[i] then return false; end if;
+end do;
+return evalb(nops(s)>=nops(k));
+end proc;
+
+`MOPS`:=module()
+export arm, leg, uhook, lhook, gbinomial, gsfact, sfact, jack, jacobi, laguerre, hermite, issubpar, ghypergeom, rho, jackidentity, par, subpar, conjugate, m2jack,expJ,expH,expL,expHjacks,expJjacks,expLjacks,p2m,m2p,m2m,jack2jack,hermite2;
+option package;
+arm:=`MOPS/arm`;
+leg:=`MOPS/leg`;
+uhook:=`MOPS/Uhook`;
+lhook:=`MOPS/Lhook`;
+gbinomial:=`MOPS/GBC`;
+gsfact:=`MOPS/GSFact`;
+sfact:=`MOPS/SFact`;
+jack:=`MOPS/Jack`;
+jacobi:=`MOPS/Jacobi`;
+laguerre:=`MOPS/Laguerre`;
+hermite:=`MOPS/Hermite`;
+hermite2:=`MOPS/Hermite2`;
+issubpar:=`MOPS/subPar?`;
+ghypergeom:=`MOPS/HyperGeom`;
+rho:=`MOPS/rho`;
+jackidentity:=`MOPS/Jack/Identity`;
+par:=`MOPS/Par`;
+subpar:=`MOPS/subPar`;
+conjugate:=`MOPS/conjugate`;
+expH:=`MOPS/expH`;
+expJ:=`MOPS/expJ`;
+expL:=`MOPS/expL`;
+expHjacks:=`MOPS/expHjacks`;
+expJjacks:=`MOPS/expJjacks`;
+expLjacks:=`MOPS/expLjacks`;
+m2jack:=`MOPS/Split`;
+m2p:=`MOPS/top`;
+p2m:=`MOPS/tom`;
+jack2jack:=`MOPS/Jexpand`;
+m2m:=`MOPS/mexp`;
+end module;
+
+
+all_MOPS_procs := [
+`&<=`,
+`&<`,
+`&>=`,
+`&>`,
+`igreater`,
+`MOPS/parvalid`,
+`MOPS/arm`,
+`MOPS/leg`,
+`MOPS/Uhook`,
+`MOPS/Lhook`,
+`MOPS/GBC`,
+`MOPS/GBC/cont`,
+`MOPS/GSFact`,
+`MOPS/SFact`,
+`MOPS/Jack`,
+`MOPS/Jacobi`,
+`MOPS/Laguerre`,
+`MOPS/Hermite`,
+`MOPS/Hermite2`,
+`MOPS/subPar?`,
+`MOPS/HyperGeom`,
+`MOPS/rho`,
+`MOPS/Jack/Identity`,
+`MOPS/Jack/c`,
+`MOPS/Jacobi/c`,
+`MOPS/Par`,
+`MOPS/Par/sub`,
+`MOPS/subPar`,
+`MOPS/isdominate`,
+`MOPS/dominate`,
+`MOPS/conjugate`,
+`MOPS/Split`,
+`MOPS/expH`,
+`MOPS/expJ`,
+`MOPS/expL`,
+`MOPS/expHjacks`,
+`MOPS/expJjacks`,
+`MOPS/expLjacks`,
+`MOPS/top`,
+`MOPS/tom`,
+`MOPS/Jexpand`,
+`MOPS/mexp`,
+`MOPS/eval`,
+`MOPS/evalJack`,
+`MOPS/lead`,
+`MOPS/JtoC`,
+`MOPS/PtoC`,
+`MOPS/MOPS_p`,
+`MOPS/Exp_e`,
+`MOPS/MOPS_ff`,
+`MOPS/MOPS_pl`,
+`MOPS/Exp_el`,
+`MOPS/Exp-laguerre`,
+`MOPS/expJacobi`,
+`MOPS/mtoq`,
+`MOPS/egen`,
+`MOPS/Hcoeff`,
+`MOPS`];
+
+`MOPS/HyperGeom`:=proc(a,pl::list,ql::list,mmm,ar1,ar2) 
+local ks,result,t,i,j,k,z,m,sc,pls,qls,mi,as,mms,p,p1,lim,mm,pars,pars2; 
+  #ar1,ar2,ar3 - optional args
+  #ar1 only - ar1 = normalization, or computation limit
+  #ar1&ar2  - ar1 = normalization, ar2 = computation limit
+  if(member(0,pl)) then return 1;  end if;
+  if(pl = [] and ql = []) then
+    if (type(mmm,'list')) then 
+      return exp(sum(mmm[i], i = 1..nops(mmm)));
+    else
+      return exp(mmm);
+    end if;
+  end if;  
+  if(nops(pl) = 1 and nops(ql) = 0 and not(type(mmm,'list'))) then
+    return `det(I-X)^` || (-1 * op(pl)); 
+  end if;
+  lim:= 0;
+  sc := 'C';  
+  if(nargs = 6) then
+    lim := ar2;
+    sc := ar1;
+  elif(nargs = 5) then
+    if(type(ar1,'symbol')) then
+      sc := ar1;
+    else
+      lim := ar1;
+    end if;
+  end if;
+
+  if(not(sc = 'C')) then
+    if(not(StringTools['IsPrefix']('m',sc))) then
+      sc := cat('sym',sc);
+    else
+      sc := convert(StringTools['SubString'](sc,2..length(sc)),'symbol');
+    end if;
+  else
+    sc := 'symC';
+  end if;
+  mm:=mmm;
+  if(type(mm,'list')) then 
+    mm:=nops(mmm); 
+    if(mmm = []) then return 1; end if;
+  end if;
+  mi := 0;
+  for i from 1 to nops(pl) do
+    if pl[i] < 0 and (pl[i] > mi or mi = 0) then
+      mi := pl[i];
+    end if;
+  end do;
+  if(type(mm,'symbol') = true or (mi = 0 and lim = 0)) then 
+    as := convert(a,'string');
+    pls := convert(pl,'string');
+    qls := convert(ql,'string');
+    mms := convert(mmm,'string');
+    return "ghypergeom(" || as ||"," || pls || "," || qls || "," || mms || ")"; 
+  end if;
+  pars := [];
+  p1 := [];
+  if(lim = 0) then
+    for i from 1 to -1 * mi do
+     pars := [op(pars),[i]];
+    end do;
+
+    for k from 1 to mm-1 do
+      pars2 := [];
+      for j from 1 to nops(pars) do
+        for i from 0 to -1 * mi do
+          p := pars[j]; 
+          if i = 0 then
+            pars2 := [op(pars2),p]; 
+          elif (nops(p) = 0 or i <= p[nops(p)]) and nops(p) = k then
+            p1 := [op(p),i];
+            pars2 := [op(pars2),p1];
+          end if;       
+    end do;
+      end do;  
+      pars := pars2;
+    end do;
+
+   pars := [[],op(pars)];
+  else
+    for i from 1 to lim do
+      p1 := `MOPS/Par`(i);
+      pars:=[op(pars),op(p1)];
+    end do;
+  end if;
+  
+
+  #return pars;
+  result := 0;
+  for k in pars do
+    if(nops(k)>mm) then next;  end if;
+    ks :=0; for i from 1 to nops(k) do ks := ks + k[i]; end do;
+    t:=1/(ks!)*`MOPS/Jack`(a,k,mmm,sc);
+    for i from 1 to nops(pl) do
+      t:=t*`MOPS/GSFact`(a,pl[i],k);
+    end do;
+    for i from 1 to nops(ql) do
+      z:=`MOPS/GSFact`(a,ql[i],k);
+      if (z=0) then
+        print("Hypergeometric function not defined for these arguments");
+        return;
+      end if;
+      t:=t/z;
+    end do;
+    #if(t = 0) then break; end if;
+    result:=result + simplify(t);
+  end do;
+  return result;
+end proc;
+
+`MOPS/Jack/c`:=proc(a,k::list,l::list,mm) local result,i,j,t,u,ks,br,ui; 
+option remember;
+if(nargs = 3 or not(type(mm,'numeric'))) then m:= sum(k[i],i=1..nops(k)); else m:=mm; end if;
+if(nops(l)>m) then return 0; end if;
+if (k=l) then 
+  result:=product(product(`MOPS/Uhook`(a,k,i,j),i=1..k[j]),j=1..nops(k));
+  ks:= sum(k[i],i=1..nops(k));
+  return ((a^ks)*(ks)!)/result;
+end if;
+result:= 0;
+u:=l;
+for i from 1 to nops(l)-1 do
+  for t from 1 to k[1]-u[i] do
+    br:=0;
+    u:=l;
+    u[i]:=u[i]+t;
+    ui:=u;
+    for j from i+1 to nops(l) do  
+      if (br = 1) then break; end if;
+      u:=ui;
+      u[j]:=u[j]-t;
+      if (u[j]<0) then br:=1; break; end if;
+      u:=sort(u,`>`);
+      if (u[nops(u)]=0) then u:=u[1..nops(u)-1]; end if;
+      if(u&<=l or u&>k) then br:=1; break; end if;
+      result:=result + (l[i]-l[j]+2*t)*`MOPS/Jack/c`(a,k,u,m); 
+    end do;
+  end do;
+end do;
+i:=`MOPS/rho`(a,k);
+j:=`MOPS/rho`(a,l);
+if (i=j) then return 0;end if;
+return simplify((2/a)/(i-j)*result);
+end proc;
+
+`igreater`:=proc(term1, term2) local t1,t2;
+  t1:=term1; t2:=term2;
+  if(not(type(term1,indexed))) then
+    t1:=op(2,[op(term1)]);
+  end if;
+  if(not(type(term2,indexed))) then
+    t2:=op(2,[op(term2)]);
+  end if;
+  return [op(t1)] &> [op(t2)];
+end proc;
+
+`MOPS/conjugate`:=proc(l::list) local i,j,k,result;
+  if(not(`MOPS/parvalid`(l))) then return; end if;
+  if(l=[]) then return [] end if;
+  result:=[];
+  k:=l;
+  while(k[1] > 0) do
+    j:=1;
+    while(j<=nops(k) and k[j]>0) do j:=j+1; end do;
+    result:=[op(result),j-1];
+    for i from 1 to nops(l) do
+      k[i]:=k[i]-1;
+    end do;
+  end do;
+  return result;
+end proc;
+
+`MOPS/parvalid`:=proc(k::list) local i;
+if(k=[])then return true; end if;
+  for i from 1 to nops(k)-1 do
+    if(type(k[i],integer) and k[i]<k[i+1]) then 
+      printf("partition %q must be ordered from greatest to least",k); 
+      return false; end if;
+  end do;
+  return true;
+end proc;
+
+`MOPS/Split`:=proc(a,p1,n,ar1) local lead1,l1,l2,poly,lead2,r,i,tmp,p,nn;
+#p:=expand(p);
+p:= collect(simplify(p1),select((f)->op(0,f)=m,indets(simplify(p1))));
+if(p=0) then return 0; end if;
+#print(p);
+lead1:=`MOPS/lead`(p);
+l1:= lead1[2];
+lead1:=lead1[1];
+#print(l1);
+#print(lead1);
+#print("a");
+if(nargs = 2 or not(type(n,`numeric`))) then nn:=sum(l1[i],i=1..nops(l1)) else nn := n end if;
+if(nargs = 4) then poly:=`MOPS/Jack`(a,l1,nn,true,ar1);
+else poly:=`MOPS/Jack`(a,l1,nn,true);
+end if;
+lead2:=`MOPS/lead`(poly);
+l2:= lead2[2];
+lead2:=lead2[1];
+r:=(lead1/m[op(l1)])/(lead2/m[op(l2)]);
+if(nargs = 4 and ar1 = 'J') then
+  tmp:=r*J[op(l2)] + `MOPS/Split`(a,p-r*poly,nn,ar1);
+elif(nargs = 4 and ar1 = 'P') then
+  tmp:=r*P[op(l2)] + `MOPS/Split`(a,p-r*poly,nn,ar1);
+else
+  tmp:=r*C[op(l2)] + `MOPS/Split`(a,p-r*poly,nn);
+end if;
+
+return collect(simplify(tmp),select((f)->op(0,f)=C,indets(simplify(tmp))));
+end proc;        
+
+`MOPS/lead`:=proc(poly) local p, aterms,aterm,mterms,mterm,max,lead;  
+  lead:=0;
+  max:=[];
+  p:=poly;
+  if(p=0) then return 0; end if;
+  #print(p);
+  aterms := `minus`({op(p+nothing)},{nothing}); 
+  #print(aterms);
+  for aterm in aterms do  
+    mterms := `minus`({op(aterm*nothing)},{nothing}); 
+    #print(mterms);
+    for mterm in mterms do     
+      if evalb(StringTools['Explode'](convert(mterm,'string'))[1] = "m") then   
+        if type(mterm,indexed) then
+          #print(mterm);
+          if([op(mterm)]&>max) then
+            max:= [op(mterm)];
+            lead:= aterm;
+          end if; 
+        end if;
+      end if;
+    end do;
+  end do;
+#print(lead); 
+return [lead,max];
+end proc;
+
+`MOPS/JtoC`:=proc(a,k::list,m) local r,i,j,l;  
+  option remember;
+  r:=1;
+  for i from 1 to nops(k) do
+    r:= r * product(`MOPS/Uhook`(a,k,j,i)*`MOPS/Lhook`(a,k,j,i),j=1..k[i]);
+  end do;
+  j:=sum(k[l],l=1..nops(k));
+  return r/(a^j*j!);
+  end proc;
+
+`MOPS/PtoC`:=proc(a,k::list,m) local r,i,j,l;  
+  option remember;
+  r:=1;
+  for i from 1 to nops(k) do
+    r:= r * product(`MOPS/Uhook`(a,k,j,i),j=1..k[i]);
+  end do;
+  j:=sum(k[l],l=1..nops(k)); 
+    return r/(a^j*j!);
+end proc;
+
+`MOPS/MOPS_p`:=proc(n) option remember; if(n = 0) then return 1; end if;
+if(n = 1) then return x-a[1]; end if; 
+return expand((x-a[n])*`MOPS/MOPS_p`(n-1)-((b[n-1])^2)*`MOPS/MOPS_p`(n-2));
+end proc;
+
+`MOPS/Exp_e`:=proc(a,k,m) local i,l,p,exp,n,ks;
+exp:=toe(`MOPS/Jack`(a,k,m));
+l:=[];
+p:=`MOPS/MOPS_p`(m);
+ks:=sum(k[i],i=1..nops(k));
+#print(p);
+#print(exp);
+for i from 1 to ks do
+  l:= [op(l),parse(cat('e',i,"=",convert(coeff(p,x,m-i),string)))];
+end do;
+#print(l);
+exp:=expand(eval(exp,l));
+#print(exp);
+l:=[];
+for i from 1 to m do
+  for n from 1 to ks do
+    if(n mod 2 = 1) then 
+      l:=[op(l),parse(cat("a[",i,"]^",n,"=",0))];
+    else 
+      l:= [op(l),parse(cat("a[",i,"]^",n,"=",convert(`MOPS/MOPS_ff`(n-1),string)))];
+      l:=[op(l),parse(cat("b[",i,"]^",n,"=",convert(GAMMA(i/a+n/2)/GAMMA(i/a),string)))]; 
+    end if;      
+    end do;
+end do;
+#print(l);
+return simplify(eval(exp,l));
+end proc;
+
+`MOPS/MOPS_ff`:= proc(n::integer) local i;
+if(n=0 or n=1) then return 1; end if;
+return (n)*`MOPS/MOPS_ff`(n-2);
+end proc;
+
+`MOPS/tom` := proc (exp) 
+local aterms,mterms,aterm,mterm,num,max,i,j,plist,subslst,xexp,fexp,texp,elist,mlist,co;
+max := 0; 
+#print(exp);
+aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+#print(aterms);
+#get max degree
+for aterm in aterms do  
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  #print(mterms);
+  for mterm in mterms do     
+    mterm := convert(mterm,'string'); 
+    if evalb(StringTools['Explode'](mterm)[1] = "p") then 
+      if not nops(parse(mterm)) = 1 then mterm := op(parse(mterm))[1] end if; 
+      mterm := convert(mterm,'string'); 
+      num := parse(StringTools['SubString'](mterm,2 .. length(mterm))); 
+      if (not type(num,'integer')) then next; end if; 
+      if max < num then max := num; end if; 
+    end if; 
+  end do; 
+end do; 
+#print(max); 
+plist := []; 
+for i to max do 
+  plist := [op(plist), parse("p"||i)] 
+end do; 
+max := 0; 
+for aterm in aterms do 
+  num := degree(aterm,plist); 
+  if max < num then max := num; end if;
+end do; 
+#print(max); 
+subslst := []; 
+for i to nops(plist) do 
+  xexp := 0; 
+  for j to max do 
+    xexp := xexp+parse("q"||j||"^"||i) ;
+  end do; 
+  subslst := [op(subslst), parse(cat('p',i,"=",convert(xexp,string)))];
+end do; 
+texp := expand(eval(exp,subslst)); 
+#print(texp);
+#create m expression
+mlist:=[];
+fexp:=0;
+aterms := `minus`({op(expand(texp+nothing))},{nothing}); 
+for aterm in aterms do  
+  #print(aterm);
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  co:=1;
+  elist:=[];
+  for mterm in mterms do     
+    #print(mterm);   
+    if evalb(StringTools['Explode'](convert(mterm,'string'))[1] = "q") then
+      if(nops(mterm)=1) then 
+        elist:=[op(elist),1]; 
+      elif(nops(mterm)=2) then           
+          elist:=[op(elist),{op(mterm)}[1]]; 
+      else 
+          co:=co*mterm; 
+      end if;
+    else
+      co:=co*mterm;
+    end if; 
+  end do;
+  elist:=sort(elist,`>`);
+  #print(elist);
+  if (not(member(elist,mlist))) then
+    mlist:=[op(mlist),elist];
+    if(nargs = 1 or (nops([op(elist)]) <= max)) then
+      fexp:=fexp+co*m[op(elist)];
+    end if;
+  end if; 
+end do; 
+return fexp;
+end proc;   
+
+`MOPS/MOPS_pl`:=proc(n) option remember; if(n = 0) then return 1; end if;
+if(n = 1) then return (a[1])^2+(b[1])^2-x; end if; 
+return expand(((a[n])^2+(b[n])^2-x)*`MOPS/MOPS_pl`(n-1)-(a[n])^2*(b[n-1])^2*`MOPS/MOPS_pl`(n-2));
+end proc;
+
+`MOPS/Exp_el`:=proc(a,k,g) local i,l,p,exp,n,ks,m;
+exp:=`SF/toe`(`MOPS/Laguerre`(a,k,g,true));
+l:=[];
+ks:=sum(k[i],i=1..nops(k));
+m:=ks;
+p:=`MOPS/MOPS_pl`(ks);
+#print(p);
+#print(exp);
+for i from 1 to ks do
+  l:= [op(l),parse(cat('e',i,"=",convert(coeff(p,x,m-i),string)))];
+end do;
+#print(l);
+exp:=expand(eval(exp,l));
+#print(exp);
+l:=[];
+for i from 1 to ks do
+  for n from 1 to 2*ks do
+    if(n mod 2 = 1) then 
+      l:=[op(l),parse(cat("a[",i,"]^",n,"=",0))];
+    else 
+      l:= [op(l),parse(cat("a[",i,"]^",n,"=",convert(2^(n/2)*GAMMA((2*g+2/a*(i-1)+n)/2)/
+                                                     GAMMA((2*g+2/a*(i-1))/2),string)))];
+      l:=[op(l),parse(cat("b[",i,"]^",n,"=",convert(2^(n/2)*GAMMA((i+n)/2)/
+                                                  GAMMA(i/2),string)))]; 
+    end if;      
+    end do;
+end do;
+#print(l);
+return simplify(eval(exp,l));
+end proc;
+
+saveAll := proc() local p;
+for p in all_MOPS_procs do
+  savelib(p);
+end do;
+end proc;
+
+saveAll();
+
+`MOPS/Exp-laguerre`:=proc(a,k,g,m) local ks,i;
+return factor(`MOPS/Jack/Identity`(a,k,m)*`MOPS/GSFact`(a,g+1+(m-1)/a,k));
+end proc;
+
+`MOPS/Jexpand`:=proc(a,exp,n,ar1) local aterms,aterm,mterms,mterm,elist,par,jack,temp,ch;
+elist:=[];
+aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+for aterm in aterms do  
+  #print(aterm);
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  for mterm in mterms do     
+    #print(mterm);  
+    ch := StringTools['Explode'](convert(mterm,'string'))[1];  
+    #print(ch);
+    if evalb(ch = "C" or ch = "J" or ch = "P") then  
+      if nops(mterm)=2 and type(op(1,mterm),indexed) then mterm:=op(1,mterm); end if;   
+      if type(mterm,indexed) then
+        #print(mterm);
+        jack:=`MOPS/Jack`(a,[op(mterm)],n,ch);
+        elist:=[op(elist),parse(cat(convert(mterm,'string'),"=",convert(jack,'string')))];            
+      end if;
+    end if;
+  end do;
+end do;
+#print(elist);
+temp:=`MOPS/mexp`(expand(eval(exp,elist)),n);
+#temp:=tom(expand(eval(exp,elist)));
+if(nargs = 4) then return factor(expand(`MOPS/Split`(a,temp,n,ar1))); end if; 
+return factor(expand(`MOPS/Split`(a,temp,n)));
+end proc;
+
+`MOPS/expLjacks`:=proc(a,exp,g,nn) 
+local aterms,aterm,mterms,mterm,elist,par,jack,temp,val,ch,num,flag,jexp,n;
+if(nargs > 3) then n := nn; end if;
+#check for products
+flag := 0;
+aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+for aterm in aterms do  
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  num := 0;
+  for mterm in mterms do     
+    ch:=StringTools['Explode'](convert(mterm,'string'))[1]; 
+    if evalb(ch = "C" or ch = "J" or ch = "P") then
+      if nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(mterm)][2]) and 
+                         ([op(mterm)][2]) > 1 then
+        #flag := 1;
+      end if;
+      num := num + 1;
+    end if;
+  end do;
+  if num > 1 then flag := 1; end if;
+end do;
+#print(flag);
+elist:=[];
+aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+for aterm in aterms do  
+  #print(aterm);
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  for mterm in mterms do     
+    #print(mterm);   
+    ch:=StringTools['Explode'](convert(mterm,'string'))[1]; 
+    if evalb(ch = "C" or ch = "J" or ch = "P") then 
+      if(nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(mterm)][2])) then
+        mterm := ([op(mterm)][1]);
+      end if;   
+      if type(mterm,indexed) then
+        #print(mterm);
+          if(ch = "J") then
+            val := `MOPS/JtoC`(a,[op(mterm)],n);
+          elif(ch = "P") then
+            val := `MOPS/PtoC`(a,[op(mterm)],n);
+          else
+            val := 1;
+          end if;                                  
+        
+          if flag = 1 then
+            val := val * `MOPS/Jack`(a,[op(mterm)],n); 
+          else 
+            val := factor(val * `MOPS/Exp-laguerre`(a,[op(mterm)],g,n));  
+          end if;
+       elist:=[op(elist),parse(cat(convert(mterm,'string'),"=",
+                                   convert(val,'string')))];   
+     #print(elist);      
+      end if;
+    end if;
+  end do;
+end do;
+jexp := eval(exp,elist);
+#jexp := expand(eval(exp,elist));
+#print(jexp);
+if flag = 1 then
+  return `MOPS/expL`(a,jexp,g,n);
+end if;
+return factor(jexp);
+end proc;
+
+
+`MOPS/expJjacks`:=proc(a,exp,g1,g2,nn) local aterms,aterm,mterms,mterm,elist,par,jack,temp,val,ch,num,flag,jexp,n;
+if(nargs > 4) then n := nn; end if;
+#check for products
+flag := 0;
+aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+for aterm in aterms do  
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  num := 0;
+  for mterm in mterms do     
+    ch:=StringTools['Explode'](convert(mterm,'string'))[1]; 
+    if evalb(ch = "C" or ch = "J" or ch = "P") then
+      if nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(mterm)][2]) and 
+                         ([op(mterm)][2]) > 1 then
+        #flag := 1;
+      end if;
+      num := num + 1;
+    end if;
+  end do;
+  if num > 1 then flag := 1; end if;
+end do;
+#print(flag);
+elist:=[];
+aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+for aterm in aterms do  
+  #print(aterm);
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  for mterm in mterms do     
+    #print(mterm);   
+    ch:=StringTools['Explode'](convert(mterm,'string'))[1]; 
+    if evalb(ch = "C" or ch = "J" or ch = "P") then 
+      if(nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(mterm)][2])) then
+        mterm := ([op(mterm)][1]);
+      end if;  
+      if type(mterm,indexed) then
+        #print(mterm);
+          if(ch = "J") then
+            val := `MOPS/JtoC`(a,[op(mterm)],n);
+          elif(ch = "P") then
+            val := `MOPS/PtoC`(a,[op(mterm)],n);
+          else
+            val := 1;
+          end if;                                          
+          if flag = 1 then
+            val := val * `MOPS/Jack`(a,[op(mterm)],n); 
+         else 
+            val := factor(val * `MOPS/expJacobi`(a,[op(mterm)],g1,g2,n));  
+          end if;
+          elist:=[op(elist),parse(cat(convert(mterm,'string'),"=",
+                                    convert(val,'string')))];   
+          #print(elist);      
+      end if;
+    end if;
+  end do;
+end do;
+jexp := eval(exp, elist);
+#jexp := expand(eval(exp,elist));
+#print(jexp);
+if flag = 1 then
+  return `MOPS/expJ`(a,jexp,g1,g2,n);
+end if;
+return factor(jexp);
+end proc;
+
+`MOPS/Exp-jack`:=proc(a,k::list,m) local c,ks,jp,ul,t1,t,j,u;
+  if(not(`MOPS/parvalid`(k))) then return; end if;
+  c:=0;
+  ks:=sum(k[i],i=1..nops(k));
+  if not((ks mod 2) = 0) then return 0; end if;
+  for j from 0 to ks/2 do
+    jp:=`MOPS/Par`(j);
+    ul:=(convert(jp,set) intersect convert(`MOPS/subPar`(k),set));
+    t:=0;
+    for u in ul do 
+      t1:=`MOPS/GSFact`(a,r+(m+a-1)/a,k)/`MOPS/GSFact`(a,r+(m+a-1)/a,u);
+      t:=t+`MOPS/GBC`(a,k,u)*`MOPS/GBC`(a,u,[])*coeff(t1,r,ks/2-j);
+    end do;
+    c:=c+t*(-1)^j;
+  end do;
+  return factor((-1)^(ks/2)*c*`MOPS/Jack/Identity`(a,k,m)/`MOPS/Jack/Identity`(a,[],m));
+end proc;  
+
+`MOPS/expHjacks`:=proc(a,exp,nn) local aterms,aterm,mterms,mterm,elist,par,jack,temp,val,ch,num,flag,jexp,n;
+if(nargs > 2) then n := nn; end if;
+#check for products
+flag := 0;
+aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+for aterm in aterms do  
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  num := 0;
+  for mterm in mterms do     
+    ch:=StringTools['Explode'](convert(mterm,'string'))[1]; 
+    if evalb(ch = "C" or ch = "J" or ch = "P") then
+      if nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(mterm)][2]) and 
+                         ([op(mterm)][2]) > 1 then
+        #flag := 1;
+      end if;
+      num := num + 1;
+    end if;
+  end do;
+  if num > 1 then flag := 1; end if;
+end do;
+#print(flag);
+elist:=[];
+aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+for aterm in aterms do  
+  #print(aterm);
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  for mterm in mterms do     
+    #print(mterm);   
+    ch:=StringTools['Explode'](convert(mterm,'string'))[1]; 
+    if evalb(ch = "C" or ch = "J" or ch = "P") then 
+      if(nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(mterm)][2])) then
+        mterm := ([op(mterm)][1]);
+      end if;   
+      if type(mterm,indexed) then
+        #print(mterm);
+          if(ch = "J") then
+            val := `MOPS/JtoC`(a,[op(mterm)],n);
+          elif(ch = "P") then
+            val := `MOPS/PtoC`(a,[op(mterm)],n);
+          else
+            val := 1;
+          end if;                                      
+          if flag = 1 then
+            val := val * `MOPS/Jack`(a,[op(mterm)],n); 
+          else 
+            val := factor(val * `MOPS/Exp-jack`(a,[op(mterm)],n));  
+          end if;
+          elist:=[op(elist),parse(cat(convert(mterm,'string'),"=",
+                                      convert(val,'string')))];   
+          #print(elist);      
+      end if;
+    end if;
+  end do;
+end do;
+jexp := expand(eval(exp,elist));
+#print(jexp);
+if flag = 1 then
+  return `MOPS/expH`(a,jexp,n);
+end if;
+return factor(jexp);
+end proc;
+
+`MOPS/evalJack`:=proc(a,l,x) local uvalid,u,result,term,ls,us,i,j,ab,lc,uc;
+#option remember;
+  if(nops(l)>nops(x)) then return 0; end if;
+  if(l = []) then return 1; end if;
+  if(nops(x)=1) then
+    #if(nops(l)>1 and l[2] != 0) then return 0; end if;  
+    return simplify((x[1]^l[1])*(a^(l[1]-1))*`MOPS/SFact`(1/a+1,l[1]-1));
+  end if;
+  #compute uvalid
+  uvalid := `MOPS/egen`(`MOPS/conjugate`(l));
+  #print(uvalid);
+  ls:=sum(l[i],i=1..nops(l));
+  lc:=`MOPS/conjugate`(l);
+  result := 0;
+  for u in uvalid do
+    u := `MOPS/conjugate`(u);
+    #print(u);
+    us:=0; for j from 1 to nops(u) do us:=us+u[j]; end do;
+    uc:=`MOPS/conjugate`(u);
+    #compute AB
+    ab:=1;   
+    for i from 1 to nops(u) do
+       for j from 1 to u[i] do
+        #print(i,j);
+        if (j <= nops(uc) and j <= nops(lc) and lc[j]=uc[j]) then
+          ab:=ab/(uc[j]-i+a*(u[i]-j+1));          
+        else
+          ab:=ab/(uc[j]-i+1+a*(u[i]-j));          
+        end if
+      end do;  
+    end do;
+    for i from 1 to nops(l) do
+      for j from 1 to l[i] do
+        if (j <= nops(uc) and j <= nops(lc) and lc[j]=uc[j]) then
+          ab:=ab*(lc[j]-i+a*(l[i]-j+1));          
+        else
+          ab:=ab*(lc[j]-i+1+a*(l[i]-j));          
+        end if
+      end do;  
+    end do;
+    #print(ab);
+    #multiply & add 
+    term:=(x[nops(x)]^(ls-us))*ab*`MOPS/evalJack`(a,u,x[1..nops(x)-1]);    
+    #print(term);
+    result:=result+term;       
+  end do;
+  return result;
+end proc;
+
+savelib(`MOPS/Hermite`);
+
+`MOPS/expJacobi`:=proc(a,k::list,a1,a2,n) local i,val;
+return factor(`MOPS/Jack/Identity`(a,k,n)*`MOPS/GSFact`(a,a1+(n-1)/a+1,k)/`MOPS/GSFact`(a,a2+a1+2*(n-1)/a+2,k));
+end proc;        
+
+`MOPS/top` := proc(exp) option remember;
+local aterms,aterm,mterms,mterm,mtcoeff,poly,pcoeff,pexp,i,elist,fexp,flag;
+  aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+  #check if a single term
+  flag := 0;
+  if(nops(aterms) = 1) then
+    aterm := aterms[1];
+    if(nops(aterm) = 2 and aterm = [op(aterm)][1]^[op(aterm)][2]) then
+      flag := 1;
+    end if;
+    if(nops([StringTools['SearchAll']("m",convert(exp,'string'))])=1 and flag = 0) then
+      mterms := `minus`({op(aterm*nothing)},{nothing}); 
+      mtcoeff := 1;
+      for mterm in mterms do         
+        if evalb(StringTools['Explode']
+                   (convert(mterm,'string'))[1] = "m") then          
+          #form m[k]
+          if(nops([op(mterm)]) = 1) then
+            return cat('p',[op(mterm)][1]);
+          end if;
+            #print(mterm);
+        pexp:=1;
+            for i from 1 to nops([op(mterm)]) do
+        pexp := pexp * cat('p',[op(mterm)][i]);
+            end do;
+            #print(pexp);
+            poly := `MOPS/tom`(pexp);
+        #print(poly);
+            pcoeff := coeff(poly, mterm);
+        poly := poly - pcoeff * mterm;
+            #print(poly);
+         return mtcoeff*(pexp - `MOPS/top`(poly)) / pcoeff;
+        else
+          mtcoeff := mtcoeff * mterm;
+        end if;
+      end do;
+      if flag = 0 then
+        return mtcoeff * result;
+      end if;
+    end if;
+  end if;
+  elist:=[];
+  aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+  for aterm in aterms do  
+   #print(aterm);
+    mterms := `minus`({op(aterm*nothing)},{nothing}); 
+    for mterm in mterms do     
+      #print(mterm);   
+      if(nops(mterm) = 2 and mterm = [op(mterm)][1]^[op(mterm)][2]) then
+        mterm := [op(mterm)][1];
+      end if;
+      if evalb(StringTools['Explode'](convert(mterm,'string'))[1]="m") then
+        elist := [op(elist) , parse(cat(convert(mterm,'string'), "=", 
+            convert(`MOPS/top`(mterm),'string')))];
+      end if; 
+   end do;
+  end do;
+  #print(elist);
+  fexp := simplify(expand(eval(exp,elist)));
+  return fexp;
+end proc;
+
+`MOPS/expH`:=proc(a,exp,n) local aterms,aterm,mterms,mterm,elist,jexp,ch,val;
+jexp := `MOPS/mexp`(exp,n);
+jexp := `MOPS/Split`(a,jexp,n);
+#print(jexp);
+return `MOPS/expHjacks`(a,jexp,n);
+end proc;
+
+`MOPS/expJ`:=proc(a,exp,g1,g2,n) local aterms,aterm,mterms,mterm,elist,jexp,ch,val;
+jexp := `MOPS/mexp`(exp,n);
+jexp := `MOPS/Split`(a,jexp,n);
+return `MOPS/expJjacks`(a,jexp,g1,g2,n);
+end proc;
+
+`MOPS/expL`:=proc(a,exp,g,n) local aterms,aterm,mterms,mterm,elist,jexp,ch,val;
+jexp := `MOPS/mexp`(exp,n);
+jexp := `MOPS/Split`(a,jexp,n);
+return `MOPS/expLjacks`(a,jexp,g,n);
+end proc;
+
+`MOPS/mtoq`:= proc(k::list, vars::list, l, nvars) option remember;
+local result,i,nvar,cnt;
+  if(nvars < l) then return 0; end if;
+  result := 0;
+  if(l = 1) then 
+    for i from 1 to nops(vars) do
+      if(vars[i] = 0) then
+     result := result + (parse(cat('q',i)))^k[1];
+      end if;
+    end do;
+    return result;
+  end if;
+  cnt := 1;
+  while(cnt < nops(k) and k[cnt] = k[cnt + 1]) do cnt:= cnt + 1; end do; 
+  for i from 1 to nops(vars) do
+    if(vars[i] = 0) then
+      nvar := vars; 
+     nvar[i] := 1;
+      result := result + (parse(cat('q',i)))^k[1] * 
+                         `MOPS/mtoq`(k[2..nops(k)],nvar,l-1,nvars-1);
+      result := result;
+    end if;
+    #print(result);
+  end do;
+  return expand(result/cnt);
+end proc;
+
+`MOPS/mexp`:= proc(exp,nvars) local aterms,aterm,mterms,mterm,elist,res,i,zlist,par,qexp,mlist,fexp,co,nlz,num1,num2,nv,max,ex;
+if((nargs = 1) or ((nargs = 2) and not type(nvars,'numeric'))) then  
+  aterms := `minus`({op(expand(exp+nothing))},{nothing});
+  #get max degree
+  max := 0;
+  for aterm in aterms do  
+    mterms := `minus`({op(aterm*nothing)},{nothing}); 
+    #print(mterms);
+    num1:=0;
+    for mterm in mterms do     
+      mterm := convert(mterm,'string'); 
+      if evalb(StringTools['Explode'](mterm)[1] = "m") then 
+        ex:=1;
+        if not type(([op(parse(mterm))])[1],'numeric') then
+         #ex := op(parse(mterm))[nops(parse(mterm))]; 
+          mterm := op(parse(mterm))[1];          
+        end if; 
+        mterm := convert(mterm,'string'); 
+        num2 := parse(StringTools['SubString'](mterm,2 .. length(mterm))); 
+        if (not type(num2,'list')) then next; end if; 
+        num1:=num1+ex*nops(num2);
+      end if; 
+    end do; 
+    if max < num1 then max := num1; end if; 
+  end do; 
+  #print(max); 
+  nv:=max;
+else
+  nv:=nvars;
+end if;
+elist:=[];
+aterms := `minus`({op(expand(exp+nothing))},{nothing}); 
+for aterm in aterms do  
+  #print(aterm);
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  for mterm in mterms do     
+    #print(mterm);   
+    if evalb(StringTools['Explode'](convert(mterm,'string'))[1] = "m") then
+      if(nops(mterm) = 2 and mterm = ([op(mterm)][1])^([op(mterm)][2])) then
+        mterm := ([op(mterm)][1]);
+      end if;
+      if(type(mterm,'indexed')) then           
+        zlist := [];
+        par := [op(mterm)];
+        for i from 1 to nv do
+      zlist :=[op(zlist),0];
+        end do;   
+        res := `MOPS/mtoq`(par,zlist,nops(par),nv);
+        elist:=[op(elist),parse(cat(convert(mterm,'string'),"=",
+                                    convert(res,'string')))]; 
+        #print(elist);
+      end if;
+    end if;
+  end do;
+end do;
+qexp := expand(eval(exp,elist));
+#print(qexp);
+mlist:=[];
+fexp:=0;
+aterms := `minus`({op(expand(qexp+nothing))},{nothing}); 
+for aterm in aterms do  
+  #print(aterm);
+  mterms := `minus`({op(aterm*nothing)},{nothing}); 
+  co:=1;
+  elist:=[];
+  for mterm in mterms do     
+    #print(mterm);   
+    if evalb(StringTools['Explode'](convert(mterm,'string'))[1] = "q") then
+      if(nops(mterm)=1) then 
+        elist:=[op(elist),1]; 
+      elif(nops(mterm)=2) then           
+          elist:=[op(elist),{op(mterm)}[1]]; 
+      else 
+          co:=co*mterm; 
+      end if;
+   else
+      co:=co*mterm;
+    end if; 
+  end do;
+  elist:=sort(elist,`>`);
+  #print(elist);
+  num1:=1;
+  num2:=1;
+  for i from 1 to nops(elist)-1 do
+   if elist[i] = elist[i+1] then
+     num2 := num2 + 1;
+   else
+     num1 := num2! * num1;
+     num2 := 1;
+   end if;
+  end do;
+  num1 := num2! * num1;
+  #print(num1);
+  nlz := product(j,j=nv-nops(elist)+1..nv);
+  #print(elist);
+  #print(nlz);    
+  fexp:=fexp+co*m[op(elist)]* num1 /nlz;
+  #end if; 
+end do;
+return collect(fexp,select((f)->op(0,f)=m,indets(fexp)));
+#return factor(fexp);
+end proc;
+
+`MOPS/egen`:=proc(k::list) local lst1,lst2,l,l2;
+  if(nops(k) = 1) then
+    if(op(k) = 1) then
+      return [[],k];
+    end if; 
+    return [[op(k)-1],k];
+  end if;
+  
+  lst1 := `MOPS/egen`(k[1..nops(k)-1]);
+  lst2 := [];
+  for l in lst1 do
+    if(nops(l) = nops(k)-1) then
+      if(l[nops(l)] < k[nops(k)]) then
+        l := [op(l),k[nops(k)]-1];
+        if(l[nops(l)] = 0) then l := l[1..nops(l)-1]; end if;
+        lst2 := [op(lst2),l];
+      else
+        l2 := [op(l),k[nops(k)]];
+        l := [op(l),k[nops(k)]-1];
+        if(l[nops(l)] = 0) then l := l[1..nops(l)-1]; end if;
+        lst2 := [op(lst2),l,l2];        
+      end if;
+    else
+      lst2 := [op(lst2),l];
+    end if;
+  end do;
+  return lst2;
+end proc;
+
+`MOPS/eval`:=proc(a,k::list,x::list,arg1)
+local sc,val;
+  if(nargs = 4) then
+    sc := arg1;
+  else
+    sc := 'C';
+  end if;
+  val:=`MOPS/evalJack`(a,k,x);
+  if(sc = 'J' or sc = 'symJ') then
+    return val;
+  else
+    val := val / `MOPS/JtoC`(a,k,0);
+    if(sc = 'C' or sc = 'symC') then
+      return val;
+    else
+      return val * `MOPS/PtoC`(a,k,0);
+    end if;
+  end if;
+end proc;
+
+`MOPS/Hcoeff`:=proc(a,k::list,l::list) option remember;
+local i,j,ks,ls,w,li,lii,res,lj,lij,f;
+  if(l &> k) then return 0; end if;
+  if k = l then return 1; end if;
+  ks := 0; for w from 1 to nops(k) do ks := ks + k[w]; end do;
+  ls := 0; for w from 1 to nops(l) do ls := ls + l[w]; end do;
+    
+  res := 0;
+    for i from 1 to min(nops(l) + 1,nops(k)) do
+       #print(((i = nops(l) + 1) and (i = 1 or (l[i-1] >= 2 and 2 <= k[i])));
+    if ((i = nops(l) + 1) and (i = 1 or (l[i-1] >= 2 and 2  <= k[i]))) then
+      li := [op(l),1];
+      lii := [op(l),2];
+      res := res + `MOPS/GBC/cont`(a,lii,i) * `MOPS/GBC/cont`(a,li,i) * 
+                   `MOPS/Hcoeff`(a,k,lii);
+    elif( not(i=nops(l)+1 )) then
+        # print(foo);
+         if (i = 1 or l[i-1] >= l[i] + 2) and l[i] + 2  <= k[i] then
+           #print(foo);
+               li := l;
+               li[i] := l[i] + 1;
+               lii := l;
+               lii[i] := l[i] +2 ;
+           res := res + `MOPS/GBC/cont`(a,lii,i) * `MOPS/GBC/cont`(a,li,i) * 
+                   `MOPS/Hcoeff`(a,k,lii);
+          end if;
+    end if;
+  end do;
+
+  
+#print(foo);
+  for i from 1 to min(nops(l) + 1,nops(k)) do
+    #print(i);
+    f := 0;
+    if i = nops(l) + 1 then
+      li := [op(l),1];
+      f := 1;
+    elif((i = 1 or l[i-1] >= l[i] + 1) and l[i] + 1  <= k[i]) then
+      li := l;
+      li[i] := l[i] + 1;
+      f := 1;
+    end if;
+    if (f = 1) then
+      for j from i+1 to min(nops(li) + 1, nops(k)) do 
+        #print ();            
+        if j = nops(li) + 1 then
+          lj := [op(l),1];
+          lij := [op(li),1];
+          #print(li);
+          #print(lj);
+          #print(lij);   
+          if not(j = i + 1 and lij[i] = lij[j] and (j = nops(lij) or lij[j] > lij[j+1])) then
+       res := res + (lij[i] - lij[j] - (i - j) / a) * (`MOPS/GBC/cont`(a,lij,i) *
+                       `MOPS/GBC/cont`(a,lj,j)-`MOPS/GBC/cont`(a,lij,j)*`MOPS/GBC/cont`(a,li,i))*
+                       `MOPS/Hcoeff`(a,k,lij);
+          else
+         res := res - (1 / a) * (`MOPS/GBC/cont`(a,lij,j) *
+                       `MOPS/GBC/cont`(a,li,i))*
+                       `MOPS/Hcoeff`(a,k,lij);
+           end if;
+          #print('b');
+        elif(not (j=nops(li)+1) and ( j > i and li[j-1] >= li[j] + 1 and li[j] + 1  <= k[j])) then
+          lj := l;
+          lj[j] := l[j] + 1;
+          lij := li;
+          lij[j] := li[j] + 1;
+          if not(j = i + 1 and lij[i] = lij[j] and (j = nops(lij) or lij[j] > lij[j+1])) then          res := res + (l[i] - l[j] - (i - j) / a) * (`MOPS/GBC/cont`(a,lij,i) *
+                      `MOPS/GBC/cont`(a,lj,j)-`MOPS/GBC/cont`(a,lij,j)*`MOPS/GBC/cont`(a,li,i))*
+                       `MOPS/Hcoeff`(a,k,lij);
+          else
+          res := res - (1 / a) * (`MOPS/GBC/cont`(a,lij,j) *
+                      `MOPS/GBC/cont`(a,li,i))*
+                      `MOPS/Hcoeff`(a,k,lij);
+
+
+          end if;
+        end if;
+    end do;    
+    end if;
+  end do;
+
+  return -1 * res/(ks-ls);
+end proc;
+
+`MOPS/Hermite` := proc(a, k::list, nn, norm) option remember;
+local p, par, res,sc,n;
+  if(nargs > 2) then 
+    if(type(nn,'list')) then n:=nops(nn) else n:=nn; end if;  
+    if(type(n,'numeric')) then
+      if(nops(k)>n) then return 0; end if;
+    end if;
+  end if;
+  if(nargs = 4) then
+    if(not(StringTools['IsPrefix']('m',norm))) then
+      sc := cat('sym',norm);
+    else
+      sc := convert(StringTools['SubString'](norm,2..length(norm)),'symbol');
+    end if;
+  else
+    sc := 'symC';
+  end if;
+  par := `MOPS/subPar`(k);
+  res := 0;
+  for p in par do
+    res := res + simplify(`MOPS/Hcoeff`(a,k,p,n) *`MOPS/Jack/Identity`(a, k,n)/`MOPS/Jack/Identity`(a,p,n))*`MOPS/Jack`(a,p,nn,sc);
+  end do;
+  return res;
+end proc;
+
+# !!!!!!!! WILL NOT WORK IF MOPS IS LOADED     !!!!!!!!!!!
+# MUST CHANGE DIRECTORY NAMES
+# adds help file s as argument to help database
+addhelp:=proc(s)
+print(`e:\\Program Files\\maple 8\\MOPS\\Help Files\\h`||s||`.mws`);
+makehelp(`Mathematics/MOPS/`||s, `e:\\Program Files\\maple 8\\MOPS\\Help Files\\h`||s||`.mws`, `e:\\program files\\maple 8\\mops`);
+INTERFACE_HELP(insert, topic="Mathematics/MOPS/"||s, browser="Mathematics/MOPS/"||s, library=savelibname);
+end proc;
+
+# !!!!!!!! WILL NOT WORK IF MOPS IS LOADED     !!!!!!!!!!!
+# MUST CHANGE DIRECTORY NAMES
+# adds help file s as argument to help database under subsection sub
+addhelp2:=proc(sub, s)
+makehelp(`Mathematics/MOPS/`||sub||`/`||s, `e:\\Program Files\\maple 8\\MOPS\\Help Files\\h`||s||`.mws`, `e:\\program files\\maple 8\\mops`);
+INTERFACE_HELP(insert, topic="Mathematics/MOPS/"||sub||"/"||s, browser="Mathematics/MOPS/"||sub||"/"||s, library=savelibname);
+end proc;
+
+addhelp2(Conversion, p2m);

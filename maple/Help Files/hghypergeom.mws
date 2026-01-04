@@ -1,0 +1,164 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Comment" 2 18 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 1 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 263 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 265 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+267 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 268 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 269 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 270 "" 0 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 271 "" 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+272 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 273 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 274 "" 1 14 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 275 "" 0 14 0 0 0 0 1 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 276 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+277 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 278 "" 0 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 279 "" 0 1 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 }{CSTYLE "" -1 280 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 281 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+282 "" 0 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 283 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 284 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 285 "" 1 14 0 0 0 0 1 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 286 "" 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+287 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 288 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 289 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 290 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 291 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{PSTYLE "Normal
+" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 
+1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 11 1 {CSTYLE "" 
+-1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 0 0 0 1 0 1 0 2 
+2 0 1 }{PSTYLE "Maple Output" -1 12 1 {CSTYLE "" -1 -1 "Times" 1 12 0 
+0 0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 0 1 0 1 0 2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT 256 11 "ghypergeom " }{TEXT 262 
+37 "- Generalized hypergeometric function" }{TEXT 257 1 "\n" }}{PARA 
+0 "" 0 "" {TEXT 263 22 "Calling Sequence:\n    " }{TEXT 260 36 "ghyper
+geom(a,A[p],B[q],[x],'N',l)   " }{TEXT 261 17 "    \n\nParameters:" }
+{TEXT 259 273 "\n     a      - the Jack parameter (real positive numbe
+r)\n     A[p] - the list containing the \"upper\" p hypergeometric par
+ameters (real numbers);                may be empty\n     B[q] - the l
+ist containing the \"lower\" q hypergeometric parameters (real numbers
+); may be empty" }}{PARA 0 "" 0 "" {TEXT 264 358 "      [x]   - the va
+lues (numerical or symbolic) that the hypergeometric function must be \+
+evaluated at; or if the general result is desired, the number of varia
+bles\n      'N'   - the requested Jack polynomial normalization or the
+ monomial basis\n       l     - if a partial sum is desired, l is the \+
+sum of the partition the evaluation will be stopped  \n     \n" }
+{TEXT 258 9 "Synopsis:" }}{PARA 0 "" 0 "" {TEXT -1 300 "The function g
+hypergeom computes the generalized hypergeometric function correspondi
+ng to the two input lists of parameters, A[p] and B[q]. Given these tw
+o lists, ghypergeom examines them and decides if the corresponding gen
+eralized hypergeometric function is knowably expressible in a simpler \+
+form. " }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 71 
+"The definition of the generalized hypergeometric series is given belo
+w:" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {XPPEDIT 18 0 "p
+Fq(a,A[[p]],B[[q]],[x]) = sum(product(gsfact(a,A[[p]](i)),i = 1 .. p)/
+(k!*product(gsfact(a,B[[q]](j)),j = 1 .. q))*C[kappa]^\{a\}*[x]);" "6#
+/-%$pFqG6&%\"aG&%\"AG6#7#%\"pG&%\"BG6#7#%\"qG7#%\"xG-%$sumG6#**-%(prod
+uctG6$-%'gsfactG6$F'-&F)6#7#F,6#%\"iG/FC;\"\"\"F,FF*&-%*factorialG6#%
+\"kGFF-F96$-F<6$F'-&F.6#7#F16#%\"jG/FU;FFF1FF!\"\")&%\"CG6#%&kappaG<#F
+'FF7#F3FF" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 
+53 "where the sum is taken over all k and all partitions " }{XPPEDIT 
+18 0 "kappa;" "6#%&kappaG" }{TEXT -1 6 " of k." }}{PARA 0 "" 0 "" 
+{TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 427 "Just as with the univari
+ate hypergeometrics, the series always converges for p<=q, it has a no
+n-trivial radius of convergence if p = q+1, and it diverges for p<=q, \+
+with the exception of the polynomial hypergeometrics (when one of the \+
+parameters in A[q] is a non-positive integer).  If the parameters of t
+he hypergeometric series do not allow for a simpler (e.g. polynomial) \+
+expression, the answer returned is the same as input." }}{PARA 0 "" 0 
+"" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 26 "For more information, \+
+see " }{TEXT 265 14 "Release Notes." }}{PARA 0 "" 0 "" {TEXT -1 0 "" }
+}{PARA 0 "" 0 "" {TEXT -1 0 "" }{TEXT 266 0 "" }{TEXT 267 26 "Referenc
+es: Release Notes," }}{PARA 0 "" 0 "" {TEXT -1 24 "                   \+
+     " }{TEXT 268 0 "" }{TEXT 269 12 "Kaneko, J., " }{TEXT 270 0 "" }
+{TEXT -1 0 "" }{TEXT 271 79 "Selberg Integrals and hypergeometric func
+tions associated to Jack polynomials, " }{TEXT -1 40 "SIAM J. Math. An
+al., 24:1086-1110, 1993;" }}{PARA 0 "" 0 "" {TEXT -1 23 "             \+
+          " }{TEXT 272 13 " Kadell, K., " }{TEXT 273 0 "" }{TEXT 274 
+0 "" }{TEXT 275 30 "The Selberg-Jack polynomials, " }{TEXT -1 42 "Adva
+nces in Mathematics, 130:33-102, 1997;" }}{PARA 0 "" 0 "" {TEXT -1 25 
+"                         " }{TEXT 276 0 "" }{TEXT 277 14 "Muirhead, R
+., " }{TEXT 278 0 "" }{TEXT -1 0 "" }{TEXT 279 44 "Aspects of Multivar
+iate Statistical Theory, " }{TEXT -1 62 "Wiley Series in Probability a
+nd Mathematical Statistics, 1982;" }}{PARA 0 "" 0 "" {TEXT -1 26 "    \+
+                      " }{TEXT 280 0 "" }{TEXT 281 13 "Okounkov, A. " 
+}{TEXT 282 0 "" }{TEXT -1 4 "and " }{TEXT 283 0 "" }{TEXT 284 15 "Olsh
+anski, G., " }{TEXT 285 0 "" }{TEXT 286 66 "Shifted Jack Polynomials, \+
+the Binomial Formula, and Applications, " }{TEXT -1 41 "Mathematical R
+esearch Letters, (4), 69-78" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 
+0 "" 0 "" {TEXT -1 0 "" }{TEXT 287 0 "" }{TEXT 288 9 "Examples:" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 27 "ghypergeom(a, [-1], [], 6);
+" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,0\"\"\"F$&%\"CG6#F$!\"\"*&#F$\"\"
+#F$*(&F&6$F$F$F$,&%\"aGF$F$F$F$F0F(F$F$*&#F$\"\"'F$**&F&6%F$F$F$F$F/F$
+,&F+F$F0F$F$F0!\"#F$F(*&#F$\"#CF$*,&F&6&F$F$F$F$F$F/F$F7F$,&F0F$\"\"$F
+$F$F0!\"$F$F$*&#F$\"$?\"F$*.&F&6'F$F$F$F$F$F$F/F$F7F$F?F$,&F0F$\"\"%F$
+F$F0!\"%F$F(*&#F$\"$?(F$*0&F&6(F$F$F$F$F$F$F$F/F$F7F$F?F$FHF$,&F0F$\"
+\"&F$F$F0!\"&F$F$" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 38 "ghyper
+geom(a, [2,3], [5], 10, 'J', 3);" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,.
+*&#\"\"'\"\"&\"\"\"&%\"JG6#F(F(F(*&F%F(*&,&%\"aGF(F(F(F(&F*6#\"\"#F(F(
+F(*&#\"\"$F'F(*.F.F(&F*6$F(F(F(,&*&F2F(F/F(F(F(!\"\"F(,&*&F5F(F/F(F(F(
+F;F(F/!\"#,&*&F'F(F/F(F(F(F;F;F(F(*&#\"\")\"\"(F(*(,&F(F(*&F2F(F/F(F(F
+(F.F(&F*6#F5F(F(F(*&#F(\"#:F(*.,&F2F(F/F(F(&F*6$F2F(F(F<F(F/F>F?F;,&F(
+F;*&\"\"%F()F/F2F(F(F(F(F(*&#F2F'F(*4FNF(&F*6%F(F(F(F(F9F(F<F(,&*&F5F(
+F/F(F(F2F;F(F/!\"%F?F;,&*&F'F(F/F(F(F2F;F;,&*$FTF(F(F(F;F(F(F(" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 30 "ghypergeom(a, [-2], [1,1], 5
+);" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,L\"\"\"F$*&\"\"#F$&%\"CG6#F$F$!
+\"\"**&F(6$F$F$F$,&F$F$*&F&F$%\"aGF$F$F$F0F$,&F0F$F$F*!\"#F$*&#F&\"\"$
+F$*.&F(6%F$F$F$F$F.F$,&F0F$F$F$F$F0F&F1F2,&F0F$F&F*F2F$F**&#F$\"\"'F$*
+2&F(6&F$F$F$F$F$F.F$F9F$,&*&F&F$F0F$F$F5F$F$F0F5F1F2F:F2,&F0F$F5F*F2F$
+F$*&#F$\"#:F$*6&F(6'F$F$F$F$F$F$F.F$F9F$FAF$,&F&F$F0F$F$F0\"\"%F1F2F:F
+2FCF2,&F0F$FKF*F2F$F**&#F$FKF$&F(6#F&F$F$*&#F$\"#7F$**&F(6$F&F$F$F.F$F
+0F$F1F2F$F**&#F$\"#CF$*.&F(6%F&F$F$F$F.F$F9F$F0F&F1F2F:F2F$F$*&#F$\"$?
+\"F$*2&F(6&F&F$F$F$F$F.F$F9F$FAF$F0F5F1F2F:F2FCF2F$F**&#F$\"$g$F$*6&F(
+6'F&F$F$F$F$F$F.F$F9F$FAF$FJF$F0FKF1F2F:F2FCF2FLF2F$F$*&#F$\"#[F$*.&F(
+6$F&F&F$F.F$F9F$F0F&F1F2,&*&F&F$F0F$F$F$F*F2F$F$*&#F$FinF$*0&F(6%F&F&F
+$F$F.F$F9F&F0F5F1F2FioF2F:F2F$F**&#F$\"$?(F$*4&F(6&F&F&F$F$F$F.F$F9F&F
+AF$F0FKF1F2FioF2F:F2FCF2F$F$*&#F$\"%?DF$*8&F(6'F&F&F$F$F$F$F.F$F9F&FAF
+$FJF$F0\"\"&F1F2FioF2F:F2FCF2FLF2F$F**&#F$\"%!)GF$*2&F(6%F&F&F&F$F.F$F
+9F&FJF$F0FKF1!\"%FioF2F:F2F$F$*&#F$\"&g,#F$*6&F(6&F&F&F&F$F$F.F$F9F&FJ
+F$FAF$F0F\\qF1FcqFioF2F:F2FCF2F$F**&#F$\"&S1)F$*8&F(6'F&F&F&F$F$F$F.F$
+F9F&FJF&FAF$F0F=F1FcqFioF2F:F2FCF2FLF2F$F$*&#F$\"'!Gh\"F$*:&F(6&F&F&F&
+F&F$F.F$F9F&FJF$FAF$,&F0F$F5F$F$F0F=F1FcqFioF2F:F2FCF2,&*&F&F$F0F$F$F5
+F*F2F$F$*&#F$\"'gdsF$*<&F(6'F&F&F&F&F$F$F.F$F9F&FJF&FAF$FfrF$F0\"\"(F1
+FcqFioF2F:F2FCF2FgrF2FLF2F$F**&#F$\")+/.HF$*>&F(6'F&F&F&F&F&F$F.F$F9F&
+FJF&FAF$FfrF$,&F0F$FKF$F$F0\"\")F1FcqFioF2F:FcqFCF2FgrF2FLF2F$F$" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 37 "ghypergeom(3, [-3, 4], [1], \+
+[x,x,x]);" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,6\"\"\"F$*&\"#OF$%\"xGF$
+!\"\"*&\"%+7F$)F'\"\"#F$F$*&#\"&?P&\"\"$F$*$)F'F0F$F$F(*&\"'+T9F$)F'\"
+\"%F$F$*&#\"(?8U#F0F$*$)F'\"\"&F$F$F(*&#\"*!GqM6\"#FF$*$)F'\"\"'F$F$F$
+*&#\")+o8HF0F$*$)F'\"\"(F$F$F(*&#\"*+'\\(\\\"\"\"*F$*$)F'\"\")F$F$F$*&
+#\",+!o*z>\"\"$V#F$*$)F'FMF$F$F(" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 35 "ghypergeom(a, [-2], [3,4], [x, y]);" }}{PARA 12 "" 1 
+"" {XPPMATH 20 "6#,8\"\"\"F$*&\"\"'!\"\"%\"yGF$F'*&F&F'%\"xGF$F'*0F&F'
+F(F$F*F$,&F$F$*&\"\"#F$%\"aGF$F$F$F/F$,&*&\"\"$F$F/F$F$F$F'F',&*&\"\"%
+F$F/F$F$F$F'F'F$*(\"$S#F'F(F.F/F$F$*&F7F'F(F.F$*(\"$?\"F'F(F$F*F$F$*(F
+7F'F*F.F/F$F$*&F7F'F*F.F$*4\"$?(F'F(F$,&F.F$F/F$F$F*F$,&F(F$F*F$F$F,F$
+F/F$F0F'F3F'F'*6\"%S9F'F(F.F?F$F*F.,&F/F$F$F$F.F,F$F/F.F0F'F3!\"#,&*&
+\"\"&F$F/F$F$F$F'F'F$" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 45 "gh
+ypergeom(1, [-3, 1], [5,2], [-14.5, 3.47]);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#$\"+L2uGL!\")" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 48 "ghypergeom(a, [-1], [2,3], [12.36, 5,34, 1.25]);" }}{PARA 12 "" 
+1 "" {XPPMATH 20 "6#,*$\"+LLLox!\"*!\"\"*,$\"+LLt$>\"!\"(\"\"\"%\"aGF,
+,&F-F,$F,\"\"!F,F,,&*&$\"\"#F0F,F-F,F,$F,F0F'F',&*&$\"\"$F0F,F-F,F,$F,
+F0F'F'F,*2$\"+M$3-V#F+F,F.F,,&F3F,F-F,F,F-F4F1F',&F-F,$F,F0F'F'F6F',&*
+&F8F,F-F,F,$F4F0F'F'F'*6$\"+LL$eH(!\")F,F.F,F>F,,&F8F,F-F,F,F-F9F1F'F?
+!\"#,&*&F3F,F-F,F,$F9F0F'F'F6F'FAF'F," }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 33 "ghypergeom(a, [2, 3], [3,5], 10);" }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6#Q?ghypergeom(a,[2,~3],[3,~5],10)6\"" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 34 "ghypergeom(a, [-1], [2], 5, 'm'); " }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#,.\"\"\"F$*&#F$\"\"#F$&%\"mG6#F$F$!\"
+\"*&#F$F'F$*(%\"aGF$&F)6$F$F$F$,&*&F'F$F/F$F$F$F+F+F$F$*&#F$\"\"%F$**F
+/F'&F)6%F$F$F$F$,&F/F$F$F+F+F2F+F$F+*&#F$F6F$*,F/\"\"$&F)6&F$F$F$F$F$F
+2F+F:F+,&*&F'F$F/F$F$F>F+F+F$F$*&#F$\"\")F$*.F/F6&F)6'F$F$F$F$F$F$F2F+
+F:F+FAF+,&F/F$F'F+F+F$F+" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 0 "" }
+{TEXT 289 0 "" }{TEXT 290 10 "See Also: " }{TEXT 291 0 "" }{TEXT -1 
+30 "jack, gsfact, sfact, gbinomial" }}}}{MARK "10 0 2" 0 }{VIEWOPTS 1 
+1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

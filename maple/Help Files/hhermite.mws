@@ -1,0 +1,85 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Comment" 2 18 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "Help Italic" -1 42 "Times" 1 12 0 0 0 0 1 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 1 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 263 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 265 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+267 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 268 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 269 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 270 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 271 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+272 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 273 "" 0 1 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 274 "" 1 14 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 
+0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple O
+utput" -1 11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 
+1 1 }3 3 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 12 1 
+{CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 
+0 1 0 1 0 2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT 256 8 " hermite" }{TEXT 269 1 " \+
+" }{TEXT 270 9 "- Hermite" }{TEXT 257 1 " " }{TEXT 271 35 "polynomials
+\n\nCalling Sequence:\n    " }{TEXT 259 20 "hermite(a,k,[x],'N')" }
+{TEXT 258 16 "   \n\nParameters:" }}{PARA 0 "" 0 "" {TEXT 260 98 "    \+
+ a - the Jack/Hermite parameter (real positive number)\n     k - the p
+artition (in list format)" }}{PARA 0 "" 0 "" {TEXT 265 107 "     [x] -
+ the list of variables (numerical or symbolic) or the number of variab
+les (numerical or symbolic)" }}{PARA 0 "" 0 "" {TEXT 266 76 "     'N' \+
+- the requested Jack polynomial normalization or the monomial basis" }
+}{PARA 0 "" 0 "" {TEXT -1 17 "                 " }}{PARA 0 "" 0 "" 
+{TEXT 267 5 "     " }}{PARA 0 "" 0 "" {TEXT 261 9 "Synopsis:" }}{PARA 
+0 "" 0 "" {TEXT -1 129 "The generalized Hermite polynomials are eigenf
+unctions of a Laplace-Beltrami-like operator which depends on the a pa
+rameter (see " }{TEXT 272 13 "Release Notes" }{TEXT -1 116 "). They re
+present the orthogonal polynomials corresponding to a generalized Herm
+ite weight, which is proportional to" }}{PARA 0 "" 0 "" {XPPEDIT 18 0 
+"product(abs(x[i]-x[j])^\{2/a\})*product(e^(-x[i]^2/2),i = 1 .. n);" "
+6#*&-%(productG6#)-%$absG6#,&&%\"xG6#%\"iG\"\"\"&F-6#%\"jG!\"\"<#*&\"
+\"#F0%\"aGF4F0-F%6$)%\"eG,$*&&F-6#F/F7F7F4F4/F/;F0%\"nGF0" }}{PARA 0 "
+" 0 "" {TEXT -1 3 "on " }{XPPEDIT 18 0 "[-infinity, infinity]^n;" "6#)
+7$,$%)infinityG!\"\"F&%\"nG" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 
+0 "" 0 "" {TEXT -1 113 "Computing the Hermite polynomials involves com
+puting the generalized binomial coefficients gbinomial(a,k,s) (see " }
+{TEXT 273 13 "Release Notes" }{TEXT -1 86 "). This algorithm uses the \+
+recurrence for the coefficients of the Hermite polynomials." }}{PARA 
+0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 262 25 "Reference: Rel
+ease Notes;" }}{PARA 0 "" 0 "" {TEXT 274 28 "                 Baker., \+
+T. " }{TEXT -1 4 "and " }{TEXT 268 13 "Forrester, P." }{TEXT -1 3 ",  \+
+" }{TEXT 42 67 "The Calogero-Sutherland Model and Generalized Classica
+l Polynomials" }{TEXT -1 35 ", Commun. Math. Phys. (188) 175-216" }}
+{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 264 9 "Examples:
+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 19 "hermite(a,[3,1],m);" }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#,*&%\"CG6$\"\"$\"\"\"F(*0\"\"'F(,&%\"m
+GF(F(!\"\"F(,&F,F(*&\"\"#F(%\"aGF(F(F(,&F1F(F(F-F(,&F(F(*&F'F(F1F(F(F-
+,&F1F(F(F(!\"#&F%6#F0F(F-*,F*F(F5F6,&F,F(F1F(F(F.F(&F%6$F(F(F(F-*0F*F(
+F,F(F:F(F.F(F+F(F3F-F5F6F-" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+23 "hermite(2,[3,1],[x,x]);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,(*&\"#
+[\"\"\")%\"xG\"\"%F&F&*&#\"$c#\"\"(F&*$)F(\"\"#F&F&!\"\"#\"#KF-F1" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 40 "hermite(a, [2], [3.4, 10.1, \+
+-1.25, -3]);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,(*&$\"++]KT7!\"(\"\"
+\"%\"aGF(F($\"+++Dc&)!\")F(*(\"\"%F(,&F.F(F)F(F(,&F)F(F(F(!\"\"F1" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 41 "hermite(1, [3,1,1], [-41/4, \+
+10.4, 12.5]);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$!++@Hck!\"$" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 23 "hermite(1,[2,2],n,'J');" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#,**&\"\"'\"\"\"&%\"JG6$\"\"#F*F&F&**F*
+F&,&%\"nGF&F&!\"\"F&F-F&&F(6#F*F&F.**F*F&F-F&,&F-F&F&F&F&&F(6$F&F&F&F&
+*(F*F.F-F*,&*$)F-F*F&F&F&F.F&F&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 26 "hermite(a, [3,1], n, 'P');" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#
+,**&#\"\"\"\"#7F&*(,&F&F&*&\"\"$F&%\"aGF&F&F&F,!\"\"&%\"PG6$F+F&F&F&F&
+*0\"\"'F&,&%\"nGF&F&F-F&,&F4F&*&\"\"#F&F,F&F&F&,&F,F&F&F-F&F)F-,&F,F&F
+&F&!\"#&F/6#F7F&F-*.F+F&F9F-,&F4F&F,F&F&F5F&F,F-&F/6$F&F&F&F-*0F2F&F4F
+&F>F&F5F&F3F&F)F-F9F:F-" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 25 "
+hermite(1, [2,2], 5,'m');" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,.*&\"\"#
+\"\"\"&%\"mG6$F%F%F&F&*&F%F&&F(6%F%F&F&F&F&*&\"\"%F&&F(6&F&F&F&F&F&F&*
+&\"#?F&&F(6#F%F&!\"\"*&\"#5F&&F(6$F&F&F&F&\"$+$F&" }}}{EXCHG {PARA 0 "
+" 0 "" {TEXT -1 0 "" }{TEXT 263 9 "See Also:" }{TEXT -1 49 " gbinomial
+, jack, gsfact, rho, laguerre, hermite2" }}}}{MARK "8 0 1" 0 }
+{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

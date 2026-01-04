@@ -1,0 +1,84 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Comment" -1 18 "Times" 0 1 0 0 0 0 0 0 2 2 2 
+2 0 0 0 1 }{CSTYLE "2D Output" -1 20 "Times" 0 1 0 0 255 1 0 0 2 2 2 
+2 0 0 0 1 }{CSTYLE "_cstyle1" -1 239 "Times" 1 18 0 0 0 0 0 0 0 2 2 2 
+0 0 0 1 }{CSTYLE "_cstyle2" -1 240 "Times" 1 18 0 0 0 0 0 1 0 2 2 2 0 
+0 0 1 }{CSTYLE "_cstyle3" -1 241 "Times" 1 14 0 0 0 0 0 1 0 2 2 2 0 0 
+0 1 }{CSTYLE "_cstyle4" -1 242 "Times" 1 14 0 0 0 0 0 0 0 2 2 2 0 0 0 
+1 }{CSTYLE "_cstyle5" -1 243 "Times" 1 14 0 0 0 0 1 0 0 2 2 2 0 0 0 1 
+}{CSTYLE "_cstyle6" -1 244 "Times" 0 1 0 0 0 0 0 0 0 2 2 2 0 0 0 1 }
+{CSTYLE "_cstyle7" -1 245 "Times" 0 1 0 0 0 0 1 0 0 2 2 2 0 0 0 1 }
+{CSTYLE "_cstyle8" -1 246 "Times" 0 1 0 0 0 0 0 0 2 2 2 2 0 0 0 1 }
+{CSTYLE "_cstyle9" -1 247 "Times" 0 1 0 0 0 0 0 1 0 2 2 2 0 0 0 1 }
+{CSTYLE "_cstyle10" -1 248 "Times" 1 12 0 0 0 0 1 0 0 2 2 2 0 0 0 1 }
+{CSTYLE "_cstyle11" -1 249 "Courier" 0 1 255 0 0 1 0 1 0 2 1 2 0 0 0 
+1 }{CSTYLE "" -1 256 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{PSTYLE "Nor
+mal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 
+}1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 11 1 {CSTYLE "
+" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }3 3 0 0 0 0 1 0 1 0 
+2 2 0 1 }{PSTYLE "Left Justified Maple Output" -1 12 1 {CSTYLE "" -1 
+-1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 0 2 0 2 0 2 2 
+0 1 }{PSTYLE "_pstyle1" -1 200 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 
+1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "_pstyle3
+" -1 202 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }
+1 1 0 0 0 0 1 0 1 0 2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 200 "" 0 "" {TEXT 239 6 "expL -" }{TEXT 240 1 " \+
+" }{TEXT 241 93 "Expected value of an expression involving monomials w
+ith respect to the Laguerre distribution" }}{PARA 200 "" 0 "" {TEXT 
+-1 0 "" }}{PARA 200 "" 0 "" {TEXT 241 22 "Calling Sequence:\n    " }
+{TEXT 242 8 "expL(a, " }{TEXT 243 4 "expr" }{TEXT 242 11 ", gamma, n)
+" }{TEXT 241 20 "       \n\nParameters:" }{TEXT 242 69 "\n     a      \+
+  - the \"Jack\" Laguerre parameter (real positive number)" }}{PARA 
+200 "" 0 "" {TEXT 242 5 "     " }{TEXT 243 4 "expr" }{TEXT 242 104 "  \+
+ - the expression involving monomials (allowing for multiplication, ad
+dition, subtraction, and powers)" }}{PARA 0 "" 0 "" {TEXT -1 4 "    " 
+}{TEXT 256 60 "gamma - the Laguerre parameter (real number greater tha
+n -1)" }}{PARA 200 "" 0 "" {TEXT 242 62 "     n        - the number of
+ variables (optionally symbolic) " }}{PARA 200 "" 0 "" {TEXT -1 0 "" }
+}{PARA 200 "" 0 "" {TEXT 241 9 "Synopsis:" }}{PARA 200 "" 0 "" {TEXT 
+244 21 "Given the expression " }{TEXT 245 4 "expr" }{TEXT 244 38 ", ex
+pL computes the expected value of " }{TEXT 245 4 "expr" }{TEXT 244 92 
+" with respect to the 2/a -Laguerre distribution of parameter gamma, w
+hich is proportional to" }}{PARA 200 "" 0 "" {XPPEDIT 18 0 "product(ab
+s(x[i]-x[j])^(2/a))*product(x[i]^gamma,i = 1 .. n)*product(exp(-x[i]),
+i = 1 .. n);" "6#*(-%(productG6#)-%$absG6#,&&%\"xG6#%\"iG\"\"\"&F-6#%
+\"jG!\"\"*&\"\"#F0%\"aGF4F0-F%6$)&F-6#F/%&gammaG/F/;F0%\"nGF0-F%6$-%$e
+xpG6#,$&F-6#F/F4/F/;F0F@F0" }{TEXT 246 1 " " }}{PARA 200 "" 0 "" 
+{TEXT -1 16 "on the interval " }{XPPEDIT 18 0 "[0, infinity]^n;" "6#)7
+$\"\"!%)infinityG%\"nG" }}{PARA 200 "" 0 "" {TEXT -1 0 "" }}{PARA 200 
+"" 0 "" {TEXT 244 30 "The method used is to convert " }{TEXT 245 4 "ex
+pr" }{TEXT 244 151 " to a linear combination of Jack polynomials of pa
+rameter a, and then substitute the expected value of each Jack polynom
+ial. For more information, see " }{TEXT 247 13 "Release Notes" }{TEXT 
+244 2 ". " }}{PARA 200 "" 0 "" {TEXT -1 0 "" }}{PARA 200 "" 0 "" 
+{TEXT 241 25 "References: Release Notes" }{TEXT 244 3 ";  " }}{PARA 
+200 "" 0 "" {TEXT 241 30 "                   Baker., T. " }{TEXT 244 
+4 "and " }{TEXT 241 13 "Forrester, P." }{TEXT 244 3 ",  " }{TEXT 248 
+67 "The Calogero-Sutherland Model and Generalized Classical Polynomial
+s" }{TEXT 244 35 ", Commun. Math. Phys. (188) 175-216" }}{PARA 200 "" 
+0 "" {TEXT -1 0 "" }}{PARA 200 "" 0 "" {TEXT 241 9 "Examples:" }}}
+{EXCHG {PARA 200 "> " 0 "" {MPLTEXT 1 249 27 "expL(a, m[2,1]+m[3], g, \+
+n);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#*,,**&%\"gG\"\"\"%\"aGF'F'\"\"#
+!\"\"*&F)F'F(F'F'*&F)F'%\"nGF'F'F',,*(F-F'F&F'F(F'F'*&F-F'F(F'F'*&F)F'
+F(F'F'*$)F-F)F'F'F-F*F'F-F',*F%F'F(F'F-F'F'F*F'F(!\"$" }}}{EXCHG 
+{PARA 200 "> " 0 "" {MPLTEXT 1 249 22 "expL(a, m[1,1]^2,g,n);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#,$*2\"\"#!\"\",**&%\"gG\"\"\"%\"aGF*F*
+F+F*%\"nGF*F%F&F*,*F(F*F+F*F,F*F*F&F*,&F,F*F*F&F*F,F*,**&F%F*F,F*F*\"
+\"$F&*&F%F*F+F*F*F(F*F*,**&F%F*F,F*F*\"\"%F&F(F**&F%F*F+F*F*F*F+!\"%F*
+" }}}{EXCHG {PARA 200 "> " 0 "" {MPLTEXT 1 249 28 "expL(1, m[4,1,1,1,1
+], g, n);" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,$*:\"#C!\"\"%\"nG\"\"\",
+&F'F(F(F&F(,&F'F(\"\"#F&F(,&F'F(\"\"$F&F(,&F'F(\"\"%F&F(,&%\"gGF(F'F(F
+(,(F1F(F'F(F(F&F(,(F1F(F'F(F+F&F(,(F1F(F'F(F-F&F(,(F1F(F'F(F/F&F(,6*$)
+F1F-F(F(*(\"\"*F(F'F()F1F+F(F(*&\"#7F(F;F(F&*(\"#@F()F'F+F(F1F(F(*(\"#
+cF(F'F(F1F(F&*&\"#pF(F1F(F(*&\"#9F()F'F-F(F(*&FBF(F@F(F&*&\"$Q\"F(F'F(
+F(\"$G\"F&F(F(" }}}{EXCHG {PARA 200 "> " 0 "" {MPLTEXT 1 249 25 "expL(
+3/4, m[2,1]^2, g,4);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,$*.\"\"%\"\"
+\"\"\"*!\"\",&%\"gGF&\"\"&F&F&,&*&\"\"$F&F*F&F&\"#6F&F&,&F*F&\"\"'F&F&
+,**&\"$3\"F&)F*F.F&F&*&\"%.CF&)F*\"\"#F&F&*&\"&^r\"F&F*F&F&\"&Qs$F&F&F
+&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 23 "expL(1, m[4], 32, 120)
+;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#\"-?vQh&Q'" }}}{EXCHG {PARA 200 "
+" 0 "" {TEXT 241 10 "See Also: " }{TEXT 244 67 "expLjacks, expH, expJ,
+ jack, m2m, m2jack, hermite, laguerre, jacobi" }}}{PARA 202 "" 0 "" 
+{TEXT -1 0 "" }}}{MARK "0 11 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }
+{PAGENUMBERS 0 1 2 33 1 1 }

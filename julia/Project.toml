@@ -1,0 +1,8 @@
+name = "MOPS"
+uuid = "91ff87cb-6478-4597-9a67-3e7e2c6a58b9"
+authors = ["Alvan C. Arulandu <aarulandu@college.harvard.edu>"]
+version = "0.1.0"
+
+[deps]
+SymPy = "24249f21-da20-56a4-8eb1-6a02cf4ae2e6"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

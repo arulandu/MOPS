@@ -1,0 +1,98 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 18 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 263 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 265 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 266 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+267 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 268 "" 1 14 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 269 "" 1 14 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 270 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 271 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+272 "" 0 14 0 0 0 0 1 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 273 "" 0 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 274 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 275 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 276 "" 0 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+277 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 278 "" 1 12 0 
+0 0 0 0 2 0 0 0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "T
+imes" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }
+{PSTYLE "Maple Output" -1 12 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 
+2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "" 0 256 1 
+{CSTYLE "" -1 -1 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }0 0 0 -1 -1 -1 
+0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT -1 0 "" }{TEXT 256 0 "" }{TEXT 
+-1 0 "" }{TEXT 257 12 "jack2jack - " }{TEXT 258 28 "Converts a Jack po
+lynomial e" }{TEXT 260 0 "" }{TEXT 259 59 "xpression to Jack polynomia
+l basis in the \"C\" normalization" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}
+{PARA 0 "" 0 "" {TEXT 261 17 "Calling Sequence:" }}{PARA 0 "" 0 "" 
+{TEXT -1 8 "        " }{TEXT 262 21 "jack2jack(a, expr, n)" }}{PARA 0 
+"" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }{TEXT 263 0 "" 
+}{TEXT 264 11 "Parameters:" }}{PARA 0 "" 0 "" {TEXT -1 7 "       " }
+{TEXT 265 51 "a       - the Jack parameter (positive real number)" }}
+{PARA 0 "" 0 "" {TEXT -1 5 "     " }{TEXT 266 109 " expr   - the expre
+ssion involving monomials (allowing for addition, subtraction, multipl
+ication, and powers)" }}{PARA 0 "" 0 "" {TEXT -1 7 "       " }{TEXT 
+267 43 "n      - the number of variables (optional)" }}{PARA 0 "" 0 "
+" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }{TEXT 268 0 "" }
+{TEXT 269 9 "Synopsis:" }}{PARA 0 "" 0 "" {TEXT -1 401 "    Given the \+
+parameter a and the expression expr, the procedure jack2jack converts \+
+expr to the Jack polynomial basis corresponding to the parameter a and
+ normalization \"C\", going through the monomial basis and using the p
+rocedures m2m and m2jack. This is taking advantage of the fact that th
+e change-of-basis matrix from Jack basis to monomial basis is upper tr
+iangular (and hence so is its inverse)." }}{PARA 0 "" 0 "" {TEXT -1 0 
+"" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }{TEXT 270 0 "" }{TEXT 271 26 "Refe
+rence: Macdonald, Ian," }{TEXT 276 2 "  " }{TEXT 272 41 "Symmetric Fun
+ctions and Hall Polynomials," }{TEXT 273 1 " " }{TEXT -1 23 "Oxford Un
+iversity Press" }}{PARA 0 "" 0 "" {TEXT -1 1 " " }}{PARA 0 "" 0 "" 
+{TEXT -1 0 "" }{TEXT 274 0 "" }{TEXT 275 10 "Examples: " }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 31 "jack2jack(a, C[2]*P[3,2,1], 3);" }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#,$*&#\"\"\"\"&g,#F&*,,&F&F&*&\"\"#F&%
+\"aGF&F&F&,H*(\"$>#F&&%\"CG6%\"\"&F+F&F&)F,\"\"$F&F&*(\"$V#F&F0F&)F,F+
+F&F&*(\"#gF&F0F&)F,\"\"%F&F&*(\"#'*F&F0F&F,F&F&*&\"#7F&F0F&F&*(\"#OF&&
+F16%F<F5F&F&F;F&F&*(\"$o\"F&FCF&F4F&F&*(\"$W#F&FCF&F8F&F&*(\"$7\"F&FCF
+&F,F&F&*&\"#;F&FCF&F&*(FBF&&F16%F5F5F+F&F;F&F&*(\"$;#F&FNF&F4F&F&*(\"$
+/%F&FNF&F8F&F&*(\"$c#F&FNF&F,F&F&*&\"#[F&FNF&F&*(\"$G\"F&&F16%F<F+F+F&
+F4F&F&*(\"$?$F&FZF&F8F&F&*(\"$C#F&FZF&F,F&F&*&FWF&FZF&F&F&F,!\"$,&F+F&
+F,F&!\"\",&F&F&F,F&F]oF&F&" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+34 "jack2jack(a, C[3]*J[1,1]*P[2], 4);" }}{PARA 12 "" 1 "" {XPPMATH 
+20 "6#,$*&#\"\"\"\"$5#F&**,hn*(\"#7F&&%\"CG6%\"\"$F/F&F&)%\"aGF/F&F&*(
+\"#YF&F,F&)F1\"\"#F&F&*(\"#]F&F,F&F1F&F&*(\"#9F&&F-6&F/F5F&F&F&F4F&F&*
+(F5F&F:F&F0F&F&*&\"#CF&F:F&F&*(\"#KF&F:F&F1F&F&*(\"#jF&&F-6&\"\"%F&F&F
+&F&F1F&F&*(\"$+#F&&F-6$\"\"'F&F&F4F&F&*&F+F&&F-6$\"\"&F5F&F&*(\"#FF&FC
+F&F4F&F&*&F+F&&F-6$FEF/F&F&*&\"#5F&FHF&F&*&\"#OF&FCF&F&*(\"#?F&&F-6%FN
+F&F&F&F0F&F&*(\"$O\"F&FZF&F1F&F&*(\"#!*F&FLF&F4F&F&*&F+F&F,F&F&*(\"#yF
+&FLF&F1F&F&*(\"$]\"F&FZF&F4F&F&*(\"#oF&&F-6%FEF5F&F&F1F&F&*(\"\")F&Fao
+F&F0F&F&*(F7F&FaoF&F4F&F&*(FinF&FHF&F1F&F&*(F\\oF&FRF&F4F&F&*(\"$?\"F&
+FHF&F0F&F&*(F>F&FRF&F0F&F&*(\"#mF&FRF&F1F&F&*&\"#=F&FaoF&F&*&\"#IF&FZF
+&F&F&F1!\"\",&F&F&*&F5F&F1F&F&Fap,&F&F&F1F&FapF&F&" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 35 "jack2jack(1/4, J[3,2]*P[1,1]^2, 9);" }}
+{PARA 12 "" 1 "" {XPPMATH 20 "6#,>*&#\"#X\"#K\"\"\"&%\"CG6$\"\"&\"\"%F
+(F(*&#\"$*H\"$w&F(&F*6%F,\"\"$F(F(F(*&#\"$<\"\"$[%F(&F*6%F,\"\"#F;F(F(
+*&#\"$@#\"%W8F(&F*6&F,F;F(F(F(F(*&#\"#F\"#;F(&F*6%F-F-F(F(F(*&#\"$T%\"
+$S'F(&F*6%F-F4F;F(F(*&#\"$t&\"$?$F(&F*6&F-F4F(F(F(F(*&#\"$*o\"$g*F(&F*
+6&F-F;F;F(F(F(*&#\"$(=\"$#>F(&F*6'F-F;F(F(F(F(F(*&#\"%J6FKF(&F*6&F4F4F
+;F(F(F(*&#\"$h&\"$c#F(&F*6'F4F4F(F(F(F(F(*&#\"$j'FboF(&F*6&F4F;F;F;F(F
+(*&#\"%JC\"%cMF(&F*6'F4F;F;F(F(F(F(*&#\"%l8\"$7&F(&F*6(F4F;F(F(F(F(F(F
+(" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 26 "jack2jack(2, C[4,2]^2,
+ 7);" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#,R*&#\"%06\"%(3$\"\"\"&%\"CG6$
+\"\")\"\"%F(F(*&#\"%+E\"&dR$F(&F*6%F,\"\"$F(F(F(*&#\"%?^F1F(&F*6%F,\"
+\"#F:F(F(*&#\"$]'F'F(&F*6$\"\"(\"\"&F(F(*&#\"$3#F'F(&F*6%F@F-F(F(F(*&#
+\"%/b\"'r=5F(&F*6%F@F4F:F(F(*&#\"#8\"$#))F(&F*6&F@F4F(F(F(F(*&#\"$+\"
+\"%^[F(&F*6&F@F:F:F(F(F(*&#\"$g#\"$T%F(&F*6$\"\"'FinF(F(*&#\"#')\"%H5F
+(&F*6%FinFAF(F(F(*&#\"%J&)\"'Ge8F(&F*6%FinF-F:F(F(*&#F4\"$#RF(&F*6&Fin
+F-F(F(F(F(*&#F(\"#\\F(&F*6%FinF4F4F(F(*&#F(\"#**F(&F*6&FinF4F:F(F(F(*&
+#FA\"$k#F(&F*6&FinF:F:F:F(F(*&#\"#L\"%s8F(&F*6%FAFAF:F(F(*&F\\pF(&F*6&
+FAFAF(F(F(F(*&#F4\"#xF(&F*6%FAF-F4F(F(*&#\"$n\"\"&`X\"F(&F*6&FAF-F:F(F
+(F(*&#F@\"%)=\"F(&F*6&FAF4F4F(F(F(*&#\"#D\"%kNF(&F*6&FAF4F:F:F(F(*&#FA
+\"#WF(&F*6%F-F-F-F(F(*&#Fer\"%wBF(&F*6&F-F-F4F(F(F(*&#FA\"$(HF(&F*6&F-
+F-F:F:F(F(" }}}{EXCHG {PARA 256 "" 0 "" {TEXT -1 9 "See also:" }{TEXT 
+277 0 "" }{TEXT 278 31 " jack, jack2jack, m2p, p2m, m2m" }{MPLTEXT 1 
+0 0 "" }}}}{MARK "5 0 3" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }
+{PAGENUMBERS 0 1 2 33 1 1 }

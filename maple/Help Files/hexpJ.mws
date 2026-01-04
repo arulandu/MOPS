@@ -1,0 +1,106 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Comment" -1 18 "Times" 0 1 0 0 0 0 0 0 2 2 2 
+2 0 0 0 1 }{CSTYLE "2D Output" -1 20 "Times" 0 1 0 0 255 1 0 0 2 2 2 
+2 0 0 0 1 }{CSTYLE "_cstyle1" -1 239 "Times" 1 18 0 0 0 0 0 0 0 2 2 2 
+0 0 0 1 }{CSTYLE "_cstyle2" -1 240 "Times" 1 18 0 0 0 0 0 1 0 2 2 2 0 
+0 0 1 }{CSTYLE "_cstyle3" -1 241 "Times" 1 14 0 0 0 0 0 1 0 2 2 2 0 0 
+0 1 }{CSTYLE "_cstyle4" -1 242 "Times" 1 14 0 0 0 0 0 0 0 2 2 2 0 0 0 
+1 }{CSTYLE "_cstyle5" -1 243 "Times" 1 14 0 0 0 0 1 0 0 2 2 2 0 0 0 1 
+}{CSTYLE "_cstyle6" -1 244 "Times" 0 1 0 0 0 0 0 0 0 2 2 2 0 0 0 1 }
+{CSTYLE "_cstyle7" -1 245 "Times" 0 1 0 0 0 0 1 0 0 2 2 2 0 0 0 1 }
+{CSTYLE "_cstyle8" -1 246 "Times" 0 1 0 0 0 0 0 0 2 2 2 2 0 0 0 1 }
+{CSTYLE "_cstyle9" -1 247 "Times" 0 1 0 0 0 0 0 1 0 2 2 2 0 0 0 1 }
+{CSTYLE "_cstyle11" -1 249 "Courier" 0 1 255 0 0 1 0 1 0 2 1 2 0 0 0 
+1 }{CSTYLE "" -1 256 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" 
+-1 257 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 1 14 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 14 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 1 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 0 14 0 0 0 0 1 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 263 "" 1 14 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 264 "" 1 14 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 265 "" 1 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 266 "" 0 14 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+267 "" 0 14 0 0 0 0 1 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 268 "" 0 14 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "T
+imes" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }
+{PSTYLE "Maple Output" -1 11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 
+2 2 2 2 2 2 1 1 1 1 }3 3 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Left Justif
+ied Maple Output" -1 12 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 
+2 2 2 1 1 1 1 }1 3 0 0 0 0 2 0 2 0 2 2 0 1 }{PSTYLE "_pstyle1" -1 200 
+1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 
+0 0 1 0 1 0 2 2 0 1 }{PSTYLE "_pstyle3" -1 202 1 {CSTYLE "" -1 -1 "Tim
+es" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 200 "" 0 "" {TEXT 239 6 "expJ -" }{TEXT 240 1 " \+
+" }{TEXT 241 91 "Expected value of an expression involving monomials w
+ith respect to the Jacobi distribution" }}{PARA 200 "" 0 "" {TEXT -1 
+0 "" }}{PARA 200 "" 0 "" {TEXT 241 22 "Calling Sequence:\n    " }
+{TEXT 242 8 "expJ(a, " }{TEXT 243 4 "expr" }{TEXT 242 12 ", g1, g2, n)
+" }{TEXT 241 20 "       \n\nParameters:" }{TEXT 242 67 "\n     a      \+
+  - the \"Jack\" Jacobi parameter (real positive number)" }}{PARA 200 
+"" 0 "" {TEXT 242 5 "     " }{TEXT 243 4 "expr" }{TEXT 242 104 "   - t
+he expression involving monomials (allowing for multiplication, additi
+on, subtraction, and powers)" }}{PARA 0 "" 0 "" {TEXT -1 4 "    " }
+{TEXT 256 68 "g1        - the first Jacobi parameter (real number grea
+ter than -1)" }}{PARA 0 "" 0 "" {TEXT -1 4 "    " }{TEXT 257 0 "" }
+{TEXT -1 0 "" }{TEXT 258 69 "g2        - the second Jacobi parameter (
+real number greater than -1)" }}{PARA 200 "" 0 "" {TEXT 242 62 "     n
+        - the number of variables (optionally symbolic) " }}{PARA 200 
+"" 0 "" {TEXT -1 0 "" }}{PARA 200 "" 0 "" {TEXT 241 9 "Synopsis:" }}
+{PARA 200 "" 0 "" {TEXT 244 21 "Given the expression " }{TEXT 245 4 "e
+xpr" }{TEXT 244 38 ", expJ computes the expected value of " }{TEXT 
+245 4 "expr" }{TEXT 244 92 " with respect to the 2/a -Jacobi distribut
+ion of parameters g1, g2, which is proportional to" }}{PARA 200 "" 0 "
+" {XPPEDIT 18 0 "product(abs(x[i]-x[j])^(2/a))*product(x[i]^\{g1\}*(1-
+x[i])^\{g2\},i = 1 .. n);" "6#*&-%(productG6#)-%$absG6#,&&%\"xG6#%\"iG
+\"\"\"&F-6#%\"jG!\"\"*&\"\"#F0%\"aGF4F0-F%6$*&)&F-6#F/<#%#g1GF0),&F0F0
+&F-6#F/F4<#%#g2GF0/F/;F0%\"nGF0" }{TEXT 246 1 " " }}{PARA 200 "" 0 "" 
+{TEXT -1 16 "on the interval " }{XPPEDIT 18 0 "[0, 1]^n;" "6#)7$\"\"!
+\"\"\"%\"nG" }}{PARA 200 "" 0 "" {TEXT -1 0 "" }}{PARA 200 "" 0 "" 
+{TEXT 244 30 "The method used is to convert " }{TEXT 245 4 "expr" }
+{TEXT 244 151 " to a linear combination of Jack polynomials of paramet
+er a, and then substitute the expected value of each Jack polynomial. \+
+For more information, see " }{TEXT 247 13 "Release Notes" }{TEXT 244 
+2 ". " }}{PARA 200 "" 0 "" {TEXT -1 0 "" }}{PARA 200 "" 0 "" {TEXT 
+241 25 "References: Release Notes" }{TEXT 244 3 ";  " }}{PARA 200 "" 
+0 "" {TEXT 241 31 "                   Kaneko, J., " }{TEXT -1 0 "" }
+{TEXT 259 0 "" }{TEXT 260 1 "S" }{TEXT 261 78 "elberg integrals and hy
+pergeometric functions associated to Jack polynomials, " }{TEXT -1 40 
+"SIAM J. Math. Anal., 24:1086-1110, 1993;" }}{PARA 0 "" 0 "" {TEXT -1 
+24 "                        " }{TEXT 264 0 "" }{TEXT 265 11 "Kadell, K
+.," }{TEXT 266 0 "" }{TEXT 267 0 "" }{TEXT 268 31 " The Selberg-Jack p
+olynomials, " }{TEXT -1 41 "Advances in Mathematics, 130:33-102, 1997
+" }{TEXT 262 0 "" }{TEXT 263 0 "" }{TEXT -1 0 "" }}{PARA 0 "" 0 "" 
+{TEXT -1 0 "" }}{PARA 200 "" 0 "" {TEXT 241 9 "Examples:" }}}{EXCHG 
+{PARA 200 "> " 0 "" {MPLTEXT 1 249 32 "expJ(a, m[2]+2*m[1], g1, g2, n)
+;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#*.,@**\"\"&\"\"\"%#g1GF')%\"aG\"
+\"#F'%#g2GF'F'*(\"#7F'F,F'F)F'F'*&\"#;F'F)F'F'*(\"#9F'F(F'F)F'F'*(\"\"
+$F')F(F+F'F)F'F'*(F+F')F,F+F'F)F'F'**\"#5F'%\"nGF'F,F'F*F'F'*(\"#FF'F:
+F'F*F'F'**\"#6F'F:F'F(F'F*F'F'*&\"#NF'F*F'!\"\"*(F.F'F,F'F*F'FA*(F2F'F
+(F'F*F'FAF0F'*&F>F')F:F+F'F'*&F<F'F:F'FAF',**&F(F'F*F'F'F:F'F'FAF*F'F'
+F:F',,*&F,F'F*F'F'FHF'*&F+F'F:F'F'F4FA*&F+F'F*F'F'FA,,FJF'FHF'*&F+F'F:
+F'F'F+FA*&F4F'F*F'F'FA,,FJF'FHF'*&F+F'F:F'F'F+FA*&F+F'F*F'F'FA" }}}
+{EXCHG {PARA 200 "> " 0 "" {MPLTEXT 1 249 25 "expJ(a, m[1]^2,g1, g2,n)
+;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#*.,>*(%#g1G\"\"\")%\"aG\"\"#F'%#g
+2GF'F'*(F*F'F+F'F(F'F'*&\"\"%F'F(F'F'*(F.F'F&F'F(F'F'*&)F&F*F'F(F'F'*&
+\"\"*F'F)F'!\"\"*(\"\"(F'%\"nGF'F)F'F'**\"\"$F'F7F'F&F'F)F'F'**F*F'F7F
+'F+F'F)F'F'*(F*F'F+F'F)F'F4*(F.F'F&F'F)F'F4F.F'*&F9F')F7F*F'F'*&F6F'F7
+F'F4F',**&F&F'F)F'F'F7F'F'F4F)F'F'F7F',,*&F+F'F)F'F'FAF'*&F*F'F7F'F'F9
+F4*&F*F'F)F'F'F4,,FCF'FAF'*&F*F'F7F'F'F*F4*&F9F'F)F'F'F4,,FCF'FAF'*&F*
+F'F7F'F'F*F4*&F*F'F)F'F'F4" }}}{EXCHG {PARA 200 "> " 0 "" {MPLTEXT 1 
+249 27 "expJ(1, m[2,1], g1, g2, n);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6
+#*4%\"nG\"\"\",&F$F%F%!\"\"F%,&%#g1GF%F$F%F%,(F)F%F$F%F%F'F%,4\"\"#F'*
+&\"\"$F%)F$F,F%F%*$)F)F,F%F%*&F,F%F$F%F'*&%#g2GF%F)F%F%F4F'*(F,F%F$F%F
+4F%F%F)F'*(F.F%F$F%F)F%F%F%,(F4F%F)F%*&F,F%F$F%F%F',*F4F%F)F%*&F,F%F$F
+%F%F%F%F',*F4F%F)F%*&F,F%F$F%F%F%F'F',*F4F%F)F%*&F,F%F$F%F%F,F'F'" }}}
+{EXCHG {PARA 200 "> " 0 "" {MPLTEXT 1 249 29 "expJ(3, m[2,1,1,1], g1,g
+2,4);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#,$*8\"\"%\"\"\",&%#g1GF&\"\"#
+F&F&,&F(F&\"\"$F&F&,&*&F+F&F(F&F&\"\"&F&F&,&*&F+F&F(F&F&F%F&F&,&F(F&F&
+F&F&,(%#g2GF&F(F&F%F&!\"\",(F3F&F(F&F.F&F4,(*&F+F&F3F&F&*&F+F&F(F&F&\"
+#6F&F4,(*&F+F&F3F&F&*&F+F&F(F&F&\"#5F&F4,(F3F&F(F&F+F&F4F&" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 28 "expJ(1, m[4], 5.3, -.1, 57);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"(aFj\"!\"&" }}}{EXCHG {PARA 200 "" 
+0 "" {TEXT 241 10 "See Also: " }{TEXT 244 67 "expJjacks, expH, expL, j
+ack, m2m, m2jack, hermite, laguerre, jacobi" }}}{PARA 202 "" 0 "" 
+{TEXT -1 0 "" }}}{MARK "6 0 1" 21 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }
+{PAGENUMBERS 0 1 2 33 1 1 }
