@@ -30,7 +30,7 @@ function GBC_cont(α, u::AbstractVector{<:Integer}, n::Integer)
     l = copy(u)
     l[n] = l[n] - 1
     
-    # Remove trailing zeros if animage.pngy
+    # Remove trailing zeros if any
     while !isempty(l) && l[end] == 0
         pop!(l)
     end
@@ -63,7 +63,6 @@ function GBC_cont(α, u::AbstractVector{<:Integer}, n::Integer)
         end
     end
     
-    ab = simplify(ab)
-    return ab
+    return simplify(ab)
 end
 

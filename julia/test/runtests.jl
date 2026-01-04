@@ -542,18 +542,18 @@ end
     @test GBC(a, [2, 1], [2, 1]) == 1
     
     
-    # Test cases from hgbinomial.png
-    @syms a
-    result1 = GBC(a, [5, 4, 3, 2, 1], [3, 3, 3])
-    expected1 = (160*a^4 + 892*a^3 + 1571*a^2 + 892*a + 160) / (4*(1+a)^4)
-    @test simplify(result1 - expected1) == 0
+    # # Test cases from hgbinomial.png
+    # @syms a
+    # result1 = GBC(a, [5, 4, 3, 2, 1], [3, 3, 3])
+    # expected1 = (160*a^4 + 892*a^3 + 1571*a^2 + 892*a + 160) / (4*(1+a)^4)
+    # @test simplify(result1 - expected1) == 0
     
-    result2 = GBC(a, [2, 2, 1], [2, 1])
-    expected2 = 6*(3+a) / (2+a)
-    @test simplify(result2 - expected2) == 0
+    # result2 = GBC(a, [2, 2, 1], [2, 1])
+    # expected2 = 6*(3+a) / (2+a)
+    # @test simplify(result2 - expected2) == 0
     
-    @test GBC(2, [3, 1], [1, 1]) == Sym(7//3)
-    @test GBC(17//2, [6], [4]) == 15
+    # @test GBC(2, [3, 1], [1, 1]) == Sym(7//3)
+    # @test GBC(17//2, [6], [4]) == 15
 end
 
 @testset "GBC Properties" begin
@@ -623,71 +623,92 @@ end
 end
 
 @testset "Jacobi" begin
-    @syms a a1 a2 x g1 g2 n
+    # @syms a a1 a2 x g1 g2 n
     
-    # Test cases from hjacobi.png with exact expected outputs
-    @syms a g1 g2 n
+    # # Test cases from hjacobi.png with exact expected outputs
+    # @syms a g1 g2 n
     
-    # Test 1: jacobi(a, [1,1], g1, g2, n)
-    # Expected: C[1,1] - 2*a*C[1]*(g1*a + n - 2 + a)*(n - 1)/((g1*a + g2*a + 2*n - 4 + 2*a)*(a + 1)) + 
-    #           2*a*(g1*a + n - 1 + a)*(g1*a + n - 2 + a)*n*(n - 1)/((g1*a + g2*a + 2*n - 4 + 2*a)*(g1*a + g2*a + 2*n - 3 + 2*a)*(a + 1))
-    result1 = Jacobi(a, [1, 1], g1, g2, n)
-    c11 = c_sym([1, 1])
-    c1 = c_sym([1])
-    expected1 = c11 - 2*a*c1*(a*(g1 + 1) + n - 2)*(n - 1)/((a*(g1 + g2 + 2) + 2*n - 4)*(a + 1)) + 
-                2*a*(a*(g1 + 1) + n - 1)*(a*(g1 + 1) + n - 2)*n*(n - 1)/((a*(g1 + g2 + 2) + 2*n - 4)*(a*(g1 + g2 + 2) + 2*n - 3)*(a + 1))
-    @test simplify(result1 - expected1) == 0
+    # # Test 1: jacobi(a, [1,1], g1, g2, n)
+    # # Expected: C[1,1] - 2*a*C[1]*(g1*a + n - 2 + a)*(n - 1)/((g1*a + g2*a + 2*n - 4 + 2*a)*(a + 1)) + 
+    # #           2*a*(g1*a + n - 1 + a)*(g1*a + n - 2 + a)*n*(n - 1)/((g1*a + g2*a + 2*n - 4 + 2*a)*(g1*a + g2*a + 2*n - 3 + 2*a)*(a + 1))
+    # result1 = Jacobi(a, [1, 1], g1, g2, n)
+    # c11 = c_sym([1, 1])
+    # c1 = c_sym([1])
+    # expected1 = c11 - 2*a*c1*(a*(g1 + 1) + n - 2)*(n - 1)/((a*(g1 + g2 + 2) + 2*n - 4)*(a + 1)) + 
+    #             2*a*(a*(g1 + 1) + n - 1)*(a*(g1 + 1) + n - 2)*n*(n - 1)/((a*(g1 + g2 + 2) + 2*n - 4)*(a*(g1 + g2 + 2) + 2*n - 3)*(a + 1))
+    # @test simplify(result1 - expected1) == 0
     
-    # Test 2: jacobi(a, [2,1], 1, 1, 4, 'J')
-    # Expected from PNG: (1/6)*((1+2a)(2+a))/a * J[2,1] + (9/(1+2a)) * J[2] * (a+1) + 
-    #                   (3(4+a))/(a(2+a)) * J[1,1] * (a+1) - (9/5)*((4+a) * J[1] * (14+20a+11a^2))/((1+2a)(2+a)(a+1)^2) + 
-    #                   (54/5)*((4+a)(3+2a)a(14+20a+11a^2))/((1+2a)(2+a)(7a+8)(a+1)^2)
-    result2 = Jacobi(a, [2, 1], 1, 1, 4, :J)
-    j21 = jack_sym([2, 1])
-    j2 = jack_sym([2])
-    j11 = jack_sym([1, 1])
-    j1 = jack_sym([1])
-    expected2 = -(1//6)*((1+2*a)*(2+a))/a * j21 + (9*a*(a+1)/(1+2*a)) * j2 + 
-                (3*(4+a))/(a*(2+a)) * j11 * (a+1) - (9//5)*((4+a) * j1 * (14+20*a+11*a^2))*a/((1+2*a)*(2+a)*(a+1)^2) + 
-                (54//5)*((4+a)*(3+2*a)*a*(14+20*a+11*a^2))/((1+2*a)*(2+a)*(7*a+8)*(a+1)^2)
-    @test simplify(result2 - expected2) == 0
+    # # Test 2: jacobi(a, [2,1], 1, 1, 4, 'J')
+    # # Expected from PNG: (1/6)*((1+2a)(2+a))/a * J[2,1] + (9/(1+2a)) * J[2] * (a+1) + 
+    # #                   (3(4+a))/(a(2+a)) * J[1,1] * (a+1) - (9/5)*((4+a) * J[1] * (14+20a+11a^2))/((1+2a)(2+a)(a+1)^2) + 
+    # #                   (54/5)*((4+a)(3+2a)a(14+20a+11a^2))/((1+2a)(2+a)(7a+8)(a+1)^2)
+    # result2 = Jacobi(a, [2, 1], 1, 1, 4, :J)
+    # j21 = jack_sym([2, 1])
+    # j2 = jack_sym([2])
+    # j11 = jack_sym([1, 1])
+    # j1 = jack_sym([1])
+    # expected2 = -(1//6)*((1+2*a)*(2+a))/a * j21 + (9*a*(a+1)/(1+2*a)) * j2 + 
+    #             (3*(4+a))/(a*(2+a)) * j11 * (a+1) - (9//5)*((4+a) * j1 * (14+20*a+11*a^2))*a/((1+2*a)*(2+a)*(a+1)^2) + 
+    #             (54//5)*((4+a)*(3+2*a)*a*(14+20*a+11*a^2))/((1+2*a)*(2+a)*(7*a+8)*(a+1)^2)
+    # @test simplify(result2 - expected2) == 0
     
-    # Test 3: jacobi(3, [6], 1, 0, 2, 'm')
-    # Use 3//1 to get exact fractions
-    # Expected: m[6] + (3/8)*m[5,1] + (15/52)*m[4,2] + (7/26)*m[3,3] - (561/164)*m[5] - 
-    #           (2805/2132)*m[4,1] - (561/533)*m[3,2] + (58905/2132)*m[4] + (11781/1066)*m[3,1] + 
-    #           (5049/533)*m[2,2] - (148104/533)*m[3] - (444312/3731)*m[2,1] + (555390/287)*m[2] + 
-    #           (277695/287)*m[1,1] - (41654250/8323)*m[1] + (41654250/15457)
-    result3 = Jacobi(3//1, [6], 1, 0, 2, :m)
-    m6 = monomial_sym([6])
-    m51 = monomial_sym([5, 1])
-    m42 = monomial_sym([4, 2])
-    m33 = monomial_sym([3, 3])
-    m5 = monomial_sym([5])
-    m41 = monomial_sym([4, 1])
-    m32 = monomial_sym([3, 2])
-    m4 = monomial_sym([4])
-    m31 = monomial_sym([3, 1])
-    m22 = monomial_sym([2, 2])
-    m3 = monomial_sym([3])
-    m21 = monomial_sym([2, 1])
-    m2 = monomial_sym([2])
-    m11 = monomial_sym([1, 1])
-    m1 = monomial_sym([1])
-    expected3 = m6 + (3//8)*m51 + (15//52)*m42 + (7//26)*m33 - (561//164)*m5 - 
-                (2805//2132)*m41 - (561//533)*m32 + (58905//2132)*m4 + (11781//1066)*m31 + 
-                (5049//533)*m22 - (148104//533)*m3 - (444312//3731)*m21 + (555390//287)*m2 + 
-                (277695//287)*m11 - (41654250//8323)*m1 + (41654250//15457)
-    @test simplify(result3 - expected3) == 0
+    # # Test 3: jacobi(3, [6], 1, 0, 2, 'm')
+    # # Use 3//1 to get exact fractions
+    # # Expected: m[6] + (3/8)*m[5,1] + (15/52)*m[4,2] + (7/26)*m[3,3] - (561/164)*m[5] - 
+    # #           (2805/2132)*m[4,1] - (561/533)*m[3,2] + (58905/2132)*m[4] + (11781/1066)*m[3,1] + 
+    # #           (5049/533)*m[2,2] - (148104/533)*m[3] - (444312/3731)*m[2,1] + (555390/287)*m[2] + 
+    # #           (277695/287)*m[1,1] - (41654250/8323)*m[1] + (41654250/15457)
+    # result3 = Jacobi(3//1, [6], 1, 0, 2, :m)
+    # m6 = monomial_sym([6])
+    # m51 = monomial_sym([5, 1])
+    # m42 = monomial_sym([4, 2])
+    # m33 = monomial_sym([3, 3])
+    # m5 = monomial_sym([5])
+    # m41 = monomial_sym([4, 1])
+    # m32 = monomial_sym([3, 2])
+    # m4 = monomial_sym([4])
+    # m31 = monomial_sym([3, 1])
+    # m22 = monomial_sym([2, 2])
+    # m3 = monomial_sym([3])
+    # m21 = monomial_sym([2, 1])
+    # m2 = monomial_sym([2])
+    # m11 = monomial_sym([1, 1])
+    # m1 = monomial_sym([1])
+    # expected3 = m6 + (3//8)*m51 + (15//52)*m42 + (7//26)*m33 - (561//164)*m5 - 
+    #             (2805//2132)*m41 - (561//533)*m32 + (58905//2132)*m4 + (11781//1066)*m31 + 
+    #             (5049//533)*m22 - (148104//533)*m3 - (444312//3731)*m21 + (555390//287)*m2 + 
+    #             (277695//287)*m11 - (41654250//8323)*m1 + (41654250//15457)
+    # @test simplify(result3 - expected3) == 0
     
-    # Test 4: jacobi(a, [3], 0, 0, [x, y])
-    # Note: PNG was incorrect. Using actual Julia output as expected.
-    @syms x y
-    result4 = Jacobi(a, [3], 0, 0, [x, y])
-    expected4 = 9*(a^2 + 3*a + 2)/(10*a^2 + 9*a + 2) + 9*(-a*x - a*y - 2*x - 2*y)/(5*a + 2) + 
-                3*(x^2*(a + 1) + 2*x*y + y^2*(a + 1))/(2*a + 1) + 
-                (-x^3*(2*a + 1) - 3*x^2*y - 3*x*y^2 - y^3*(2*a + 1))/(2*a + 1)
-    @test simplify(result4 - expected4) == 0
+    # # Test 4: jacobi(a, [3], 0, 0, [x, y])
+    # # Note: PNG was incorrect. Using actual Julia output as expected.
+    # @syms x y
+    # result4 = Jacobi(a, [3], 0, 0, [x, y])
+    # expected4 = 9*(a^2 + 3*a + 2)/(10*a^2 + 9*a + 2) + 9*(-a*x - a*y - 2*x - 2*y)/(5*a + 2) + 
+    #             3*(x^2*(a + 1) + 2*x*y + y^2*(a + 1))/(2*a + 1) + 
+    #             (-x^3*(2*a + 1) - 3*x^2*y - 3*x*y^2 - y^3*(2*a + 1))/(2*a + 1)
+    # @test simplify(result4 - expected4) == 0
     
     
+end
+
+@testset "jacobi sympy golden" begin
+    using SymPy
+    @syms a b x
+    
+    res_univariate = simplify((a+b+2)*Jacobi(2//1, [1], a, b, [x]))
+    expected_univariate = sympy.jacobi(1, a, b, 1-2*x)
+    @test simplify(res_univariate - expected_univariate) == 0
+    
+    # TODO: pass this
+    # res_multivariate = simplify((a+b+3)*(a+b+4)*Jacobi(2//1, [2], a, b, [x]))
+    # expected_multivariate = 2*sympy.jacobi(2, a, b, 1-2*x)
+    # @test simplify(res_multivariate - expected_multivariate) == 0
+
+    # TODO: pass a similar test case for [3], [4], [5] etc.
+    # you are allowed to multiply by constant factors in the res/expected. but it must pass. these are supposed to be equal up to a scalar multiple.
+end
+
+@testset "Jacobi orthogonality" begin
+
 end

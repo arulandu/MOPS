@@ -23,7 +23,7 @@ julia> MOPS.Jacobi_c(a, [2], [1], 1, a1, a2)
 ```
 """
 function Jacobi_c(α, κ::AbstractVector{<:Integer}, s::AbstractVector{<:Integer}, m, α1, α2)
-    println("🔍 Jacobi_c CALLED | α: $α | κ: $κ | s: $s | m: $m | α1: $α1 | α2: $α2")
+    # println("🔍 Jacobi_c CALLED | α: $α | κ: $κ | s: $s | m: $m | α1: $α1 | α2: $α2")
     if !parvalid(κ)
         throw(ArgumentError("Invalid partition κ: must be non-increasing"))
     end
@@ -33,7 +33,7 @@ function Jacobi_c(α, κ::AbstractVector{<:Integer}, s::AbstractVector{<:Integer
     
     # Base case: if κ = s, return 1
     if κ == s
-        println("  → Base case: κ == s, returning 1")
+        # println("  → Base case: κ == s, returning 1")
         return Sym(1)
     end
     
@@ -54,12 +54,12 @@ function Jacobi_c(α, κ::AbstractVector{<:Integer}, s::AbstractVector{<:Integer
         
         # Check if si is already sorted in descending order (Maple: si = sort(si, '>'))
         si_sorted = sort(si, rev=true)
-        println("    → si_sorted: $si_sorted | si == si_sorted: $(si == si_sorted) | partition_ge(κ, si): $(partition_ge(κ, si))")
-        if si == si_sorted && partition_ge(κ, si)
+        # println("    → si_sorted: $si_sorted | si == si_sorted: $(si == si_sorted) | partition_ge(κ, si): $(partition_ge(κ, si))")
+        if si == si_sorted
             # Remove trailing zeros for validation
             si_clean = filter(x -> x > 0, si)
             println("    → si_clean: $si_clean")
-            if parvalid(si_clean)
+            if parvalid(si_clean) && subpar_check(si_clean, κ)
                 println("    → Valid si_clean, computing recursive term")
                 gbc_val = GBC(α, κ, si_clean)
                 println("    → gbc_val: $gbc_val")

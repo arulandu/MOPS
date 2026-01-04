@@ -20,7 +20,6 @@ julia> MOPS.GBC(a, [2, 1], [1])
 ```
 """
 function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
-    println("🔍 GBC CALLED | α: $α | k: $k | s: $s")
     if !parvalid(k)
         throw(ArgumentError("Invalid partition k: must be non-increasing"))
     end
@@ -30,23 +29,19 @@ function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
     
     # Base cases
     if k == s
-        println("🔍 GBC: k == s case, returning 1")
         return Sym(1)
     end
     
     if isempty(s) || s == [0]
-        println("🔍 GBC: isempty(s) || s == [0] case, returning 1")
         return Sym(1)
     end
     
     if s == [1]
-        println("🔍 GBC: s == [1] case, returning sum(k)")
         return sum(k)
     end
     
     # Check if s is a subpartition of k
     if !subpar_check(s, k)
-        println("🔍 GBC: !subpar_check(s, k) case, returning 0")
         return Sym(0)
     end
     
@@ -64,7 +59,6 @@ function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
         
         # Check if si == k (Maple checks this first)
         if si == k
-            println("🔍 GBC: si == k case, calling GBC_cont_explicit | k: $k | i: $i")
             return simplify(GBC_cont_explicit(α, k, i))
         end
         
@@ -74,7 +68,6 @@ function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
             # Remove trailing zeros for validation
             si_clean = filter(x -> x > 0, si)
             if parvalid(si_clean)
-                println("🔍 GBC: recursive case, calling GBC_cont_explicit | si_clean: $si_clean | i: $i")
                 result = result + GBC(α, k, si_clean) * GBC_cont_explicit(α, si_clean, i)
             end
         end
@@ -90,7 +83,6 @@ function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
     
     result = result / (ks - ss)
     result = simplify(result)
-    println("GBC | alpha: ", α, " | k: ", k, " | s: ", s, " | result: ", result)
     return result
 end
 
