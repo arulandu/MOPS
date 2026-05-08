@@ -516,6 +516,11 @@ end
     
     # Test GBC_cont(a, [2,1], 1)
     @test simplify(GBC_cont(a, [2, 1], 1) - (2*a + 1)/(a + 1)) == 0
+
+    # Regression: in one variable these reduce to ordinary binomials
+    # independent of the Jack parameter.
+    @test simplify(GBC_cont(a, [3], 1) - 3) == 0
+    @test simplify(GBC_cont_explicit(a, [3], 1) - 3) == 0
 end
 
 @testset "GBC" begin
@@ -622,76 +627,6 @@ end
     @test simplify(Jacobi_c(a, [2], [1], 1, a1, a2) - 2/(a1 + a2 + 4)) == 0
 end
 
-@testset "Jacobi" begin
-    # @syms a a1 a2 x g1 g2 n
-    
-    # # Test cases from hjacobi.png with exact expected outputs
-    # @syms a g1 g2 n
-    
-    # # Test 1: jacobi(a, [1,1], g1, g2, n)
-    # # Expected: C[1,1] - 2*a*C[1]*(g1*a + n - 2 + a)*(n - 1)/((g1*a + g2*a + 2*n - 4 + 2*a)*(a + 1)) + 
-    # #           2*a*(g1*a + n - 1 + a)*(g1*a + n - 2 + a)*n*(n - 1)/((g1*a + g2*a + 2*n - 4 + 2*a)*(g1*a + g2*a + 2*n - 3 + 2*a)*(a + 1))
-    # result1 = Jacobi(a, [1, 1], g1, g2, n)
-    # c11 = c_sym([1, 1])
-    # c1 = c_sym([1])
-    # expected1 = c11 - 2*a*c1*(a*(g1 + 1) + n - 2)*(n - 1)/((a*(g1 + g2 + 2) + 2*n - 4)*(a + 1)) + 
-    #             2*a*(a*(g1 + 1) + n - 1)*(a*(g1 + 1) + n - 2)*n*(n - 1)/((a*(g1 + g2 + 2) + 2*n - 4)*(a*(g1 + g2 + 2) + 2*n - 3)*(a + 1))
-    # @test simplify(result1 - expected1) == 0
-    
-    # # Test 2: jacobi(a, [2,1], 1, 1, 4, 'J')
-    # # Expected from PNG: (1/6)*((1+2a)(2+a))/a * J[2,1] + (9/(1+2a)) * J[2] * (a+1) + 
-    # #                   (3(4+a))/(a(2+a)) * J[1,1] * (a+1) - (9/5)*((4+a) * J[1] * (14+20a+11a^2))/((1+2a)(2+a)(a+1)^2) + 
-    # #                   (54/5)*((4+a)(3+2a)a(14+20a+11a^2))/((1+2a)(2+a)(7a+8)(a+1)^2)
-    # result2 = Jacobi(a, [2, 1], 1, 1, 4, :J)
-    # j21 = jack_sym([2, 1])
-    # j2 = jack_sym([2])
-    # j11 = jack_sym([1, 1])
-    # j1 = jack_sym([1])
-    # expected2 = -(1//6)*((1+2*a)*(2+a))/a * j21 + (9*a*(a+1)/(1+2*a)) * j2 + 
-    #             (3*(4+a))/(a*(2+a)) * j11 * (a+1) - (9//5)*((4+a) * j1 * (14+20*a+11*a^2))*a/((1+2*a)*(2+a)*(a+1)^2) + 
-    #             (54//5)*((4+a)*(3+2*a)*a*(14+20*a+11*a^2))/((1+2*a)*(2+a)*(7*a+8)*(a+1)^2)
-    # @test simplify(result2 - expected2) == 0
-    
-    # # Test 3: jacobi(3, [6], 1, 0, 2, 'm')
-    # # Use 3//1 to get exact fractions
-    # # Expected: m[6] + (3/8)*m[5,1] + (15/52)*m[4,2] + (7/26)*m[3,3] - (561/164)*m[5] - 
-    # #           (2805/2132)*m[4,1] - (561/533)*m[3,2] + (58905/2132)*m[4] + (11781/1066)*m[3,1] + 
-    # #           (5049/533)*m[2,2] - (148104/533)*m[3] - (444312/3731)*m[2,1] + (555390/287)*m[2] + 
-    # #           (277695/287)*m[1,1] - (41654250/8323)*m[1] + (41654250/15457)
-    # result3 = Jacobi(3//1, [6], 1, 0, 2, :m)
-    # m6 = monomial_sym([6])
-    # m51 = monomial_sym([5, 1])
-    # m42 = monomial_sym([4, 2])
-    # m33 = monomial_sym([3, 3])
-    # m5 = monomial_sym([5])
-    # m41 = monomial_sym([4, 1])
-    # m32 = monomial_sym([3, 2])
-    # m4 = monomial_sym([4])
-    # m31 = monomial_sym([3, 1])
-    # m22 = monomial_sym([2, 2])
-    # m3 = monomial_sym([3])
-    # m21 = monomial_sym([2, 1])
-    # m2 = monomial_sym([2])
-    # m11 = monomial_sym([1, 1])
-    # m1 = monomial_sym([1])
-    # expected3 = m6 + (3//8)*m51 + (15//52)*m42 + (7//26)*m33 - (561//164)*m5 - 
-    #             (2805//2132)*m41 - (561//533)*m32 + (58905//2132)*m4 + (11781//1066)*m31 + 
-    #             (5049//533)*m22 - (148104//533)*m3 - (444312//3731)*m21 + (555390//287)*m2 + 
-    #             (277695//287)*m11 - (41654250//8323)*m1 + (41654250//15457)
-    # @test simplify(result3 - expected3) == 0
-    
-    # # Test 4: jacobi(a, [3], 0, 0, [x, y])
-    # # Note: PNG was incorrect. Using actual Julia output as expected.
-    # @syms x y
-    # result4 = Jacobi(a, [3], 0, 0, [x, y])
-    # expected4 = 9*(a^2 + 3*a + 2)/(10*a^2 + 9*a + 2) + 9*(-a*x - a*y - 2*x - 2*y)/(5*a + 2) + 
-    #             3*(x^2*(a + 1) + 2*x*y + y^2*(a + 1))/(2*a + 1) + 
-    #             (-x^3*(2*a + 1) - 3*x^2*y - 3*x*y^2 - y^3*(2*a + 1))/(2*a + 1)
-    # @test simplify(result4 - expected4) == 0
-    
-    
-end
-
 @testset "jacobi sympy golden" begin
     using SymPy
     @syms a b x
@@ -699,16 +634,66 @@ end
     res_univariate = simplify((a+b+2)*Jacobi(2//1, [1], a, b, [x]))
     expected_univariate = sympy.jacobi(1, a, b, 1-2*x)
     @test simplify(res_univariate - expected_univariate) == 0
-    
-    # TODO: pass this
-    # res_multivariate = simplify((a+b+3)*(a+b+4)*Jacobi(2//1, [2], a, b, [x]))
-    # expected_multivariate = 2*sympy.jacobi(2, a, b, 1-2*x)
-    # @test simplify(res_multivariate - expected_multivariate) == 0
 
-    # TODO: pass a similar test case for [3], [4], [5] etc.
-    # you are allowed to multiply by constant factors in the res/expected. but it must pass. these are supposed to be equal up to a scalar multiple.
+    for k in 1:5
+        mops_poly = Jacobi(2//1, [k], a, b, [x])
+        classical = sympy.jacobi(k, a, b, 1 - 2*x)
+        expected = Sym(factorial(k)) * classical / SFact(a + b + k + 1, k)
+        @test simplify(expand(mops_poly - expected)) == 0
+    end
+
+    # Regression: the quadratic constant term previously came out too large by 2.
+    scaled_quadratic = simplify((a + b + 3) * (a + b + 4) * Jacobi(2//1, [2], a, b, [x]))
+    expected_scaled = simplify(2 * sympy.jacobi(2, a, b, 1 - 2*x))
+    @test simplify(expand(scaled_quadratic - expected_scaled)) == 0
+
+    # Maple screenshot checks:
+    # j3 := jacobi(2/3, [2], 1, 2, [x]) = x^2 - 6/7 x + 1/7
+    # j4 := jacobi(2/3, [3], 1, 2, [x]) = -x^3 + 4/3 x^2 - 1/2 x + 1/21
+    j3 = simplify(Jacobi(2//3, [2], 1, 2, [x]))
+    j4 = simplify(Jacobi(2//3, [3], 1, 2, [x]))
+    @test simplify(expand(j3 - (x^2 - Sym(6)//7 * x + Sym(1)//7))) == 0
+    @test simplify(expand(j4 - (-x^3 + Sym(4)//3 * x^2 - Sym(1)//2 * x + Sym(1)//21))) == 0
 end
 
 @testset "Jacobi orthogonality" begin
+    @syms x y z
 
+    # α=1, m=2, α1=α2=0. The Selberg/Jacobi weight is (x-y)^2 on [0,1]^2.
+    poly = simplify(Jacobi(1//1, [2], 0, 0, [x, y]))
+    expected_poly = x^2 + x*y + y^2 - Sym(3)/2 * (x + y) + Sym(3)/5
+    @test simplify(expand(poly - expected_poly)) == 0
+
+    weight = (x - y)^2
+    int_const = sympy.integrate(sympy.integrate(expand(poly * weight), (x, 0, 1)), (y, 0, 1))
+    int_linear = sympy.integrate(sympy.integrate(expand(poly * (x + y) * weight), (x, 0, 1)), (y, 0, 1))
+    @test simplify(int_const) == 0
+    @test simplify(int_linear) == 0
+
+    # Maple screenshot check:
+    # int(j3*j4*x*(1-x)^2, x=0..1) = 0 for α=2/3, α1=1, α2=2.
+    j3_uni = simplify(Jacobi(2//3, [2], 1, 2, [x]))
+    j4_uni = simplify(Jacobi(2//3, [3], 1, 2, [x]))
+    int_j3_j4 = sympy.integrate(expand(j3_uni * j4_uni * x * (1 - x)^2), (x, 0, 1))
+    @test simplify(int_j3_j4) == 0
+
+    # Maple screenshot check:
+    # j1 := jacobi(2/3, [2,1], 1,2,[x,y,z])
+    # j2 := jacobi(2/3, [1,1,1], 1,2,[x,y,z])
+    j1 = simplify(Jacobi(2//3, [2, 1], 1, 2, [x, y, z]))
+    j2 = simplify(Jacobi(2//3, [1, 1, 1], 1, 2, [x, y, z]))
+
+    # Orthogonality with Selberg-type weight:
+    # abs(Δ)^3 * ∏x_i^(1) * (1-x_i)^2 on [0,1]^3.
+    # Evaluate as 6× integral over 0 ≤ z ≤ y ≤ x ≤ 1 to avoid absolute-value handling.
+    ordered_integrand = expand(j1 * j2 * (x - y)^3 * (y - z)^3 * (x - z)^3 *
+                               (x * y * z) * ((1 - x) * (1 - y) * (1 - z))^2)
+    ordered_int = sympy.integrate(
+        sympy.integrate(
+            sympy.integrate(ordered_integrand, (z, 0, y)),
+            (y, 0, x)
+        ),
+        (x, 0, 1)
+    )
+    @test simplify(6 * ordered_int) == 0
 end

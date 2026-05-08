@@ -25,14 +25,21 @@ function GBC_cont(α, u::AbstractVector{<:Integer}, n::Integer)
     if n < 1 || n > length(u)
         throw(ArgumentError("Index n must be between 1 and length(u)"))
     end
+    if u[n] <= 0
+        throw(ArgumentError("Cannot decrement u[n] since u[n] <= 0"))
+    end
     
-    # Create l = u with l[n] decremented
+    # Create l = u with l[n] decremented.  The contiguous coefficient is
+    # defined only when this is still a partition after removing trailing zeros.
     l = copy(u)
     l[n] = l[n] - 1
     
     # Remove trailing zeros if any
     while !isempty(l) && l[end] == 0
         pop!(l)
+    end
+    if !parvalid(l)
+        throw(ArgumentError("Decrementing u at n=$(n) does not yield a valid partition"))
     end
     
     ab = Sym(1)  # Use Sym(1) for symbolic multiplication

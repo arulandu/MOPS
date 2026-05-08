@@ -59,7 +59,7 @@ function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
         
         # Check if si == k (Maple checks this first)
         if si == k
-            return simplify(GBC_cont_explicit(α, k, i))
+            return simplify(GBC_cont(α, k, i))
         end
         
         # Check if si is already sorted in descending order (Maple: si = sort(si, '>'))
@@ -68,7 +68,7 @@ function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
             # Remove trailing zeros for validation
             si_clean = filter(x -> x > 0, si)
             if parvalid(si_clean)
-                result = result + GBC(α, k, si_clean) * GBC_cont_explicit(α, si_clean, i)
+                result = result + GBC(α, k, si_clean) * GBC_cont(α, si_clean, i)
             end
         end
     end
