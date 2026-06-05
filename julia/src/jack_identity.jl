@@ -13,7 +13,7 @@ Supports both integer and symbolic `m` (matching Maple behavior).
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a
 julia> MOPS.JackIdentity(a, [2], 1)
 # Returns symbolic expression
@@ -33,7 +33,7 @@ function JackIdentity(α, κ::AbstractVector{<:Integer}, m)
     
     j = sum(κ)
     # Maple: simplify((a^(2*j))*j!*(`MOPS/GSFact`(a,m/a,k))/r)
-    # Using SymPy for symbolic computation
+    # Using Julia-native symbolic computation
     return simplify(α^(2*j) * factorial(j) * GSFact(α, m/α, κ) / r)
 end
 

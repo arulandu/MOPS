@@ -1,5 +1,4 @@
 using MOPS
-using SymPy
 
 @syms a
 

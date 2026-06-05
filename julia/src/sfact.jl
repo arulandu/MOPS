@@ -6,7 +6,7 @@ Compute the shifted factorial (Pochhammer symbol) (a)_b = a(a+1)(a+2)...(a+b-1).
 This is equivalent to Γ(a+b)/Γ(a).
 
 # Arguments
-- `a`: Can be a number or a SymPy symbolic expression
+- `a`: Can be a number or a Symbolics symbolic expression
 - `b`: An integer (the number of factors)
 
 # Examples
@@ -14,8 +14,8 @@ This is equivalent to Γ(a+b)/Γ(a).
 julia> MOPS.SFact(3, 5)
 5040
 
-julia> using SymPy
-julia> @vars n
+julia> using MOPS
+julia> @syms n
 julia> MOPS.SFact(n, 3)
 n*(n + 1)*(n + 2)
 ```

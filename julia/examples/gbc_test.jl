@@ -1,5 +1,4 @@
 using MOPS
-using SymPy
 
 """
     test_GBC_cont(α; max_n=5, verbose=true)
@@ -42,7 +41,7 @@ function test_GBC_cont(α; max_n=5, verbose=true)
                     println("STARTING")
                     v1 = simplify(GBC_cont(α, u, n))
                     v2 = simplify(GBC_cont_explicit(α, u, n))
-                    if simplify(v1 - v2) != 0
+                    if !symbolic_zero(v1 - v2)
                         ok = false
                         println("❌ mismatch")
                         println("  u = ", u)

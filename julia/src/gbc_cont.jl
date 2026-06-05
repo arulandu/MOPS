@@ -12,7 +12,7 @@ This is an internal function used by `GBC` to compute continuation values.
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a
 julia> MOPS.GBC_cont(a, [2, 1], 1)
 # Returns symbolic expression
@@ -42,7 +42,7 @@ function GBC_cont(α, u::AbstractVector{<:Integer}, n::Integer)
         throw(ArgumentError("Decrementing u at n=$(n) does not yield a valid partition"))
     end
     
-    ab = Sym(1)  # Use Sym(1) for symbolic multiplication
+    ab = 1  # Use 1 for symbolic multiplication
     
     # Compute conjugates
     lc = conjugate(l)

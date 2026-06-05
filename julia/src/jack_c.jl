@@ -12,7 +12,7 @@ of the monomial symmetric function `m[k]` in terms of Jack polynomials.
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a
 julia> MOPS.Jack_c(a, [2], [1, 1])
 # Returns coefficient
@@ -88,7 +88,7 @@ function Jack_c(α, k::AbstractVector{<:Integer}, l::AbstractVector{<:Integer}, 
     i_rho = rho(α, k)
     j_rho = rho(α, l)
     
-    if i_rho == j_rho
+    if symbolic_zero(i_rho - j_rho)
         return 0
     end
     

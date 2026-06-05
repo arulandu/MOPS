@@ -1,52 +1,33 @@
-# Example from example.md
-# This file demonstrates the Julia equivalents of the Maple examples
+# This file demonstrates Julia-native symbolic MOPS usage.
 
 using MOPS
-using SymPy
 
-# Define symbolic variables
 @syms a b x
 
+gbinom(a, k::Integer) = k == 0 ? 1 : SFact(a - k + 1, k) / factorial(k)
+function classical_jacobi(n::Integer, a, b, t)
+    result = 0
+    for j in 0:n
+        result += gbinom(n + a, n - j) * gbinom(n + b, j) * ((t - 1) / 2)^j * ((t + 1) / 2)^(n - j)
+    end
+    simplify(expand(result))
+end
+
 println("=" ^ 60)
-println("Example 1: simplify((a+b+3)*(a+b+4)*jacobi(2, [2], a, b, [x]))")
+println("Example 1: simplify((a+b+3)*(a+b+4)*Jacobi(2, [2], a, b, [x]))")
 println("=" ^ 60)
 
-# Compute the multivariate Jacobi polynomial
-result1 = (a+b+3)*(a+b+4)*Jacobi(2, [2], a, b, [x])
-
-println("Result:")
+result1 = simplify((a+b+3)*(a+b+4)*Jacobi(2, [2], a, b, [x]))
 println(result1)
 println()
 
-println("Simplified:")
-result1_simplified = simplify(result1)
-println(result1_simplified)
-println()
-
 println("=" ^ 60)
-println("Example 2: simplify(2 * JacobiP(2, a, b, (1-2x)))")
+println("Example 2: 2 * classical Jacobi P₂^(a,b)(1-2x)")
 println("=" ^ 60)
 
-# For the univariate Jacobi polynomial, we use SymPy's jacobi function
-# Note: SymPy uses different parameter names - it's jacobi(n, alpha, beta, x)
-# where alpha and beta are the parameters, and n is the degree
-result2 = 2 * sympy.jacobi(2, a, b, 1 - 2*x)
-
-println("Result:")
+result2 = simplify(2 * classical_jacobi(2, a, b, 1 - 2*x))
 println(result2)
 println()
 
-println("Simplified:")
-result2_simplified = simplify(result2)
-println(result2_simplified)
-println()
-
-println("Grouped by x:")
-result2_expanded = expand(result2_simplified)
-result2_grouped = collect(result2_expanded, x)
-println(result2_grouped)
-println()
-
-println("=" ^ 60)
-println("Both examples completed successfully!")
-println("=" ^ 60)
+println("Expanded:")
+println(expand(result2))

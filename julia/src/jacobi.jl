@@ -17,7 +17,7 @@ evaluated at points `n` (or with `n` variables if `n` is an integer).
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a a1 a2
 julia> MOPS.Jacobi(a, [2], a1, a2, 1)
 # Returns symbolic expression
@@ -43,7 +43,7 @@ function Jacobi(α, κ::AbstractVector{<:Integer}, α1, α2, n, norm=nothing)
     
     ks = n isa AbstractVector ? length(n) : n
     sp = subPar(κ)
-    result = Sym(0)
+    result = 0
     gsfact_k = GSFact(α, α1 + (ks - 1)/α + 1, κ)
     jack_identity_k = JackIdentity(α, κ, ks)
     
@@ -54,9 +54,9 @@ function Jacobi(α, κ::AbstractVector{<:Integer}, α1, α2, n, norm=nothing)
         jack_s = Jack(α, s, n, sc)
         jack_identity_s = JackIdentity(α, s, ks)
         term = (-1)^ss * (gsfact_k/gsfact_s) * (jack_identity_k/jack_identity_s) * jacobi_c_val * jack_s
-        result += simplify(term)
+        result += term
     end
     
-    return simplify(result)
+    return expand(result)
 end
 

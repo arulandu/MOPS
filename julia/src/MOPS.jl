@@ -1,13 +1,15 @@
 module MOPS
 
-using SymPy
+
 
 # Export functions
 export parvalid, SFact, conjugate, arm, leg, Uhook, Lhook, GSFact, rho,
        subpar_check, partition_le, partition_lt, partition_ge, partition_gt, subPar, Par,
        JtoC, PtoC, JackIdentity, egen, evalJack, Jack, dominate, isdominate, Jack_c,
-       monomial_sym, jack_sym, p_sym, c_sym, GBC, GBC_cont, GBC_cont_explicit, Jacobi_c, Jacobi
+       monomial_sym, jack_sym, p_sym, c_sym, GBC, GBC_cont, GBC_cont_explicit, Jacobi_c, Jacobi,
+       Sym, @syms, simplify, expand, symbolic_zero
 
+include("symbolic_compat.jl")
 include("parvalid.jl")
 include("sfact.jl")
 include("conjugate.jl")

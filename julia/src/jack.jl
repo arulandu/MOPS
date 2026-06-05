@@ -11,7 +11,7 @@ Compute the Jack polynomial for partition `κ`.
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a x
 julia> MOPS.Jack(a, [2], [x])
 # Returns symbolic expression

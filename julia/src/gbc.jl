@@ -13,7 +13,7 @@ in the expansion of Jack polynomials.
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a
 julia> MOPS.GBC(a, [2, 1], [1])
 # Returns symbolic expression
@@ -29,11 +29,11 @@ function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
     
     # Base cases
     if k == s
-        return Sym(1)
+        return 1
     end
     
     if isempty(s) || s == [0]
-        return Sym(1)
+        return 1
     end
     
     if s == [1]
@@ -42,10 +42,10 @@ function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
     
     # Check if s is a subpartition of k
     if !subpar_check(s, k)
-        return Sym(0)
+        return 0
     end
     
-    result = Sym(0)
+    result = 0
     
     # Loop from 1 to min(length(k), length(s)+1)
     for i in 1:min(length(k), length(s) + 1)
@@ -78,7 +78,7 @@ function GBC(α, k::AbstractVector{<:Integer}, s::AbstractVector{<:Integer})
     ks = sum(k)
     
     if ks == ss
-        return Sym(0)  # Avoid division by zero
+        return 0  # Avoid division by zero
     end
     
     result = result / (ks - ss)

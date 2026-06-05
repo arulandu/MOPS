@@ -13,7 +13,7 @@ at the points in `x`.
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a x1
 julia> MOPS.evalJack(a, [2], [x1])
 # Returns symbolic expression

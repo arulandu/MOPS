@@ -55,7 +55,7 @@ function conjugate(κ::AbstractVector)
             end
         end
     else
-        # Symbolic partition - need to use SymPy operations
+        # Symbolic partition - need to use symbolic operations
         # For symbolic partitions, we can't easily check "> 0", so we'll use a different approach
         # Actually, for symbolic partitions, conjugate might not make sense in the same way
         # Let's just return an error for now, or implement a symbolic version

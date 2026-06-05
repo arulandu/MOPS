@@ -13,7 +13,7 @@ Unlike JtoC, this only uses Uhook (not Lhook).
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a
 julia> MOPS.PtoC(a, [2], 0)
 # Returns symbolic expression

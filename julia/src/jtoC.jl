@@ -12,7 +12,7 @@ This computes the ratio between J-normalized and C-normalized Jack polynomials.
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a
 julia> MOPS.JtoC(a, [2], 0)
 # Returns symbolic expression

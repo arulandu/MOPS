@@ -16,7 +16,7 @@ where ``a = α1 + (m-1)/α + 1``.
 
 # Examples
 ```jldoctest
-julia> using SymPy
+julia> using MOPS
 julia> @syms a a1 a2
 julia> MOPS.Jacobi_c(a, [2], [1], 1, a1, a2)
 # Returns symbolic expression
@@ -30,14 +30,14 @@ function Jacobi_c(α, κ::AbstractVector{<:Integer}, s::AbstractVector{<:Integer
         throw(ArgumentError("Invalid partition s: must be non-increasing"))
     end
     if !subpar_check(s, κ)
-        return Sym(0)
+        return 0
     end
     
     if κ == s
-        return Sym(1)
+        return 1
     end
     
-    result = Sym(0)
+    result = 0
     
     for i in 1:min(length(s) + 1, length(κ))
         if i == length(s) + 1
@@ -60,8 +60,8 @@ function Jacobi_c(α, κ::AbstractVector{<:Integer}, s::AbstractVector{<:Integer
     ss = sum(s)
     val = (α1 + α2 + 2*(m - 1)/α + 2) * (ks - ss) + rho(α, κ) - rho(α, s)
     
-    if val == 0
-        return Sym(0)
+    if symbolic_zero(val)
+        return 0
     end
     
     return simplify(result / val)
